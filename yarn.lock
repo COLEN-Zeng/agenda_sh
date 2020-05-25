@@ -150,6 +150,16 @@ acorn@^7.1.1:
   resolved "https://registry.npm.taobao.org/acorn/download/acorn-7.2.0.tgz?cache=0&sync_timestamp=1589007904036&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Facorn%2Fdownload%2Facorn-7.2.0.tgz#17ea7e40d7c8640ff54a694c889c26f31704effe"
   integrity sha1-F+p+QNfIZA/1SmlMiJwm8xcE7/4=
 
+agenda-ui@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.npm.taobao.org/agenda-ui/download/agenda-ui-0.0.7.tgz#c7d1dc4898220539caa53b19ced011a07d13ecf7"
+  integrity sha1-x9HcSJgiBTnKpTsZztARoH0T7Pc=
+  dependencies:
+    ejs "^1.0.0"
+    express "^4.3.2"
+    rsvp "^3.0.9"
+    speakingurl "^0.9.1"
+
 agenda@^2.0.0:
   version "2.3.0"
   resolved "https://registry.npm.taobao.org/agenda/download/agenda-2.3.0.tgz#192c69a01a4cf1c2ccd504c262096169aacc47ae"
@@ -750,6 +760,11 @@ ee-first@1.1.1:
   resolved "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
+ejs@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/ejs/download/ejs-1.0.0.tgz#c9c60a48a46ee452fb32a71c317b95e5aa1fcb3d"
+  integrity sha1-ycYKSKRu5FL7MqccMXuV5aofyz0=
+
 emoji-regex@^7.0.1:
   version "7.0.3"
   resolved "https://registry.npm.taobao.org/emoji-regex/download/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
@@ -897,7 +912,7 @@ etag@~1.8.1:
   resolved "https://registry.npm.taobao.org/etag/download/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
-express@^4.0.0, express@^4.17.1:
+express@^4.0.0, express@^4.17.1, express@^4.3.2:
   version "4.17.1"
   resolved "https://registry.npm.taobao.org/express/download/express-4.17.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fexpress%2Fdownload%2Fexpress-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
   integrity sha1-RJH8OGBc9R+GKdOcK10Cb5ikwTQ=
@@ -1979,6 +1994,11 @@ rimraf@2.6.3:
   dependencies:
     glob "^7.1.3"
 
+rsvp@^3.0.9:
+  version "3.6.2"
+  resolved "https://registry.npm.taobao.org/rsvp/download/rsvp-3.6.2.tgz#2e96491599a96cde1b515d5674a8f7a91452926a"
+  integrity sha1-LpZJFZmpbN4bUV1WdKj3qRRSkmo=
+
 run-async@^2.4.0:
   version "2.4.1"
   resolved "https://registry.npm.taobao.org/run-async/download/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
@@ -2117,6 +2137,11 @@ sparse-bitfield@^3.0.3:
   integrity sha1-/0rm5oZWBWuks+eSqzM004JzyhE=
   dependencies:
     memory-pager "^1.0.2"
+
+speakingurl@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.npm.taobao.org/speakingurl/download/speakingurl-0.9.1.tgz#4c95f4d5700e7903a822e8d7e308388557624e1a"
+  integrity sha1-TJX01XAOeQOoIujX4wg4hVdiTho=
 
 sprintf-js@~1.0.2:
   version "1.0.3"
