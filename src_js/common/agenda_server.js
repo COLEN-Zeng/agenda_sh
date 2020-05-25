@@ -1,24 +1,14 @@
-import os = require('os');
-import fs = require('fs');
-import path = require('path');
-import Express = require('express');
-import Agenda = require('agenda');
-import AgendaSh = require('agendash');
-import * as abstract from './abstract';
+import * as os from 'os';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as Express from 'express';
+import * as Agenda from 'agenda';
+import * as AgendaSh from 'agendash';
 
-module.exports = class {
-    _serverHost: string;
-    _serverPort: string | number;
-    _env: string;
-    _serverName: string;
-    _server: any;
-    _dbHost: string;
-    _dbPort: number;
-    _dbName: string;
-    Agenda: any;
+export class AgendaServer {
     constructor(
-        serverHost: string, serverPort: string | number, env: string, serverName = 'agenda',
-        dbHost: string, dbPort: number, dbName = 'agenda'
+        serverHost, serverPort, env, serverName = 'agenda',
+        dbHost, dbPort, dbName = 'agenda'
     ) {
         this._serverHost = serverHost;
         this._serverPort = serverPort;
@@ -38,6 +28,7 @@ module.exports = class {
             },
             name: os.hostname + '-' + process.pid
         });
+        global.Agenda = this.Agenda;
         this._server.listen(this._serverPort, this._serverHost);
         this._server.use('', AgendaSh(this.Agenda, { title: os.hostname + '-' + process.pid }));
         this.Agenda.on('start', job => {
@@ -55,12 +46,12 @@ module.exports = class {
     }
 
     // 定义任务
-    define(name: string, fun: () => void) {
+    define(name, fun) {
         this.Agenda.define(name, fun);
     }
 
     // 定时任务
-    every(interval: number | string, names: string, data?: any, options?: any) {
+    every(interval, names, data, options) {
         this.Agenda.every(interval, names, data, options);
     }
 
@@ -68,4 +59,4 @@ module.exports = class {
     now(names) {
         this.Agenda.now(names);
     }
-};
+}
