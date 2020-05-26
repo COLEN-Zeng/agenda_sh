@@ -7,13 +7,14 @@ const server = new Common.Entity.GeneralAgendaServer(
     serverHost, serverPort, serverName,
     dbHost, dbPort, dbName
 );
+const router = require('./router'), every = require('./every')
 
 Promise.resolve()
     .then(() => server.initLogger('agenda'))
     // .then(() => server.initConfigClient(configHost, configPort))
-    // .then(() => server.initCore(['account', 'policy', 'non_vehicle', 'payment', 'warehouse'], coreRegHost, coreRegPort))
+    // .then(() => server.initOuter('core', ['account', 'policy', 'non_vehicle', 'payment', 'warehouse'], coreRegHost, coreRegPort))
     // .then(() => server.initInside(['silver-ins-core', 'silver-ins-common']))
-    .then(() => server.start(require('./router'), require('./every')))
+    .then(() => server.start(router, every))
     .catch(error => {
         console.log(error);
         process.exit(-1);

@@ -158,4 +158,36 @@ module.exports = class {
         }
         this.info('init inside');
     }
+
+    /**
+     * 实例化外部服务
+     * @param {'core'|'h5'} outerName 外部服务名 Core|H5
+     * @param {*} servicesName 服务名
+     * @param {*} regHost
+     * @param {*} regPort
+     */
+    async initOuter(outerName, servicesName, regHost = "0.0.0.0", regPort) {
+        if (regPort === undefined) regPort = outerName === 'core' ? 2371 : 2732
+        const InstanceOuter = Common.Module.parseServerName(outerName)
+        global[InstanceOuter] = {}
+        await Promise.all(
+            servicesName.map(async serviceName => {
+                let instance = await new Common.Entity.GeneralServiceClient(
+                    regHost,
+                    regPort,
+                    serviceName
+                ).connect();
+
+                //在client包裹上该服务提供的语义化的方法
+                let clientWrapper = require(`${PROJECT_ROOT}/lib/${outerName}_service_client/${serviceName}`);
+                let name = Common.Module.parseServerName(serviceName);
+                global[InstanceOuter][name] = clientWrapper(instance);
+            })
+        ).catch(err =>
+            this.error(
+                `connect to ${outerName} service by registry service failed [regHost: ${regHost}, _regPort: ${regPort}], nested error: ${err}`
+            )
+        );
+        this.info(`init ${outerName} success`);
+    }
 };
