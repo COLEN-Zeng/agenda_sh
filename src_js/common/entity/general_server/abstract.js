@@ -79,6 +79,7 @@ module.exports = class {
         const _Notification = require('@qtk/reliable-notification-service');
         let notification = new _Notification(connParams, scope, `core_${serviceName}`);
 
+        // eslint-disable-next-line no-async-promise-executor
         await new Promise(async (resolve, reject) => {
             notification.once('error', (error) => {
                 console.log(error);
@@ -167,9 +168,9 @@ module.exports = class {
      * @param {*} regPort
      */
     async initOuter(outerName, servicesName, regHost = "0.0.0.0", regPort) {
-        if (regPort === undefined) regPort = outerName === 'core' ? 2371 : 2732
-        const InstanceOuter = Common.Module.parseServerName(outerName)
-        global[InstanceOuter] = {}
+        if (regPort === undefined) regPort = outerName === 'core' ? 2371 : 2731;
+        const InstanceOuter = Common.Module.parseServerName(outerName);
+        global[InstanceOuter] = {};
         await Promise.all(
             servicesName.map(async serviceName => {
                 let instance = await new Common.Entity.GeneralServiceClient(
