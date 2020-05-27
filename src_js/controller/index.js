@@ -4,12 +4,12 @@ const moment = require('moment')
 const path = require('path')
 
 exports.deletePicture = async function deletePicture(job) {
-    Logger.record(JSON.stringify(job))
+    Logger.debug(JSON.stringify(job))
     const { keyword = moment().format('YYYYMMDD'), deleteFolder = 'Pictures' } = job.attrs.data || {};
     const homedir = os.homedir();
     const deleteDir = path.join(homedir, deleteFolder);
 
-    Logger.record('deletePicture', `delete ${deleteFolder} include ${keyword} file`);
+    Logger.debug('deletePicture', `delete ${deleteFolder} include ${keyword} file`);
 
     if (!fs.existsSync(deleteDir)) {
         throw new Error('文件夹不存在:' + deleteDir)
@@ -23,20 +23,21 @@ exports.deletePicture = async function deletePicture(job) {
     if (todayPicturesDirList.length === 0) {
         job.repeatAt('5:30pm');
         await job.remove();
-        Logger.record('删除任务')
+        Logger.debug('删除任务')
     }
     todayPicturesDirList.forEach(fileName => {
         fs.unlinkSync(path.join(deleteDir, fileName));
     });
-    Logger.record(JSON.stringify(todayPicturesDirList));
+    Logger.debug(JSON.stringify(todayPicturesDirList));
 }
 
 exports.testJob = async function (job, done) {
-    Logger.record(new Date(), + 'testJob，这是一个测试');
+    Logger.debug(JSON.stringify(job.attrs.data))
+    Logger.debug(new Date(), + 'testJob，这是一个测试');
 }
 
 exports.renewingCoverage = async function (job) {
-    Logger.record('续保服务')
+    Logger.debug('续保服务')
     // 对接以下产品的续保保单数据接收：
     // 安联京彩一生
     // 安联臻爱感恩版

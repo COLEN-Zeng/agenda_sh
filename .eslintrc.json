@@ -1,16 +1,26 @@
-module.exports = {
+{
     "env": {
         "es6": true,
         "node": true,
         "mocha": true
     },
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    "extends": "plugin:@typescript-eslint/recommended",
+    "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 2018
+    },
+    "globals": {
+        "Common": true,
+        "Constant": true,
+        "PROJECT_ROOT": true,
+        "ORM": true,
+        "Action": true,
+        "Logger": true,
+        "Config": true,
+        "ENV": true,
+        "toCdnUrl": true,
+        "easyWechat": true,
+        "Inside": true,
+        "H5": true
     },
     "rules": {
         "indent": [
@@ -32,17 +42,6 @@ module.exports = {
             "always"
         ],
         "no-unused-vars": "off",
-        "no-console": "off",
-        "max-len": [
-            "warn",
-            {
-                "code": 110,
-                "tabWidth": 4,
-                "ignoreUrls": true
-            }
-        ],
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-explicit-any": "off"
-    },
-    "globals": {}
-};
+        "no-console": "off"
+    }
+}

@@ -34,8 +34,9 @@ module.exports = class extends AbstractGeneralServer {
 
         await this.Agenda.start().then(_ => console.log('agenda start'))
 
-        router(this.Agenda);
-        await every(this.Agenda)
+        router && router(this);
+        every && await every(this)
+
         this._server.listen(this._serverPort, this._serverHost);
         this._server.use('', AgendaSh(this.Agenda, { title: os.hostname + '-' + process.pid }))
 
@@ -55,11 +56,14 @@ module.exports = class extends AbstractGeneralServer {
 
     // 定义任务
     define(name, fun) {
+        Logger.debug(`init define: ${name}`);
         this.Agenda.define(name, fun);
     }
 
     // 定时任务
     async every(interval, names, data, options = {}) {
+        Logger.debug(`init every: ${names} interval: ${interval}`);
+
         options.timezone = 'Asia/Shanghai'// 设置时区
         await this.Agenda.every(interval, names, data, options);
     }
@@ -102,14 +106,14 @@ module.exports = class extends AbstractGeneralServer {
             error: err => logger.error(err.stack || err),
             info: msg => logger.info(msg),
             warn: msg => logger.warn(msg),
-            debug: msg => logger.debug(msg),
+            debug: msg => { logger.debug(msg), L(msg) },
             record: msg => L(msg)
         };
 
         global.Action = {
             record(actionName, data) {
                 Log4js.getLogger('action').info(
-                    `[${actionName}] ${JSON.stringify(data)}`
+                    `[${actionName}]${JSON.stringify(data)}`
                 );
             },
         };
