@@ -8,7 +8,7 @@ module.exports = (client) => ({
     CustomerVisitRecord: {
 
         /**
-        * @returns {PersonnelCustomerVisitRecord}
+        * @returns {Promise<PersonnelCustomerVisitRecord>}
         */
         get: function (id) {
             // Logger.debug(`CustomerVisitRecord get ${id}`);
@@ -30,7 +30,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`CustomerVisitRecord has ${id}`);
@@ -45,7 +45,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件
-        * @returns {PersonnelCustomerVisitRecord[]}
+        * @returns {Promise<PersonnelCustomerVisitRecord[]>}
         */
         find: function ({where, sort, limit} = {}) {
             return client.call('model.operate', {
@@ -62,7 +62,7 @@ module.exports = (client) => ({
 
         /**
         * @param where 过滤条件
-        * @returns {number}
+        * @returns {Promise<number>}
         */
         count: function (where) {
             // Logger.debug(`CustomerVisitRecord count ${JSON.stringify(where)}`);
@@ -81,7 +81,7 @@ module.exports = (client) => ({
     IncomeRecord: {
 
         /**
-        * @returns {PersonnelIncomeRecord}
+        * @returns {Promise<PersonnelIncomeRecord>}
         */
         get: function (id) {
             // Logger.debug(`IncomeRecord get ${id}`);
@@ -103,7 +103,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`IncomeRecord has ${id}`);
@@ -118,7 +118,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件
-        * @returns {PersonnelIncomeRecord[]}
+        * @returns {Promise<PersonnelIncomeRecord[]>}
         */
         find: function ({where, sort, limit} = {}) {
             return client.call('model.operate', {
@@ -133,12 +133,28 @@ module.exports = (client) => ({
             });
         },
 
+        /**
+        * @param where 过滤条件
+        * @returns {Promise<number>}
+        */
+        count: function (where) {
+            // Logger.debug(`IncomeRecord count ${JSON.stringify(where)}`);
+            return client.call('model.operate', {
+                modelAndOperation: 'IncomeRecord|countObject',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {}
+                )
+            });
+        },
+
     },
 
     Info: {
 
         /**
-        * @returns {PersonnelInfo}
+        * @returns {Promise<PersonnelInfo>}
         */
         get: function (id) {
             // Logger.debug(`Info get ${id}`);
@@ -160,7 +176,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`Info has ${id}`);
@@ -175,7 +191,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件
-        * @returns {PersonnelInfo[]}
+        * @returns {Promise<PersonnelInfo[]>}
         */
         find: function ({where, sort, limit} = {}) {
             return client.call('model.operate', {
@@ -190,12 +206,28 @@ module.exports = (client) => ({
             });
         },
 
+        /**
+        * @param where 过滤条件
+        * @returns {Promise<number>}
+        */
+        count: function (where) {
+            // Logger.debug(`Info count ${JSON.stringify(where)}`);
+            return client.call('model.operate', {
+                modelAndOperation: 'Info|countObject',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {}
+                )
+            });
+        },
+
     },
 
     JobRank: {
 
         /**
-        * @returns {PersonnelJobRank}
+        * @returns {Promise<PersonnelJobRank>}
         */
         get: function (id) {
             // Logger.debug(`JobRank get ${id}`);
@@ -217,7 +249,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`JobRank has ${id}`);
@@ -227,12 +259,32 @@ module.exports = (client) => ({
             });
         },
 
+        /**
+        * @param {Object} options            - 选项
+        * @param {Object|Array} options.sort       - 排序的字段
+        * @param {Object} options.limit      - 分页的字段
+        * @param {Object} options.where      - 过滤条件
+        * @returns {Promise<PersonnelJobRank[]>}
+        */
+        find: function ({where, sort, limit} = {}) {
+            return client.call('model.operate', {
+                modelAndOperation: 'JobRank|find',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {},
+                    sort !== undefined ? {sort: Array.isArray(sort) ? sort.map(_ => _.toJson()) : sort.toJson()} : {},
+                    limit !== undefined ? {limit: limit.toJson()} : {},
+                )
+            });
+        },
+
     },
 
     Note: {
 
         /**
-        * @returns {PersonnelNote}
+        * @returns {Promise<PersonnelNote>}
         */
         get: function (id) {
             // Logger.debug(`Note get ${id}`);
@@ -258,7 +310,7 @@ module.exports = (client) => ({
     Proposal: {
 
         /**
-        * @returns {PersonnelProposal}
+        * @returns {Promise<PersonnelProposal>}
         */
         get: function (id) {
             // Logger.debug(`Proposal get ${id}`);
@@ -280,7 +332,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`Proposal has ${id}`);
@@ -290,37 +342,90 @@ module.exports = (client) => ({
             });
         },
 
+        /**
+        * @param {Object} options            - 选项
+        * @param {Object|Array} options.sort       - 排序的字段
+        * @param {Object} options.limit      - 分页的字段
+        * @param {Object} options.where      - 过滤条件
+        * @returns {Promise<PersonnelProposal[]>}
+        */
+        find: function ({where, sort, limit} = {}) {
+            return client.call('model.operate', {
+                modelAndOperation: 'Proposal|find',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {},
+                    sort !== undefined ? {sort: Array.isArray(sort) ? sort.map(_ => _.toJson()) : sort.toJson()} : {},
+                    limit !== undefined ? {limit: limit.toJson()} : {},
+                )
+            });
+        },
+
+        /**
+        * @param where 过滤条件
+        * @returns {Promise<number>}
+        */
+        count: function (where) {
+            // Logger.debug(`Proposal count ${JSON.stringify(where)}`);
+            return client.call('model.operate', {
+                modelAndOperation: 'Proposal|countObject',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {}
+                )
+            });
+        },
+
     },
 
-    RecommendProduct: {
+    Share: {
 
         /**
-        * @returns {PersonnelRecommendProduct}
+        * @returns {Promise<PersonnelShare>}
         */
         get: function (id) {
-            // Logger.debug(`RecommendProduct get ${id}`);
+            // Logger.debug(`Share get ${id}`);
             return client.call('model.operate', {
-                modelAndOperation: 'RecommendProduct|get',
+                modelAndOperation: 'Share|get',
                 params: { id }
             });
         },
 
         /**
-        * @param {PersonnelRecommendProduct} object
+        * @param {Object} options            - 选项
+        * @param {Object|Array} options.sort       - 排序的字段
+        * @param {Object} options.limit      - 分页的字段
+        * @param {Object} options.where      - 过滤条件
+        * @returns {Promise<PersonnelShare[]>}
         */
-        set: function (object) {
-            // Logger.debug(`RecommendProduct set ${JSON.stringify(object)}`);
+        find: function ({where, sort, limit} = {}) {
             return client.call('model.operate', {
-                modelAndOperation: 'RecommendProduct|set',
-                params: { object }
+                modelAndOperation: 'Share|find',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {},
+                    sort !== undefined ? {sort: Array.isArray(sort) ? sort.map(_ => _.toJson()) : sort.toJson()} : {},
+                    limit !== undefined ? {limit: limit.toJson()} : {},
+                )
             });
         },
 
-        del: function (id) {
-            // Logger.debug(`RecommendProduct del ${id}`);
+        /**
+        * @param where 过滤条件
+        * @returns {Promise<number>}
+        */
+        count: function (where) {
+            // Logger.debug(`Share count ${JSON.stringify(where)}`);
             return client.call('model.operate', {
-                modelAndOperation: 'RecommendProduct|del',
-                params: { id }
+                modelAndOperation: 'Share|countObject',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {}
+                )
             });
         },
 
@@ -329,7 +434,7 @@ module.exports = (client) => ({
     ShopConfig: {
 
         /**
-        * @returns {PersonnelShopConfig}
+        * @returns {Promise<PersonnelShopConfig>}
         */
         get: function (id) {
             // Logger.debug(`ShopConfig get ${id}`);
@@ -340,7 +445,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {PersonnelShopConfig}
+        * @returns {Promise<PersonnelShopConfig>}
         */
         getDefaultValueIfNull: function (id) {
             // Logger.debug(`ShopConfig getDefaultValueIfNull ${id}`);
@@ -362,7 +467,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`ShopConfig has ${id}`);
@@ -374,10 +479,34 @@ module.exports = (client) => ({
 
     },
 
+    Statistic: {
+
+        /**
+        * @param {Object} options            - 选项
+        * @param {Object|Array} options.sort       - 排序的字段
+        * @param {Object} options.limit      - 分页的字段
+        * @param {Object} options.where      - 过滤条件
+        * @returns {Promise<PersonnelStatistic[]>}
+        */
+        find: function ({where, sort, limit} = {}) {
+            return client.call('model.operate', {
+                modelAndOperation: 'Statistic|find',
+                params: Object.assign(
+                    {},
+
+                    where !== undefined ? {where: where.toJson()} : {},
+                    sort !== undefined ? {sort: Array.isArray(sort) ? sort.map(_ => _.toJson()) : sort.toJson()} : {},
+                    limit !== undefined ? {limit: limit.toJson()} : {},
+                )
+            });
+        },
+
+    },
+
     TmpProposal: {
 
         /**
-        * @returns {PersonnelTmpProposal}
+        * @returns {Promise<PersonnelTmpProposal>}
         */
         get: function (id) {
             // Logger.debug(`TmpProposal get ${id}`);
@@ -407,7 +536,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`TmpProposal has ${id}`);
@@ -422,7 +551,7 @@ module.exports = (client) => ({
     VisitingCard: {
 
         /**
-        * @returns {PersonnelVisitingCard}
+        * @returns {Promise<PersonnelVisitingCard>}
         */
         get: function (id) {
             // Logger.debug(`VisitingCard get ${id}`);
@@ -433,7 +562,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {PersonnelVisitingCard}
+        * @returns {Promise<PersonnelVisitingCard>}
         */
         getDefaultValueIfNull: function (id) {
             // Logger.debug(`VisitingCard getDefaultValueIfNull ${id}`);
@@ -455,7 +584,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`VisitingCard has ${id}`);
@@ -474,7 +603,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件
-        * @returns {PersonnelWechat[]}
+        * @returns {Promise<PersonnelWechat[]>}
         */
         find: function ({where, sort, limit} = {}) {
             return client.call('model.operate', {
@@ -494,7 +623,7 @@ module.exports = (client) => ({
     WechatInfo: {
 
         /**
-        * @returns {PersonnelWechatInfo}
+        * @returns {Promise<PersonnelWechatInfo>}
         */
         get: function (id) {
             // Logger.debug(`WechatInfo get ${id}`);
@@ -516,7 +645,7 @@ module.exports = (client) => ({
         },
 
         /**
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (id) {
             // Logger.debug(`WechatInfo has ${id}`);
@@ -531,7 +660,7 @@ module.exports = (client) => ({
     WithdrawalRecord: {
 
         /**
-        * @returns {PersonnelWithdrawalRecord}
+        * @returns {Promise<PersonnelWithdrawalRecord>}
         */
         get: function (id) {
             // Logger.debug(`WithdrawalRecord get ${id}`);
@@ -546,7 +675,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件
-        * @returns {PersonnelWithdrawalRecord[]}
+        * @returns {Promise<PersonnelWithdrawalRecord[]>}
         */
         find: function ({where, sort, limit} = {}) {
             return client.call('model.operate', {
@@ -570,27 +699,12 @@ module.exports = (client) => ({
 
         * @param object
 
-        * @returns {PersonnelCustomerInfo}
+        * @returns {Promise<PersonnelCustomerInfo>}
         */
         fetch: function (subject, object) {
             // Logger.debug(`CustomerInfo fetch ${subject} ${object}`);
             return client.call('model.operate', {
                 modelAndOperation: 'CustomerInfo|fetch',
-                params: { subject, object }
-            });
-        },
-
-        /**
-        * @param subject
-
-        * @param object
-
-        * @returns {PersonnelCustomerInfo}
-        */
-        fetchDefaultValueIfNull: function (subject, object) {
-            // Logger.debug(`CustomerInfo fetchDefaultValueIfNull ${subject} ${object}`);
-            return client.call('model.operate', {
-                modelAndOperation: 'CustomerInfo|fetchDefaultValueIfNull',
                 params: { subject, object }
             });
         },
@@ -611,7 +725,7 @@ module.exports = (client) => ({
 
         * @param object
 
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (subject, object) {
             // Logger.debug(`CustomerInfo has ${subject} ${object}`);
@@ -625,7 +739,7 @@ module.exports = (client) => ({
         * @param subject
 
         * @param where 过滤条件
-        * @returns {number}
+        * @returns {Promise<number>}
         */
         count: function (subject, where = undefined) {
             // Logger.debug(`CustomerInfo count ${JSON.stringify({subject, where})}`);
@@ -646,7 +760,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件,
-        * @returns {PersonnelCustomerInfo[]}
+        * @returns {PromisePersonnelCustomerInfo[]>}
         */
         list: function (subject, {where, sort, limit} = {}) {
             // Logger.debug(`CustomerInfo del ${JSON.stringify({subject, options})}`);
@@ -684,7 +798,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件,
-        * @returns {PersonnelCustomerPolicy[]}
+        * @returns {PromisePersonnelCustomerPolicy[]>}
         */
         list: function (subject, {where, sort, limit} = {}) {
             // Logger.debug(`CustomerPolicy del ${JSON.stringify({subject, options})}`);
@@ -709,7 +823,7 @@ module.exports = (client) => ({
 
         * @param object
 
-        * @returns {PersonnelUserProposal}
+        * @returns {Promise<PersonnelUserProposal>}
         */
         fetch: function (subject, object) {
             // Logger.debug(`UserProposal fetch ${subject} ${object}`);
@@ -735,12 +849,26 @@ module.exports = (client) => ({
 
         * @param object
 
-        * @returns {boolean}
+        * @returns {Promise<boolean>}
         */
         has: function (subject, object) {
             // Logger.debug(`UserProposal has ${subject} ${object}`);
             return client.call('model.operate', {
                 modelAndOperation: 'UserProposal|hasRelation',
+                params: { subject, object }
+            });
+        },
+
+        /**
+        * @param subject
+
+        * @param object
+
+        */
+        remove: function (subject, object) {
+            // Logger.debug(`UserProposal remove ${subject} ${object}`);
+            return client.call('model.operate', {
+                modelAndOperation: 'UserProposal|remove',
                 params: { subject, object }
             });
         },
@@ -761,7 +889,7 @@ module.exports = (client) => ({
         * @param subject
 
         * @param where 过滤条件
-        * @returns {number}
+        * @returns {Promise<number>}
         */
         count: function (subject, where = undefined) {
             // Logger.debug(`UserProposal count ${JSON.stringify({subject, where})}`);
@@ -782,7 +910,7 @@ module.exports = (client) => ({
         * @param {Object|Array} options.sort       - 排序的字段
         * @param {Object} options.limit      - 分页的字段
         * @param {Object} options.where      - 过滤条件,
-        * @returns {PersonnelUserProposal[]}
+        * @returns {PromisePersonnelUserProposal[]>}
         */
         list: function (subject, {where, sort, limit} = {}) {
             // Logger.debug(`UserProposal del ${JSON.stringify({subject, options})}`);
@@ -803,6 +931,31 @@ module.exports = (client) => ({
     UserQuotation: {
 
         /**
+        * @param {PersonnelUserQuotation} relation
+        */
+        put: function (relation) {
+            // Logger.debug(`UserQuotation del ${JSON.stringify(relation)}`);
+            return client.call('model.operate', {
+                modelAndOperation: 'UserQuotation|put',
+                params: { relation }
+            });
+        },
+
+        /**
+        * @param subject
+
+        * @param object
+
+        */
+        remove: function (subject, object) {
+            // Logger.debug(`UserQuotation remove ${subject} ${object}`);
+            return client.call('model.operate', {
+                modelAndOperation: 'UserQuotation|remove',
+                params: { subject, object }
+            });
+        },
+
+        /**
         * @param subject
 
         */
@@ -811,6 +964,29 @@ module.exports = (client) => ({
             return client.call('model.operate', {
                 modelAndOperation: 'UserQuotation|clear',
                 params: { subject }
+            });
+        },
+
+        /**
+        * @param subject
+
+        * @param {Object} options            - 选项
+        * @param {Object|Array} options.sort       - 排序的字段
+        * @param {Object} options.limit      - 分页的字段
+        * @param {Object} options.where      - 过滤条件,
+        * @returns {PromisePersonnelUserQuotation[]>}
+        */
+        list: function (subject, {where, sort, limit} = {}) {
+            // Logger.debug(`UserQuotation del ${JSON.stringify({subject, options})}`);
+            return client.call('model.operate', {
+                modelAndOperation: 'UserQuotation|list',
+                params: Object.assign(
+                    {subject},
+
+                    where !== undefined ? {where: where.toJson()} : {},
+                    sort !== undefined ? {sort: Array.isArray(sort) ? sort.map(_ => _.toJson()) : sort.toJson()} : {},
+                    limit !== undefined ? {limit: limit.toJson()} : {},
+                )
             });
         },
 

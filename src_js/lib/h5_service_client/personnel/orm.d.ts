@@ -9,11 +9,19 @@ interface PersonnelCommissionPromotionRate {
 interface PersonnelCustomerVisitRecord {
   id?: string;
   userId?: string;
+  /**
+   * 核心ID
+   */
+  orgAccountId?: string;
   customerId?: string;
   type?: {
     value?: string;
     entranceId?: string;
     frontendProcessId?: string;
+    reportId?: string;
+    articleId?: string;
+    posterId?: string;
+    insurancePlanId?: string;
     [k: string]: any;
   };
   createdAt?: number;
@@ -26,6 +34,9 @@ interface PersonnelCustomerVisitRecord {
    */
   addedToMyCustomer?: 0 | 1;
   description?: string;
+  shareId?: string;
+  stayTime?: number;
+  readingProgress?: number;
   [k: string]: any;
 }
 
@@ -64,6 +75,10 @@ interface PersonnelIncomeRecord {
    */
   promotionMoney: number;
   /**
+   * 机构的推广费
+   */
+  orgPromotionMoney?: number;
+  /**
    * 创建时间
    */
   createdAt: number;
@@ -88,6 +103,10 @@ interface PersonnelIncomeRecord {
    * 对账时间: 默认到下个月的25日
    */
   auditedAt?: number;
+  /**
+   * 收入类别 - 佣金类 or 推广费类, 参考 Common.Constant.IncomeRecord.Kind
+   */
+  kind: number;
   [k: string]: any;
 }
 
@@ -117,6 +136,10 @@ interface PersonnelInfo {
    */
   name: string;
   /**
+   * 姓名拼音
+   */
+  namePinYin: string;
+  /**
    * 身份证号
    */
   idNumber?: string;
@@ -141,7 +164,7 @@ interface PersonnelInfo {
      * 个人半身免冠照
      */
     avatar?: string;
-    [k: string]: any;
+    contractFile?: string[];
   };
   bankCard?: {
     /**
@@ -213,6 +236,7 @@ interface PersonnelInfo {
    * 学历
    */
   education?: string;
+  createdAt?: number;
   [k: string]: any;
 }
 
@@ -238,25 +262,25 @@ interface PersonnelJobRank {
     /**
      * 代码
      */
-    no?: string;
+    directorTeamNo?: string;
     /**
      * 名称
      */
-    name?: string;
+    directorTeamName?: string;
     [k: string]: any;
   };
   /**
-   * 合伙人团队代码
+   * 合伙人团队
    */
   partnerTeam?: {
     /**
      * 代码
      */
-    no?: string;
+    partnerTeamNo?: string;
     /**
      * 名称
      */
-    name?: string;
+    partnerTeamName?: string;
     [k: string]: any;
   };
   /**
@@ -267,6 +291,7 @@ interface PersonnelJobRank {
    * 离司时间
    */
   resignAt?: number;
+  coreAccountId: string;
   [k: string]: any;
 }
 
@@ -299,11 +324,53 @@ interface PersonnelProposal {
    * 缴费期限单位
    */
   payPeriodUnit?: string;
+  insuranceId?: string;
+  companyId?: string;
+  /**
+   * 是否需要管理后台人工处理,像上传了被保人图片需要后勤去录入则为true,处理完改成false
+   */
+  needHumanProcess?: 0 | 1;
+  createdAt?: number;
   [k: string]: any;
 }
 
-interface PersonnelRecommendProduct {
-  id?: string;
+interface PersonnelShare {
+  /**
+   * uuid
+   */
+  id: string;
+  /**
+   * 用户userId
+   */
+  userId: string;
+  /**
+   * 索引用于筛选
+   */
+  type: string;
+  entranceId?: string;
+  frontendProcessId?: string;
+  insuranceId?: string;
+  articleId?: string;
+  posterId?: string;
+  customerList: {
+    /**
+     * 客户id，openid
+     */
+    id?: string;
+    stayTime?: number;
+    readingProgress?: number;
+    modifiedAt?: number;
+    totalVisitTimes?: number;
+    [k: string]: any;
+  }[];
+  /**
+   * 用于【我的分享】排序
+   */
+  customerNumber: number;
+  /**
+   * 用于【我的分享】排序
+   */
+  modifiedAt: number;
   [k: string]: any;
 }
 
@@ -317,15 +384,30 @@ interface PersonnelStatistic {
    * ${YYYYMM}_${personnelId}
    */
   id: string;
+  /**
+   * userId
+   */
   personnelId: string;
   /**
-   * 新增成员
+   * 本月新增成员数
    */
   newMember: number;
   /**
-   * 新增成员
+   * 本月单量-业绩
    */
   achievement: number;
+  /**
+   * 本月邀请奖励
+   */
+  invitePromotionMoney: number;
+  /**
+   * 新增成员userId
+   */
+  newMemberIdList: string[];
+  /**
+   * 本月保费
+   */
+  premium: number;
   /**
    * 更新时间
    */
@@ -439,14 +521,36 @@ interface PersonnelWithdrawalRecord {
   userId: string;
   coreAccountId: string;
   /**
+   * 提现类型
+   */
+  type: number;
+  /**
+   * 税
+   */
+  tax: number;
+  amount: {
+    /**
+     * 佣金
+     */
+    commission?: number;
+    /**
+     * 推广费
+     */
+    promotion?: number;
+    [k: string]: any;
+  };
+  /**
    * 提现申请状态
    */
   status: number;
-  amount: number;
-  actualAmount?: number;
-  tax?: number;
-  paymentAt?: number;
+  /**
+   * 申请时间
+   */
   createdAt: number;
+  /**
+   * 银邦点击付款成功时间
+   */
+  paymentAt?: number;
 }
 
 interface PersonnelCustomerInfo {
@@ -525,7 +629,8 @@ interface PersonnelUserQuotation {
 interface PersonnelUserWithdrawalRecord {
   subject: string;
   object: string;
-  recordId: string;
-  createdAt: number;
+  promotion?: string;
+  commission?: string;
+  [k: string]: any;
 }
 

@@ -3,9 +3,9 @@ const os = require('os');
 const moment = require('moment');
 const path = require('path');
 
-exports.deletePicture = async function deletePicture(job) {
-    Logger.debug(JSON.stringify(job));
-    const { keyword = moment().format('YYYYMMDD'), deleteFolder = 'Pictures' } = job.attrs.data || {};
+exports.deletePicture = async function deletePicture({ job, request }) {
+    Logger.debug(JSON.stringify(request));
+    const { keyword = moment().format('YYYYMMDD'), deleteFolder = 'Pictures' } = request || {};
     const homedir = os.homedir();
     const deleteDir = path.join(homedir, deleteFolder);
 
@@ -31,9 +31,10 @@ exports.deletePicture = async function deletePicture(job) {
     Logger.debug(JSON.stringify(todayPicturesDirList));
 };
 
-exports.testJob = async function (job, done) {
-    Logger.debug(JSON.stringify(job.attrs.data));
+exports.testJob = async function ({ job, request }) {
     Logger.debug(new Date(), + 'testJob，这是一个测试');
+    Logger.debug(JSON.stringify(request));
+    Logger.debug(JSON.stringify(job));
 };
 
 exports.renewingCoverage = async function (job) {
@@ -48,3 +49,5 @@ exports.renewingCoverage = async function (job) {
     // 如果接口为主动查询，则在距离保单止期的当天、后1天、后2天、后3天的24点进行查询，续保成功后，按照原出单费率比例创建出单收入（不创建邀请奖励）
     // 获取到续保保单数据后，关闭原保单的续保推送提醒
 };
+
+exports.dailyWechatMsgSend = require('./daily_wechat_msg.send');

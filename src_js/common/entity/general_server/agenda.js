@@ -33,7 +33,7 @@ module.exports = class extends AbstractGeneralServer {
             name: os.hostname + '-' + process.pid
         });
 
-        await this.Agenda.start().then(_ => console.log('agenda start'));
+        await this.Agenda.start().then(_ => this.info('agenda start'));
 
         router && router(this);
         every && await every(this);
@@ -119,6 +119,6 @@ module.exports = class extends AbstractGeneralServer {
             },
         };
 
-        Logger.info(`initLogger`);
+        this.info(`initLogger`);
     }
 };

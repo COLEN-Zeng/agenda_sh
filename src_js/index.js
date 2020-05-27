@@ -37,7 +37,7 @@ Promise.resolve()
         coreRegHost, coreRegPort
     ))
     .then(() => server.initOuter('h5', ['personnel',], h5RegHost, h5RegPort))
-    .then(() => server.initInside(['silver-ins-core', 'silver-ins-common']))
+    // .then(() => server.initInside(['silver-ins-core', 'silver-ins-common']))
     .then(async () => {
         await server.initNotificationCenter({
             connParams: {

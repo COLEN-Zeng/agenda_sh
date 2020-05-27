@@ -76,7 +76,7 @@ module.exports = class {
     }
 
     async initNotificationCenter({ connParams, serviceName, onError, onClose, subscriberDir = "", scope = "silver_ins" }) {
-        const _Notification = require('@qtk/reliable-notification-service');
+        const _Notification = require('@qtk/reliable-notification-service');// FIXME: require放外层
         let notification = new _Notification(connParams, scope, `core_${serviceName}`);
 
         // eslint-disable-next-line no-async-promise-executor
@@ -149,7 +149,7 @@ module.exports = class {
                 );
             Inside[
                 instanceName
-            ] = await require(`@${projectName}/inside-client`)
+            ] = await require(`@${projectName}/inside-client`)//FIXME: 建议放外层
                 .getInstance()
                 .catch(error =>
                     this.error(

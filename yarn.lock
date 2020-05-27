@@ -49,6 +49,13 @@
     opts "^1.2.6"
     semantic-schema "^0.1.14"
 
+"@qtk/reliable-notification-service@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.npm.taobao.org/@qtk/reliable-notification-service/download/@qtk/reliable-notification-service-1.2.1.tgz#e8d72ad3b500751c8180af3a94f7206b9d2e30b7"
+  integrity sha1-6Ncq07UAdRyBgK86lPcga50uMLc=
+  dependencies:
+    amqplib "^0.5.3"
+
 "@qtk/schema-tcp-framework@^1.0.10", "@qtk/schema-tcp-framework@^1.0.11", "@qtk/schema-tcp-framework@^1.1.1":
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/@qtk/schema-tcp-framework/download/@qtk/schema-tcp-framework-1.1.1.tgz#2884c2fa48ebbae762224f9dc50ec77a65352bca"
@@ -98,6 +105,22 @@
   integrity sha1-YCScT/cfS3vPP0wKSY2Hn5drFoo=
   dependencies:
     "@qtk/tcp-framework" "^2.0.10"
+
+"@silver-ins-common/inside-client@^1.0.13":
+  version "1.0.14"
+  resolved "http://10.10.2.13:4873/@silver-ins-common%2finside-client/-/inside-client-1.0.14.tgz#ec766e7af770e76952a7efb536585218539c0ee0"
+  integrity sha512-RmylrUyLmfhKJ9nzL52qmx/pkXKV7qHjqsov0ynk10u4fjSAXvEoB3/1RNiNvcXdKPHw7HCmrayk4VgnLhXadg==
+  dependencies:
+    "@qtk/registry-service" "^2.1.3"
+    "@qtk/schema-tcp-request-framework" "^2.3.3"
+
+"@silver-ins-core/inside-client@^1.0.102":
+  version "1.0.102"
+  resolved "http://10.10.2.13:4873/@silver-ins-core%2finside-client/-/inside-client-1.0.102.tgz#bb6d07e7e483dc3ab70bb61361a59136e70330f3"
+  integrity sha512-7RqvTw+vfUctAtomCIdIdCnSZSUeZWowShqDDYU1ZdKgLUg0wMF3Ew4NyBXbxmuisKwihIwkyA3TotRnPOHFtw==
+  dependencies:
+    "@qtk/registry-service" "^2.1.3"
+    "@qtk/schema-tcp-request-framework" "^2.3.3"
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -325,7 +348,7 @@ ammo@3.x.x:
   dependencies:
     hoek "6.x.x"
 
-amqplib@^0.5.2:
+amqplib@^0.5.2, amqplib@^0.5.3:
   version "0.5.6"
   resolved "https://registry.npm.taobao.org/amqplib/download/amqplib-0.5.6.tgz#86a7850f4f39c568eaa0dd0300ef374e17941cf4"
   integrity sha1-hqeFD085xWjqoN0DAO83TheUHPQ=
@@ -1115,6 +1138,11 @@ date.js@~0.3.3:
   integrity sha1-7x6SMy9QemOHldu5helRiC5Qu9o=
   dependencies:
     debug "~3.1.0"
+
+dayjs@^1.8.27:
+  version "1.8.27"
+  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.8.27.tgz#a8ae63ee990af28c05c430f0e160ae835a0fbbf8"
+  integrity sha1-qK5j7pkK8owFxDDw4WCug1oPu/g=
 
 debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@~2.6.9:
   version "2.6.9"

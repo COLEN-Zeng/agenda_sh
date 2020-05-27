@@ -9,15 +9,31 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelCommissionPromotionRateChangeRequest} request
-    * @returns {PersonnelCommissionPromotionRateChangeResponse}
+    * @returns {Promise<PersonnelCommissionPromotionRateChangeResponse>}
     */
     commissionPromotionRateChange: function (request = null, timeout = 10) {
         return client.call('commission_promotion_rate.change', request, timeout);
     },
 
     /**
+    * @param {PersonnelCustomerVisitRecordAddRequest} request
+    * @returns {Promise<PersonnelCustomerVisitRecordAddResponse>}
+    */
+    customerVisitRecordAdd: function (request = null, timeout = 10) {
+        return client.call('customer.visit_record.add', request, timeout);
+    },
+
+    /**
+    * @param {PersonnelDailyWechatMsgSendRequest} request
+    * @returns {Promise<PersonnelDailyWechatMsgSendResponse>}
+    */
+    dailyWechatMsgSend: function (request = null, timeout = 10) {
+        return client.call('daily_wechat_msg.send', request, timeout);
+    },
+
+    /**
     * @param {PersonnelEmployeeIdGenRequest} request
-    * @returns {PersonnelEmployeeIdGenResponse}
+    * @returns {Promise<PersonnelEmployeeIdGenResponse>}
     */
     employeeIdGen: function (request = null, timeout = 10) {
         return client.call('employee_id.gen', request, timeout);
@@ -25,7 +41,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelIncomeRecordAddRequest} request
-    * @returns {PersonnelIncomeRecordAddResponse}
+    * @returns {Promise<PersonnelIncomeRecordAddResponse>}
     */
     incomeRecordAdd: function (request = null, timeout = 10) {
         return client.call('income_record.add', request, timeout);
@@ -33,7 +49,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelIncomeRecordChangeRequest} request
-    * @returns {PersonnelIncomeRecordChangeResponse}
+    * @returns {Promise<PersonnelIncomeRecordChangeResponse>}
     */
     incomeRecordChange: function (request = null, timeout = 10) {
         return client.call('income_record.change', request, timeout);
@@ -41,39 +57,31 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelIncomeRecordFindRequest} request
-    * @returns {PersonnelIncomeRecordFindResponse}
+    * @returns {Promise<PersonnelIncomeRecordFindResponse>}
     */
     incomeRecordFind: function (request = null, timeout = 10) {
         return client.call('income_record.find', request, timeout);
     },
 
     /**
-    * @param {PersonnelInfoGetRequest} request
-    * @returns {PersonnelInfoGetResponse}
+    * @param {PersonnelIncomeRecordQueryRequest} request
+    * @returns {Promise<PersonnelIncomeRecordQueryResponse>}
     */
-    infoGet: function (request = null, timeout = 10) {
-        return client.call('info.get', request, timeout);
+    incomeRecordQuery: function (request = null, timeout = 10) {
+        return client.call('income_record.query', request, timeout);
     },
 
     /**
     * @param {PersonnelInfoGetByAccountIdRequest} request
-    * @returns {PersonnelInfoGetByAccountIdResponse}
+    * @returns {Promise<PersonnelInfoGetByAccountIdResponse>}
     */
     infoGetByAccountId: function (request = null, timeout = 10) {
         return client.call('info.get_by_accountId', request, timeout);
     },
 
     /**
-    * @param {PersonnelJobRankGetRequest} request
-    * @returns {PersonnelJobRankGetResponse}
-    */
-    jobRankGet: function (request = null, timeout = 10) {
-        return client.call('job_rank.get', request, timeout);
-    },
-
-    /**
     * @param {PersonnelOrgPersonnelInfoGetRequest} request
-    * @returns {PersonnelOrgPersonnelInfoGetResponse}
+    * @returns {Promise<PersonnelOrgPersonnelInfoGetResponse>}
     */
     orgPersonnelInfoGet: function (request = null, timeout = 10) {
         return client.call('org_personnel_info.get', request, timeout);
@@ -81,7 +89,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelPlatformMsgPushRequest} request
-    * @returns {PersonnelPlatformMsgPushResponse}
+    * @returns {Promise<PersonnelPlatformMsgPushResponse>}
     */
     platformMsgPush: function (request = null, timeout = 10) {
         return client.call('platform_msg.push', request, timeout);
@@ -89,95 +97,31 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelPromotionGetRequest} request
-    * @returns {PersonnelPromotionGetResponse}
+    * @returns {Promise<PersonnelPromotionGetResponse>}
     */
     promotionGet: function (request = null, timeout = 10) {
         return client.call('promotion.get', request, timeout);
     },
 
     /**
-    * @param {PersonnelProposalStashDelRequest} request
-    * @returns {PersonnelProposalStashDelResponse}
+    * @param {PersonnelShareAddRequest} request
+    * @returns {Promise<PersonnelShareAddResponse>}
     */
-    proposalStashDel: function (request = null, timeout = 10) {
-        return client.call('proposal.stash.del', request, timeout);
+    shareAdd: function (request = null, timeout = 10) {
+        return client.call('share.add', request, timeout);
     },
 
     /**
-    * @param {PersonnelProposalStashGetRequest} request
-    * @returns {PersonnelProposalStashGetResponse}
+    * @param {PersonnelShopConfigGetRequest} request
+    * @returns {Promise<PersonnelShopConfigGetResponse>}
     */
-    proposalStashGet: function (request = null, timeout = 10) {
-        return client.call('proposal.stash.get', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelProposalStashRequest} request
-    * @returns {PersonnelProposalStashResponse}
-    */
-    proposalStash: function (request = null, timeout = 10) {
-        return client.call('proposal.stash', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelProposalIdAddRequest} request
-    * @returns {PersonnelProposalIdAddResponse}
-    */
-    proposalIdAdd: function (request = null, timeout = 10) {
-        return client.call('proposal_id.add', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelProposalIdDelRequest} request
-    * @returns {PersonnelProposalIdDelResponse}
-    */
-    proposalIdDel: function (request = null, timeout = 10) {
-        return client.call('proposal_id.del', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelProposalIdListRequest} request
-    * @returns {PersonnelProposalIdListResponse}
-    */
-    proposalIdList: function (request = null, timeout = 10) {
-        return client.call('proposal_id.list', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelQuotationIdAddRequest} request
-    * @returns {PersonnelQuotationIdAddResponse}
-    */
-    quotationIdAdd: function (request = null, timeout = 10) {
-        return client.call('quotation_id.add', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelQuotationIdDelRequest} request
-    * @returns {PersonnelQuotationIdDelResponse}
-    */
-    quotationIdDel: function (request = null, timeout = 10) {
-        return client.call('quotation_id.del', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelQuotationIdListRequest} request
-    * @returns {PersonnelQuotationIdListResponse}
-    */
-    quotationIdList: function (request = null, timeout = 10) {
-        return client.call('quotation_id.list', request, timeout);
-    },
-
-    /**
-    * @param {PersonnelRecommendProductUpdateRequest} request
-    * @returns {PersonnelRecommendProductUpdateResponse}
-    */
-    recommendProductUpdate: function (request = null, timeout = 10) {
-        return client.call('recommend_product.update', request, timeout);
+    shopConfigGet: function (request = null, timeout = 10) {
+        return client.call('shop.config.get', request, timeout);
     },
 
     /**
     * @param {PersonnelStatisticGetRequest} request
-    * @returns {PersonnelStatisticGetResponse}
+    * @returns {Promise<PersonnelStatisticGetResponse>}
     */
     statisticGet: function (request = null, timeout = 10) {
         return client.call('statistic.get', request, timeout);
@@ -185,7 +129,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelStatisticNewMemberIncreaseRequest} request
-    * @returns {PersonnelStatisticNewMemberIncreaseResponse}
+    * @returns {Promise<PersonnelStatisticNewMemberIncreaseResponse>}
     */
     statisticNewMemberIncrease: function (request = null, timeout = 10) {
         return client.call('statistic.new_member.increase', request, timeout);
@@ -193,7 +137,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelSubGetRequest} request
-    * @returns {PersonnelSubGetResponse}
+    * @returns {Promise<PersonnelSubGetResponse>}
     */
     subGet: function (request = null, timeout = 10) {
         return client.call('sub.get', request, timeout);
@@ -201,7 +145,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelWechatGetRequest} request
-    * @returns {PersonnelWechatGetResponse}
+    * @returns {Promise<PersonnelWechatGetResponse>}
     */
     wechatGet: function (request = null, timeout = 10) {
         return client.call('wechat.get', request, timeout);
@@ -209,7 +153,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelWechatSetRequest} request
-    * @returns {PersonnelWechatSetResponse}
+    * @returns {Promise<PersonnelWechatSetResponse>}
     */
     wechatSet: function (request = null, timeout = 10) {
         return client.call('wechat.set', request, timeout);
@@ -217,7 +161,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelWechatUserInfoPullRequest} request
-    * @returns {PersonnelWechatUserInfoPullResponse}
+    * @returns {Promise<PersonnelWechatUserInfoPullResponse>}
     */
     wechatUserInfoPull: function (request = null, timeout = 10) {
         return client.call('wechat.user.info.pull', request, timeout);
@@ -225,7 +169,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelWithdrawalRecordAddRequest} request
-    * @returns {PersonnelWithdrawalRecordAddResponse}
+    * @returns {Promise<PersonnelWithdrawalRecordAddResponse>}
     */
     withdrawalRecordAdd: function (request = null, timeout = 10) {
         return client.call('withdrawal_record.add', request, timeout);
@@ -233,7 +177,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelWithdrawalRecordChangeRequest} request
-    * @returns {PersonnelWithdrawalRecordChangeResponse}
+    * @returns {Promise<PersonnelWithdrawalRecordChangeResponse>}
     */
     withdrawalRecordChange: function (request = null, timeout = 10) {
         return client.call('withdrawal_record.change', request, timeout);
@@ -241,7 +185,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelWithdrawalRecordCurrentGetRequest} request
-    * @returns {PersonnelWithdrawalRecordCurrentGetResponse}
+    * @returns {Promise<PersonnelWithdrawalRecordCurrentGetResponse>}
     */
     withdrawalRecordCurrentGet: function (request = null, timeout = 10) {
         return client.call('withdrawal_record.current.get', request, timeout);
@@ -249,7 +193,7 @@ module.exports = (client) => ({
 
     /**
     * @param {PersonnelWithdrawalRecordFindRequest} request
-    * @returns {PersonnelWithdrawalRecordFindResponse}
+    * @returns {Promise<PersonnelWithdrawalRecordFindResponse>}
     */
     withdrawalRecordFind: function (request = null, timeout = 10) {
         return client.call('withdrawal_record.find', request, timeout);
