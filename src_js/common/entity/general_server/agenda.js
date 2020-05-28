@@ -33,7 +33,9 @@ module.exports = class extends AbstractGeneralServer {
             name: os.hostname + '-' + process.pid
         });
 
-        await this.Agenda.start().then(_ => this.info('agenda start'));
+        await this.Agenda.start()
+            .then(() => this.info('agenda start'))
+            .catch(err => { throw new Error(err); });
 
         router && router(this);
         every && await every(this);
@@ -81,24 +83,26 @@ module.exports = class extends AbstractGeneralServer {
                 runtime: {
                     type: 'dateFile',
                     filename: `${logRoot}/${logDirName}/runtime/`,
-                    pattern: 'yyyy-MM-dd.log',
-                    alwaysIncludePattern: true,
+                    pattern: "yyyy-MM-dd.log",
+                    alwaysIncludePattern: true
                 },
                 action: {
                     type: 'dateFile',
                     layout: {
                         type: 'pattern',
-                        pattern: '[%d] %m',
+                        pattern: '[%d] %m'
+
+
                     },
                     filename: `${logRoot}/${logDirName}/action/`,
-                    pattern: 'yyyy-MM-dd.log',
-                    alwaysIncludePattern: true,
-                },
+                    pattern: "yyyy-MM-dd.log",
+                    alwaysIncludePattern: true
+                }
             },
             categories: {
-                default: { appenders: ['runtime'], level: 'ALL' },
-                action: { appenders: ['action'], level: 'ALL' },
-            },
+                default: { appenders: ['runtime'], level: "ALL" },
+                action: { appenders: ['action'], level: "ALL" },
+            }
         });
 
         const logger = Log4js.getLogger('default');
