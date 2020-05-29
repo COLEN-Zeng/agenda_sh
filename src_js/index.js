@@ -56,7 +56,6 @@ Promise.resolve()
     // })
     .then(() => server.start(router, every))
     .catch(error => {
-        Logger.error('报错');
         Logger.error(error);
         process.exit();
     });

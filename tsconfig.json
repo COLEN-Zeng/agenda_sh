@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "outDir": "./dist", // 编译目录
+        "outDir": "./dist",
         "allowJs": false,
-        "target": "es6",
+        "target": "ES2018",
         "sourceMap": true,
         "module": "es6",
         "moduleResolution": "node"
