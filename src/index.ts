@@ -1,57 +1,77 @@
-import os = require('os');
-import fs = require('fs');
-import path = require('path');
-import express = require('express');
-import Agenda = require('agenda');
-import AgendaSh = require('agendash');
-import L = require('nirvana-logger');
-import moment = require('moment');
+import './ref';
+import * as os from 'os';
+import router from './router';
+import every from './every';
 
-const Logger = L('agenda');
-const app = express();
+const {
+    serviceName,
+    host, port,
+    coreRegHost, coreRegPort,
+    h5RegHost, h5RegPort,
+    configHost, configPort,
+    mqHost, mqPort, mqLogin, mqPassword,
+    mongodbHost, mongodbPort, mongodbUser, mongodbPassword
+} = Common.Module.requireServiceInfo([
+    { long: 'mq-host', description: 'host of mq service', value: true, required: true, type: 'string' },
+    { long: 'mq-port', description: 'port of mq service', value: true, required: true, type: 'integer' },
+    { long: 'mq-login', description: 'login of mq service', value: true, required: true, type: 'string' },
+    {
+        long: 'mq-password', description: 'password of mq service',
+        value: true, required: true, type: 'string'
+    },
+    {
+        long: 'mongodb-host', description: 'host of mongodb service',
+        value: true, required: true, type: 'string'
+    },
+    {
+        long: 'mongodb-port', description: 'port of mongodb service',
+        value: true, required: true, type: 'integer'
+    },
+    {
+        long: 'mongodb-user', description: 'user of mongodb service',
+        value: true, required: true, type: 'string'
+    },
+    {
+        long: 'mongodb-password', description: 'password of mongodb service',
+        value: true, required: true, type: 'string'
+    },
+]);
 
-const agenda = new Agenda({
-    db: {
-        address: 'mongodb://127.0.0.1/agenda',
-        options: { useUnifiedTopology: true }
-    }
-});
-
-agenda.define('deletePicture', deletePicture);
-
-agenda.define(
-    'testJob',
-    function (job: { attrs: { data: any; }; }, done: (arg0: any) => void) {
-        Logger('testJob', new Date(), job.attrs.data);
-    }
+const server = new Common.Entity.GeneralAgendaServer(
+    ENV,
+    host, port, serviceName,
+    mongodbHost, mongodbPort, 'agenda'
+    //  mongodbUser, mongodbPassword
 );
 
-(async function () {
-    await agenda.start()
-        .then(() => console.log('agenda start'));
-    agenda.on('start', job => {
-        console.log('Job %s starting', job.attrs.name);
+Promise.resolve()
+    .then(() => server.initLogger('agenda'))
+    // .then(() => server.initConfigClient(configHost, configPort))
+    // .then(() => server.initOuter(
+    //     'core',
+    //     ['account', 'policy', 'non_vehicle', 'payment', 'warehouse'],
+    //     coreRegHost, coreRegPort
+    // ))
+    // .then(() => server.initOuter('h5', ['personnel',], h5RegHost, h5RegPort))
+    // .then(() => server.initInside(['silver-ins-core', 'silver-ins-common']))
+    // .then(async () => {
+    //     await server.initNotificationCenter({
+    //         connParams: {
+    //             host: mqHost,
+    //             port: mqPort,
+    //             login: mqLogin,
+    //             password: mqPassword
+    //         },
+    //         serviceName,
+    //         onError: (error) => Logger.error(error),
+    //         onClose: (message) => Logger.error(message),
+    //         ...ENV !== 'prod' && ENV !== 'gamma'
+    //             ? { scope: `silver_ins_${os.hostname()}` }
+    //             : {}
+    //     });
+    // })
+    .then(() => server.start(router, every))
+    .catch(error => {
+        Logger.error(error);
+        process.exit();
     });
-    await agenda.every('2 minutes', 'deletePicture', {});
-    await agenda.every('1 minutes', 'testJob', { name: 'colen' });
-})();
-
-app.listen(3000);
-app.use('', AgendaSh(agenda, { title: '定时删除图片' }));
-
-async function deletePicture(job: { attrs: { data?: { keyword?: string, deleteFolder?: string } } }) {
-    const { keyword = moment().format('YYYYMMDD'), deleteFolder = 'pictures' } = job.attrs.data || {};
-    const homedir: string = os.homedir();
-    const deleteDir = path.join(homedir, deleteFolder);
-
-    Logger('deletePicture', `delete ${deleteFolder} include ${keyword} file`);
-    const todayPicturesDirList: string[] = fs.readdirSync(deleteDir)
-        .filter(fileName =>
-            fs.statSync(path.join(deleteDir, fileName)).isFile() &&
-            fileName.includes(keyword)
-        );
-    todayPicturesDirList.forEach(fileName => {
-        fs.unlinkSync(path.join(deleteDir, fileName));
-    });
-    console.log(todayPicturesDirList);
-}

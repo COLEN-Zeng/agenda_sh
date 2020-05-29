@@ -1,6 +1,11 @@
-declare namespace NodeJS {
-    export interface Global {
-        PROJECT_ROOT: __dirname,
-        ENV: process.env.ENV,
-        Common: require(`${this.PROJECT_ROOT}/common`)
+interface _global {
+    PROJECT_ROOT: string;
+    ENV: string;
+    Common: any;
 }
+
+(global as any as _global).PROJECT_ROOT = __dirname;
+(global as any as _global).ENV = process.env.ENV;
+(global as any as _global).Common = require(`${PROJECT_ROOT}/common`);
+
+export { };
