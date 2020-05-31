@@ -1,1 +1,0 @@
-exports.Id = require('./id');
