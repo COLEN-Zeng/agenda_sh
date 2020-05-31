@@ -2,18 +2,17 @@
     "compilerOptions": {
         "outDir": "./dist",
         "allowJs": false,
-        "target": "ES2018",
+        "target": "es2015",
         "sourceMap": true,
-        "module": "es6",
+        "module": "commonjs",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": false
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*",
     ],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
-        "./src/lib/**/*"
     ]
 }

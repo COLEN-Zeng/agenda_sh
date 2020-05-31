@@ -31,8 +31,8 @@ const MONGODB_PORT = 27017;
 const MONGODB_USER = 'admin';
 const MONGODB_PASSWORD = 'admin';
 
-const NAME_PREFIX = `${ENV}/${require('../../../../package.json').name}/`;
-const PROJECT_ROOT = `${__dirname}/../../../..`;
+const NAME_PREFIX = `${ENV}/${require('../../../package.json').name}/`;
+const PROJECT_ROOT = `${__dirname}/../../..`;
 
 /**
  *  各微服务运行额外所需参数填写于此

@@ -1,7 +1,7 @@
 import './ref';
 import * as os from 'os';
-import router from './router';
-import every from './every';
+import * as router from './router';
+import * as every from './every';
 
 const {
     serviceName,

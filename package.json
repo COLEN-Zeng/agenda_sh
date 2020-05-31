@@ -10,6 +10,7 @@
         "start:dev": "easy-deploy start src_js/toolchain/deploy/dev",
         "compile": "tsc && node ./dist/index.js"
     },
+    "type": "module",
     "author": "",
     "license": "ISC",
     "dependencies": {
