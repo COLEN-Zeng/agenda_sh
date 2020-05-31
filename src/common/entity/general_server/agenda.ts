@@ -8,7 +8,7 @@ import * as os from 'os';
 import { _global } from '../../../_global';
 import AbstractGeneralServer from './abstract';
 
-export default class extends AbstractGeneralServer {
+export class GeneralAgendaServer extends AbstractGeneralServer {
     _serverName: string;
     _dbHost: any;
     _dbPort: any;

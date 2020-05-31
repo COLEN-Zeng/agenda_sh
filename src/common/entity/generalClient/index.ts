@@ -6,7 +6,7 @@ import {
     Client as ServiceClient,
 } from '@qtk/schema-tcp-request-framework';
 
-export default class {
+export class GeneralServiceClient {
     _clients: any[];
     _serviceName: any;
     _host: any;

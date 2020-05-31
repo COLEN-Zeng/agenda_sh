@@ -1,2 +1,2 @@
-export * as GeneralAgendaServer from './general_server/agenda';
-export * as GeneralServiceClient from './generalClient';
+export { GeneralAgendaServer } from './general_server/agenda';
+export { GeneralServiceClient } from './generalClient';

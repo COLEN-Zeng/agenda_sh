@@ -7,10 +7,9 @@
         "dependent_init": "yarn --registry http://10.10.2.13:4873",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"yarn run compile\"",
-        "start:dev": "easy-deploy start src_js/toolchain/deploy/dev",
+        "start:dev": "easy-deploy start toolchain/deploy/dev",
         "compile": "tsc && node ./dist/index.js"
     },
-    "type": "module",
     "author": "",
     "license": "ISC",
     "dependencies": {

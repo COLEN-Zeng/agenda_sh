@@ -73,7 +73,7 @@ let apps = [].concat(
     {
         namePrefix: NAME_PREFIX,
         name: 'agenda_web',
-        script: `${PROJECT_ROOT}/src_js`,
+        script: `${PROJECT_ROOT}/dist`,
         args: {
             host: SERVICE_HOST,
             port: AGENDA_WEB_PORT,

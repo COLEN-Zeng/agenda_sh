@@ -3,6 +3,43 @@ import * as os from 'os';
 import * as router from './router';
 import * as every from './every';
 
+const ENV = 'dev';
+const REGISTER_HOST = '0.0.0.0';
+const REGISTER_PORT = 3471;
+const CONFIG_HOST = '0.0.0.0';
+const CONFIG_PORT = 3472;
+
+
+const SERVICE_HOST = 'project-agenda';
+
+const AGENDA_WEB_PORT = 3473;
+
+let SERVICE_START_PORT = 3474;
+
+const H5_REGISTER_HOST = 'project-h5';
+const H5_REGISTER_PORT = 2731;
+const CORE_REGISTER_HOST = 'project-core';
+const CORE_REGISTER_PORT = 2371;
+
+const WECHAT_HOST = '10.10.5.30';
+const WECHAT_PORT = 8003;
+
+const RABBITMQ_HOST = 'rabbit-mq-master';
+const RABBITMQ_PORT = 5672;
+const RABBITMQ_LOGIN = 'admin';
+const RABBITMQ_PASSWORD = 'admin';
+
+const MONGODB_HOST = 'mongo-master';
+const MONGODB_PORT = 27017;
+const MONGODB_USER = 'admin';
+const MONGODB_PASSWORD = 'admin';
+
+// const serviceName = 'agenda_web',
+//     mongodbHost = MONGODB_HOST, mongodbPort = MONGODB_PORT,
+//     mongodbUser = MONGODB_USER, mongodbPassword = MONGODB_PASSWORD,
+//     host = SERVICE_HOST,
+//     port = AGENDA_WEB_PORT;
+
 const {
     serviceName,
     host, port,
@@ -36,7 +73,6 @@ const {
         value: true, required: true, type: 'string'
     },
 ]);
-
 const server = new Common.Entity.GeneralAgendaServer(
     ENV,
     host, port, serviceName,
