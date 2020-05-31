@@ -1,12 +1,18 @@
-const moment = require('moment');
+import * as moment from 'moment';
 const RegistrySubscriber = require('@qtk/registry-service').Client.Subscriber;
-const {
-    BusinessError: TcpBusinessError,
-    ValidationError: TcpValidationError,
-    Client: ServiceClient,
-} = require('@qtk/schema-tcp-request-framework');
+import {
+    BusinessError as TcpBusinessError,
+    ValidationError as TcpValidationError,
+    Client as ServiceClient,
+} from '@qtk/schema-tcp-request-framework';
 
-module.exports = class {
+export default class {
+    _clients: any[];
+    _serviceName: any;
+    _host: any;
+    _port: any;
+    _registryClient: any;
+    _resolve: (value?: unknown) => void | boolean;
     constructor(host, port, name) {
         this._clients = [];
         this._serviceName = name;

@@ -1,2 +1,2 @@
-exports.Entity = require('./entity');
-exports.Module = require('./module');
+export * as Entity from './entity';
+export * as  Module from './module';

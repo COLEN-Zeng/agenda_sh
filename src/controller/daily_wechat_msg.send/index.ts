@@ -1,7 +1,7 @@
 const DayJs = require('dayjs');
 const assert = require('assert');
 
-module.exports = async ({ request: { aaaaa, ppppp } }) => {
+export async function dailyWechatMsgSend({ request: { aaaaa, ppppp } }) {
     // 仅做简单的验证
     // assert(aaaaa === DayJs().format('YYYY-MM-DD'), '验证不通过');
     assert(ppppp === 'HeroNeverDie', '验证不通过');

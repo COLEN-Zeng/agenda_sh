@@ -1,16 +1,23 @@
 
-const Agenda = require('agenda');
-const AgendaSh = require('agendash');
-const Express = require('express');
-const Log4js = require('log4js');
-const AbstractGeneralServer = require('./abstract');
-const path = require('path');
-const os = require('os');
+import * as Agenda from 'agenda';
+import * as AgendaSh from 'agendash';
+import * as Express from 'express';
+import * as Log4js from 'log4js';
+import * as path from 'path';
+import * as os from 'os';
+import { _global } from '../../../_global';
+import AbstractGeneralServer from './abstract';
 
-module.exports = class extends AbstractGeneralServer {
+export default class extends AbstractGeneralServer {
+    _serverName: string;
+    _dbHost: any;
+    _dbPort: any;
+    _dbDatabaseName: string;
+    _server: any;
+    Agenda: any;
     constructor(
-        env, serverHost, serverPort, serverName = 'agenda',
-        dbHost, dbPort, dbDatabaseName = 'agenda'
+        env: string, serverHost: string, serverPort: string, serverName = 'agenda',
+        dbHost: string, dbPort: string, dbDatabaseName = 'agenda'
     ) {
         super(serverHost, serverPort, env);
         this._serverHost = serverHost;
@@ -22,7 +29,7 @@ module.exports = class extends AbstractGeneralServer {
         this._dbDatabaseName = dbDatabaseName;
     }
 
-    async start(router, every) {
+    async start(router, every): Promise<void> {
         this._server = Express();
         this.Agenda = new Agenda({
             db: {
@@ -35,7 +42,7 @@ module.exports = class extends AbstractGeneralServer {
 
         await this.Agenda.start()
             .then(() => this.info('agenda start'))
-            .catch(err => { throw new Error(err); });
+            .catch((err: string) => { throw new Error(err); });
 
         router && router(this);
         every && await every(this);
@@ -43,28 +50,30 @@ module.exports = class extends AbstractGeneralServer {
         this._server.listen(this._serverPort, this._serverHost);
         this._server.use('', AgendaSh(this.Agenda, { title: os.hostname + '-' + process.pid }));
 
-        this.Agenda.on('start', job => {
+        this.Agenda.on('start', (job: { attrs: { name: any; }; }) => {
             console.log('Job %s starting', job.attrs.name);
         })
-            .on('complete', job => {
+            .on('complete', (job: { attrs: { name: any; }; }) => {
                 console.log(`Job ${job.attrs.name} finished`);
             })
-            .on('success:send email', job => {
+            .on('success:send email', (job: { attrs: { data: { to: any; }; }; }) => {
                 console.log(`Sent Email Successfully to ${job.attrs.data.to}`);
             })
-            .on('fail:send email', (err, job) => {
+            .on('fail:send email', (err: { message: any; }, _job: any) => {
                 console.log(`Job failed with error: ${err.message}`);
             });
     }
 
     // 定义任务
-    define(name, fun) {
+    define(name: string, fun: () => void): void {
         Logger.debug(`init define: ${name}`);
         this.Agenda.define(name, fun);
     }
 
     // 定时任务
-    async every(interval, names, data, options = {}) {
+    async every(
+        interval: string, names: string, data: object, options: { timezone: string }
+    ): Promise<void> {
         Logger.debug(`init every: ${names} interval: ${interval}`);
 
         options.timezone = 'Asia/Shanghai';// 设置时区
@@ -72,12 +81,12 @@ module.exports = class extends AbstractGeneralServer {
     }
 
     // 立刻执行
-    now(names) {
+    now(names: string | string[]): void {
         this.Agenda.now(names);
     }
 
-    initLogger(logDirName = this._serverName) {
-        let logRoot = path.join(PROJECT_ROOT, 'logs');
+    initLogger(logDirName: string = this._serverName): void {
+        const logRoot = path.join(PROJECT_ROOT, 'logs');
         Log4js.configure({
             appenders: {
                 runtime: {
@@ -106,6 +115,7 @@ module.exports = class extends AbstractGeneralServer {
         });
 
         const logger = Log4js.getLogger('default');
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const L = require('nirvana-logger')(logDirName);
         global.Logger = {
             error: err => logger.error(err.stack || err),
@@ -115,8 +125,8 @@ module.exports = class extends AbstractGeneralServer {
             record: msg => L(msg)
         };
 
-        global.Action = {
-            record(actionName, data) {
+        (global as any as _global).Action = {
+            record(actionName: any, data: any) {
                 Log4js.getLogger('action').info(
                     `[${actionName}]${JSON.stringify(data)}`
                 );
@@ -125,4 +135,4 @@ module.exports = class extends AbstractGeneralServer {
 
         this.info(`initLogger`);
     }
-};
+}

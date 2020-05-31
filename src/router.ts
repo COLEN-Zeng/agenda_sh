@@ -1,6 +1,8 @@
 import * as controller from './controller';
 
-const wrap = ({ func, beforeProviderMiddleware, afterProviderMiddleware }) => {
+const wrap = async function ({
+    func, beforeProviderMiddleware = undefined, afterProviderMiddleware = undefined
+}) {
     return async (job) => {
         // TODO: 对job里的参数进行加工
         try {

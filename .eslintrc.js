@@ -42,8 +42,18 @@ module.exports = {
             }
         ],
         "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "on",
+        // "@typescript-eslint/explicit-module-boundary-types": "on"
     },
+    "overrides": [
+        {
+            // enable the rule specifically for TypeScript files
+            "files": ["*.ts", "*.tsx"],
+            "rules": {
+                "@typescript-eslint/explicit-module-boundary-types": ["error"]
+            }
+        }
+    ],
     "globals": {
         "Common": true,
         "PROJECT_ROOT": true,

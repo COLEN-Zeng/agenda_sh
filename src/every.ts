@@ -1,4 +1,4 @@
-export default function async(app: any) {
+export default async function (app: any): Promise<void> {
     Promise.all([
         app.every('1 minutes', 'deletePicture', {}),
         app.every('0 1,2 16 * * *', 'testJob', { name: 'colen' }),

@@ -1,45 +1,69 @@
-const path = require('path');
-const fs = require('fs');
+import * as path from 'path';
+import * as fs from 'fs';
+import { _global } from '../../../_global';
 const EventEmitter = require('events').EventEmitter;
 
-module.exports = class {
-    constructor(serverHost, serverPort, env) {
+export default class {
+    _serverHost: any;
+    _serverPort: any;
+    _env: any;
+    _regHost: any;
+    _regPort: any;
+    constructor(serverHost: string, serverPort: string, env: string) {
         this._serverHost = serverHost;
         this._serverPort = serverPort;
         this._env = env;
     }
 
-    start() {
+    async start(
+        router: (this: unknown) => void,
+        every: (this: unknown) => Promise<void>
+    ): Promise<void> {
         throw new Error('override this method please.');
     }
 
-    initLogger() {
+    initLogger(): void {
         throw new Error('override this method please.');
     }
 
-    async initDependence(servicesName, regHost = this._regHost, regPort = this._regPort) {
+    async initDependence(
+        servicesName: {
+            map: (arg0: (serviceName: any) => Promise<void>) => readonly [unknown];
+        },
+        regHost = this._regHost, regPort = this._regPort
+    ): Promise<void> {
         this._regHost = regHost;
         this._regPort = regPort;
-        global.Service = global.Service || {};
-        let _serviceRoot = path.join(PROJECT_ROOT, 'service');
+        (global as any as _global).Service = (global as any as _global).Service || {};
+        const _serviceRoot = path.join(PROJECT_ROOT, 'service');
         await Promise.all(
             servicesName.map(async serviceName => {
-                let instanceName = Common.Module.parseServerName(serviceName);
-                Service[instanceName] = await new Common.Entity.GeneralServiceClient(regHost, regPort, serviceName, path.join(_serviceRoot, serviceName, 'schema')).connect();
+                const instanceName = Common.Module.parseServerName(serviceName);
+                Service[instanceName] = await new Common.Entity.GeneralServiceClient(
+                    regHost, regPort, serviceName, path.join(_serviceRoot, serviceName, 'schema')
+                ).connect();
                 if (fs.existsSync(path.join(PROJECT_ROOT, 'service', serviceName, 'client'))) {
                     //在client包裹上该服务提供的语义化的方法
-                    let clientWrapper = require(path.join(PROJECT_ROOT, "service", serviceName, "client"));
+                    // eslint-disable-next-line @typescript-eslint/no-var-requires
+                    const clientWrapper = require(
+                        path.join(PROJECT_ROOT, "service", serviceName, "client")
+                    );
                     Service[instanceName] = clientWrapper(
                         Service[instanceName]
                     );
                 }
             })
-        ).catch(err => this.error(`connect to service by registry service failed [regHost: ${regHost}, _regPort: ${regPort}], nested error: ${err}`));
+        ).catch(err => this.error(
+            `connect to service by registry service failed [regHost: ${regHost}, _regPort:
+                ${regPort}], nested error: ${err}`));
         this.info('init dependence');
     }
 
-    initORM(objectPath, relationPath, serviceOrmName = undefined, serviceOrmPath = undefined) {
-        global.ORM = require('@qtk/orm-framework');
+    initORM(
+        objectPath: string, relationPath: string,
+        serviceOrmName = undefined, serviceOrmPath = undefined
+    ): void {
+        (global as any as _global).ORM = require('@qtk/orm-framework');
         ORM.setup({
             objectSchemaPath: `${objectPath}/schema`,
             objectRouterPath: `${objectPath}/router/${this._env}`,
@@ -54,19 +78,19 @@ module.exports = class {
         this.info('init orm');
     }
 
-    initConfigClient(host, port, timeout = 3) {
+    initConfigClient(host: string, port: number, timeout = 3): Promise<unknown> {
         const eventEmitter = new EventEmitter();
         const ConfigClient = require('@qtk/config-service').Client;
-        let configClient = new ConfigClient({ host, port });
+        const configClient = new ConfigClient({ host, port });
         return new Promise((resolve, reject) => {
             configClient.on('update', () => {
                 this.info(`update config success [host: ${host}, host: ${port}]`);
-                global.Config = configClient.config;
+                (global as any as _global).Config = configClient.config;
                 eventEmitter.emit('update', configClient.config);
             });
             configClient.on('ready', () => {
                 this.info(`init config success [host: ${host}, host: ${port}]`);
-                global.Config = configClient.config;
+                (global as any as _global).Config = configClient.config;
                 resolve(eventEmitter);
             });
             setTimeout(() => {
@@ -75,11 +99,14 @@ module.exports = class {
         }).catch(err => this.error(`connect to config service failed, nested error: ${err}`));
     }
 
-    async initNotificationCenter({ connParams, serviceName, onError, onClose, subscriberDir = "", scope = "silver_ins" }) {
-        const _Notification = require('@qtk/reliable-notification-service');// FIXME: require放外层
-        let notification = new _Notification(connParams, scope, `core_${serviceName}`);
+    async initNotificationCenter({
+        connParams, serviceName, onError, onClose,
+        subscriberDir = "", scope = "silver_ins"
+    }): Promise<void> {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const _Notification = require('@qtk/reliable-notification-service');
+        const notification = new _Notification(connParams, scope, `core_${serviceName}`);
 
-        // eslint-disable-next-line no-async-promise-executor
         await new Promise(async (resolve, reject) => {
             notification.once('error', (error) => {
                 console.log(error);
@@ -116,6 +143,7 @@ module.exports = class {
                     await notification.registrySubscriber(
                         event,
                         async data =>
+                            // eslint-disable-next-line @typescript-eslint/no-var-requires
                             await require(`${subscriberDir}/${event}/${handler}`)(
                                 data
                             ),
@@ -125,23 +153,23 @@ module.exports = class {
             }
         }
 
-        global.NotificationCenter = {
+        (global as any as _global).NotificationCenter = {
             publish: async (eventName, data) => notification.publish(eventName, data)
         };
         this.info('init notification');
     }
 
-    info(value) {
+    info(value: string): void {
         console.log(value);
     }
 
-    error(value) {
+    error(value: string): void {
         console.log(value);
     }
 
-    async initInside(insides = []) {
-        global.Inside = {};
-        for (let projectName of insides) {
+    async initInside(insides = []): Promise<void> {
+        (global as any as _global).Inside = {};
+        for (const projectName of insides) {
             const instanceName = projectName
                 .replace("silver-ins-", "")
                 .replace(/^[a-z]|\.[a-z]|_[a-z]|-[a-z]/g, match =>
@@ -149,7 +177,7 @@ module.exports = class {
                 );
             Inside[
                 instanceName
-            ] = await require(`@${projectName}/inside-client`)//FIXME: 建议放外层
+            ] = await require(`@${projectName}/inside-client`)
                 .getInstance()
                 .catch(error =>
                     this.error(
@@ -167,28 +195,33 @@ module.exports = class {
      * @param {*} regHost
      * @param {*} regPort
      */
-    async initOuter(outerName, servicesName, regHost = "0.0.0.0", regPort) {
+    async initOuter(
+        outerName: 'core' | 'h5', servicesName: string[], regHost = "0.0.0.0", regPort: number
+    ): Promise<void> {
         if (regPort === undefined) regPort = outerName === 'core' ? 2371 : 2731;
         const InstanceOuter = Common.Module.parseServerName(outerName);
         global[InstanceOuter] = {};
         await Promise.all(
             servicesName.map(async serviceName => {
-                let instance = await new Common.Entity.GeneralServiceClient(
+                const instance = await new Common.Entity.GeneralServiceClient(
                     regHost,
                     regPort,
                     serviceName
                 ).connect();
 
                 //在client包裹上该服务提供的语义化的方法
-                let clientWrapper = require(`${PROJECT_ROOT}/lib/${outerName}_service_client/${serviceName}`);
-                let name = Common.Module.parseServerName(serviceName);
+                // eslint-disable-next-line @typescript-eslint/no-var-requires
+                const clientWrapper = require(
+                    `${PROJECT_ROOT}/lib/${outerName}_service_client/${serviceName}`);
+                const name = Common.Module.parseServerName(serviceName);
                 global[InstanceOuter][name] = clientWrapper(instance);
             })
         ).catch(err =>
             this.error(
-                `connect to ${outerName} service by registry service failed [regHost: ${regHost}, _regPort: ${regPort}], nested error: ${err}`
+                `connect to ${outerName} service by registry service failed [regHost:
+                    ${regHost}, _regPort: ${regPort}], nested error: ${err}`
             )
         );
         this.info(`init ${outerName} success`);
     }
-};
+}

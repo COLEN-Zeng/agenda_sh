@@ -31,13 +31,13 @@ export async function deletePicture({ job, request }) {
     Logger.debug(JSON.stringify(todayPicturesDirList));
 }
 
-exports.testJob = async function ({ job, request }) {
+export async function testJob({ job, request }) {
     Logger.debug(new Date(), + 'testJob，这是一个测试');
     Logger.debug(JSON.stringify(request));
     Logger.debug(JSON.stringify(job));
 };
 
-exports.renewingCoverage = async function (job) {
+export async function renewingCoverage(job) {
     Logger.debug('续保服务');
     // 对接以下产品的续保保单数据接收：
     // 安联京彩一生
@@ -50,4 +50,4 @@ exports.renewingCoverage = async function (job) {
     // 获取到续保保单数据后，关闭原保单的续保推送提醒
 };
 
-exports.dailyWechatMsgSend = require('./daily_wechat_msg.send');
+export * from './daily_wechat_msg.send';

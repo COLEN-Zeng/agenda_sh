@@ -1,2 +1,2 @@
-exports.GeneralAgendaServer = require('./general_server/agenda');
-exports.GeneralServiceClient = require('./generalClient');
+export * as GeneralAgendaServer from './general_server/agenda';
+export * as GeneralServiceClient from './generalClient';

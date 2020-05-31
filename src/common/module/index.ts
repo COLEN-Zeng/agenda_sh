@@ -1,8 +1,8 @@
 const opts = require('opts_v2');
 
-exports.parseServerName = name => name.replace(/^[a-z]|\.[a-z]|_[a-z]/g, match => match.replace(/\.|_/, '').toUpperCase());
+export const parseServerName = name => name.replace(/^[a-z]|\.[a-z]|_[a-z]/g, match => match.replace(/\.|_/, '').toUpperCase());
 
-exports.requireServiceInfo = (additionalParams = []) => {
+export const requireServiceInfo = (additionalParams = []) => {
     opts.add([
         { long: 'service-name', description: 'service-name', value: true, required: true, type: 'string' },
         { long: 'host', description: 'host to listen', value: true, required: true, type: 'string' },
