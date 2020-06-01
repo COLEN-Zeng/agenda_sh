@@ -10,7 +10,7 @@
     },
     "include": [
         "./src/**/*",
-        ".vscode/type_hinting/**/*",
+        // ".vscode/type_hinting/**/*",
     ],
     "exclude": [
         "node_modules",

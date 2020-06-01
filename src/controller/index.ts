@@ -39,6 +39,7 @@ export async function testJob({ job, request }) {
 
 export async function renewingCoverage(job) {
     Logger.debug('续保服务');
+    // await H5.Personnel.dailyWechatMsgSend();
     // 对接以下产品的续保保单数据接收：
     // 安联京彩一生
     // 安联臻爱感恩版
