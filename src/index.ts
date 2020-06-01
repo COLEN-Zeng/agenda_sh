@@ -2,6 +2,7 @@ import './ref';
 import * as os from 'os';
 import * as router from './router';
 import * as every from './every';
+import Common = require('./common');
 
 const ENV = 'dev';
 const REGISTER_HOST = '0.0.0.0';

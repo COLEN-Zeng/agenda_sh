@@ -1,4 +1,4 @@
 export = {
-    record(actionName, data = {}) { }
+    record(actionName: any, data = {}) { }
 }
 export as namespace Action;

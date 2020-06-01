@@ -1,2 +1,4 @@
-export * as Entity from './entity';
-export * as Module from './module';
+import * as Entity from './entity';
+import * as Module from './module';
+
+export { Module, Entity }

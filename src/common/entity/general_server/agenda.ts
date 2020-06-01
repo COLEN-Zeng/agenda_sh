@@ -5,7 +5,6 @@ import * as Express from 'express';
 import * as Log4js from 'log4js';
 import * as path from 'path';
 import * as os from 'os';
-import { _global } from '../../../_global';
 import AbstractGeneralServer from './abstract';
 
 export class GeneralAgendaServer extends AbstractGeneralServer {
@@ -125,7 +124,7 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
             record: msg => L(msg)
         };
 
-        (global as any as _global).Action = {
+        (global as any as Global).Action = {
             record(actionName: any, data: any) {
                 Log4js.getLogger('action').info(
                     `[${actionName}]${JSON.stringify(data)}`

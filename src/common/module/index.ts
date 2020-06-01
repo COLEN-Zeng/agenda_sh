@@ -1,4 +1,7 @@
-const opts = require('opts_v2');
+import * as opts from 'opts_v2';
+import * as uuid from 'uuid/v4'
+
+export const uuid = () => uuid().replace(/-/g, '').toUpperCase();
 
 export const parseServerName = name => name.replace(/^[a-z]|\.[a-z]|_[a-z]/g, match => match.replace(/\.|_/, '').toUpperCase());
 

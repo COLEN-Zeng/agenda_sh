@@ -5,6 +5,7 @@ import {
     ValidationError as TcpValidationError,
     Client as ServiceClient,
 } from '@qtk/schema-tcp-request-framework';
+import Common = require('../..');
 
 export class GeneralServiceClient {
     _clients: any[];
