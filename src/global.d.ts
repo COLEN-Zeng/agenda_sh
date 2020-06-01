@@ -26,6 +26,10 @@ interface Global {
     Action: any;
 }
 
-// declare module '@qtk/orm-framework'
+declare module '@qtk/orm-framework' {
+
+}
 declare const ORM;
 declare const Action;
+// declare const H5;
+declare const Core;

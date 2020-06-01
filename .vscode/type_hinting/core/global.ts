@@ -10,4 +10,4 @@ export = {
     Payment: Payment(),
     Warehouse: Warehouse(),
 };
-export as namespace Core;
+// export as namespace Core;

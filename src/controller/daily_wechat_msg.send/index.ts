@@ -1,6 +1,7 @@
 const DayJs = require('dayjs');
 const assert = require('assert');
-
+import H5 = require('../../../.vscode/type_hinting/h5/global')
+import Core = require('../../../.vscode/type_hinting/core/global')
 export async function dailyWechatMsgSend({ request: { aaaaa, ppppp } }) {
     // 仅做简单的验证
     // assert(aaaaa === DayJs().format('YYYY-MM-DD'), '验证不通过');
@@ -13,5 +14,5 @@ export async function dailyWechatMsgSend({ request: { aaaaa, ppppp } }) {
         taskList.push('customer');
     }
 
-    // await H5.Personnel.dailyWechatMsgSend(taskList);
+    await H5.Personnel.dailyWechatMsgSend(taskList);
 };

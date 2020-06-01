@@ -10,7 +10,6 @@ const REGISTER_PORT = 3471;
 const CONFIG_HOST = '0.0.0.0';
 const CONFIG_PORT = 3472;
 
-
 const SERVICE_HOST = 'project-agenda';
 
 const AGENDA_WEB_PORT = 3473;

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "./dist",
-        "allowJs": false,
+        "allowJs": true,
         "target": "es2015",
         "sourceMap": true,
         "module": "commonjs",
@@ -10,10 +10,16 @@
     },
     "include": [
         "./src/**/*",
-        // ".vscode/type_hinting/**/*",
+        // ".vscode/type_hinting/**/*.ts",
     ],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
+        ".vscode/type_hinting/**/*",
+    ],
+    "typeRoots": [ /* 要包含的类型声明文件路径列表*/
+        "./src/**/*",
+        // ".vscode/type_hinting/**/*",
+        "./node_modules/@types"
     ]
 }

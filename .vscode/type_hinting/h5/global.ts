@@ -14,4 +14,4 @@ export = {
     Permission: Permission(),
     Personnel: Personnel(),
 };
-export as namespace H5;
+// export as namespace H5;
