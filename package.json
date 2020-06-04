@@ -26,7 +26,7 @@
         "dayjs": "^1.8.27",
         "express": "^4.17.1",
         "hapi": "^18.1.0",
-        "log4js": "^6.3.0",
+        "log4js": "^2.5.3",
         "nirvana-logger": "^2.3.8",
         "opts_v2": "^1.0.1",
         "process-key-mutex": "^1.0.1"

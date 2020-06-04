@@ -41,20 +41,20 @@ let additionalArguments = {
 };
 
 let apps = [].concat(
-    {
-        namePrefix: NAME_PREFIX,
-        name: 'basic/registry',
-        script: `${PROJECT_ROOT}/node_modules/.bin/registry_service`,
-        args: {
-            host: REGISTER_HOST,
-            port: REGISTER_PORT,
-            'log-path': `${PROJECT_ROOT}/logs/basic/registry`,
-        },
-        env: { ENV, TZ: 'Asia/Shanghai' },
-        nodeArgs: {
-            'max-old-space-size': '4096',
-        },
-    },
+    // {
+    //     namePrefix: NAME_PREFIX,
+    //     name: 'basic/registry',
+    //     script: `${PROJECT_ROOT}/node_modules/.bin/registry_service`,
+    //     args: {
+    //         host: REGISTER_HOST,
+    //         port: REGISTER_PORT,
+    //         'log-path': `${PROJECT_ROOT}/logs/basic/registry`,
+    //     },
+    //     env: { ENV, TZ: 'Asia/Shanghai' },
+    //     nodeArgs: {
+    //         'max-old-space-size': '4096',
+    //     },
+    // },
     // {
     //     namePrefix: NAME_PREFIX,
     //     name: 'basic/config',

@@ -88,7 +88,7 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
             appenders: {
                 runtime: {
                     type: 'dateFile',
-                    filename: `${logRoot}/${logDirName}/runtime`,
+                    filename: `${logRoot}/${logDirName}/runtime/`,
                     pattern: "yyyy-MM-dd.log",
                     alwaysIncludePattern: true
                 },
@@ -98,7 +98,7 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
                         type: 'pattern',
                         pattern: '[%d] %m'
                     },
-                    filename: `${logRoot}/${logDirName}/action`,
+                    filename: `${logRoot}/${logDirName}/action/`,
                     pattern: "yyyy-MM-dd.log",
                     alwaysIncludePattern: true
                 }

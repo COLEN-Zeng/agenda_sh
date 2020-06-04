@@ -1,5 +1,5 @@
 declare const PROJECT_ROOT: string;
-declare const ENV: 'dev' | 'prod';
+declare const ENV: 'dev' | 'prod' | 'gamma';
 declare const Service: any;
 declare const Config: any;
 declare const NotificationCenter: any;
