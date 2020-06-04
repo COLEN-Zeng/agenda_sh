@@ -175,6 +175,7 @@ export default class {
                 .replace(/^[a-z]|\.[a-z]|_[a-z]|-[a-z]/g, match =>
                     match.replace(/\.|_|-/, "").toUpperCase()
                 );
+
             Inside[
                 instanceName
             ] = await require(`@${projectName}/inside-client`)
@@ -196,7 +197,7 @@ export default class {
      * @param {*} regPort
      */
     async initOuter(
-        outerName: 'core' | 'h5', servicesName: string[], regHost = "0.0.0.0", regPort: number
+        outerName: 'core' | 'h5', servicesName: string[], regHost, regPort: number
     ): Promise<void> {
         if (regPort === undefined) regPort = outerName === 'core' ? 2371 : 2731;
         const InstanceOuter = Common.Module.parseServerName(outerName);

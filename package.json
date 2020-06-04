@@ -20,6 +20,7 @@
         "@qtk/schema-tcp-request-framework": "^2.3.3",
         "@silver-ins-common/inside-client": "^1.0.13",
         "@silver-ins-core/inside-client": "^1.0.102",
+        "@types/uuid": "^8.0.0",
         "agenda": "^3.1.0",
         "agenda-ui": "^0.0.7",
         "agendash": "^1.0.0",

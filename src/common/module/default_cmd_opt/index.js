@@ -1,0 +1,51 @@
+module.exports = [
+    {
+        long: 'host',
+        description: 'host to listen',
+        value: true,
+        required: true,
+        type: 'string',
+    },
+    {
+        long: 'port',
+        description: 'port to listen',
+        value: true,
+        required: true,
+        type: 'integer',
+    },
+    {
+        long: 'reg-host',
+        description: 'host of registry service',
+        value: true,
+        required: true,
+        type: 'string',
+    },
+    {
+        long: 'reg-port',
+        description: 'port of registry service',
+        value: true,
+        required: true,
+        type: 'integer',
+    },
+    {
+        long: 'config-host',
+        description: 'host of config service',
+        value: true,
+        required: true,
+        type: 'string',
+    },
+    {
+        long: 'config-port',
+        description: 'port of config service',
+        value: true,
+        required: true,
+        type: 'integer',
+    },
+    {
+        long: 'service-name',
+        description: 'service-name',
+        value: true,
+        required: true,
+        type: 'string',
+    },
+];

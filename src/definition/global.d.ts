@@ -3,7 +3,6 @@ declare const ENV: 'dev' | 'prod' | 'gamma';
 declare const Service: any;
 declare const Config: any;
 declare const NotificationCenter: any;
-declare const Inside: any;
 declare namespace Logger {
     function info(...params: any[]): void;
     function debug(...params: any[]): void;
