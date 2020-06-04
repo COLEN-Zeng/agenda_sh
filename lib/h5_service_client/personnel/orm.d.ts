@@ -1,12 +1,12 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface PersonnelCommissionPromotionRate {
+interface H5PersonnelCommissionPromotionRate {
   id: string;
   rate: number;
 }
 
-interface PersonnelCustomerVisitRecord {
+interface H5PersonnelCustomerVisitRecord {
   id?: string;
   userId?: string;
   /**
@@ -40,12 +40,12 @@ interface PersonnelCustomerVisitRecord {
   [k: string]: any;
 }
 
-interface PersonnelEmployee {
+interface H5PersonnelEmployee {
   id: string;
   employeeId: string;
 }
 
-interface PersonnelIncomeRecord {
+interface H5PersonnelIncomeRecord {
   /**
    * 记录ID
    */
@@ -110,7 +110,7 @@ interface PersonnelIncomeRecord {
   [k: string]: any;
 }
 
-interface PersonnelInfo {
+interface H5PersonnelInfo {
   /**
    * id
    */
@@ -240,7 +240,7 @@ interface PersonnelInfo {
   [k: string]: any;
 }
 
-interface PersonnelJobRank {
+interface H5PersonnelJobRank {
   id: string;
   jobRank: string;
   previous?: {
@@ -295,7 +295,7 @@ interface PersonnelJobRank {
   [k: string]: any;
 }
 
-interface PersonnelNote {
+interface H5PersonnelNote {
   id?: string;
   note?: string;
   createdAt?: number;
@@ -303,7 +303,7 @@ interface PersonnelNote {
   [k: string]: any;
 }
 
-interface PersonnelProposal {
+interface H5PersonnelProposal {
   /**
    * key
    */
@@ -334,7 +334,7 @@ interface PersonnelProposal {
   [k: string]: any;
 }
 
-interface PersonnelShare {
+interface H5PersonnelShare {
   /**
    * uuid
    */
@@ -374,12 +374,12 @@ interface PersonnelShare {
   [k: string]: any;
 }
 
-interface PersonnelShopConfig {
+interface H5PersonnelShopConfig {
   id?: string;
   [k: string]: any;
 }
 
-interface PersonnelStatistic {
+interface H5PersonnelStatistic {
   /**
    * ${YYYYMM}_${personnelId}
    */
@@ -417,7 +417,7 @@ interface PersonnelStatistic {
 /**
  * 临时投保单信息，提供给前端暂存功能，可能信息不全
  */
-interface PersonnelTmpProposal {
+interface H5PersonnelTmpProposal {
   /**
    * key
    */
@@ -425,7 +425,7 @@ interface PersonnelTmpProposal {
   [k: string]: any;
 }
 
-interface PersonnelVisitingCard {
+interface H5PersonnelVisitingCard {
   /**
    * id
    */
@@ -481,7 +481,7 @@ interface PersonnelVisitingCard {
   [k: string]: any;
 }
 
-interface PersonnelWechat {
+interface H5PersonnelWechat {
   id: string;
   /**
    * 机构id
@@ -498,7 +498,7 @@ interface PersonnelWechat {
   [k: string]: any;
 }
 
-interface PersonnelWechatInfo {
+interface H5PersonnelWechatInfo {
   /**
    * openId
    */
@@ -513,7 +513,7 @@ interface PersonnelWechatInfo {
   [k: string]: any;
 }
 
-interface PersonnelWithdrawalRecord {
+interface H5PersonnelWithdrawalRecord {
   /**
    * 提现记录ID
    */
@@ -553,7 +553,7 @@ interface PersonnelWithdrawalRecord {
   paymentAt?: number;
 }
 
-interface PersonnelCustomerInfo {
+interface H5PersonnelCustomerInfo {
   /**
    * 业务员用户id
    */
@@ -601,7 +601,7 @@ interface PersonnelCustomerInfo {
   [k: string]: any;
 }
 
-interface PersonnelCustomerPolicy {
+interface H5PersonnelCustomerPolicy {
   /**
    * 客户id
    */
@@ -614,19 +614,19 @@ interface PersonnelCustomerPolicy {
   [k: string]: any;
 }
 
-interface PersonnelUserProposal {
+interface H5PersonnelUserProposal {
   subject: string;
   object: string;
   createdAt: number;
 }
 
-interface PersonnelUserQuotation {
+interface H5PersonnelUserQuotation {
   subject: string;
   object: string;
   createdAt: number;
 }
 
-interface PersonnelUserWithdrawalRecord {
+interface H5PersonnelUserWithdrawalRecord {
   subject: string;
   object: string;
   promotion?: string;

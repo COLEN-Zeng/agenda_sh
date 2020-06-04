@@ -1,17 +1,17 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service_orm/fun自动生成,请勿手动修改
 
 /**
  * 存储险种投保中需要全局控制的变量
  */
-interface NonVehicleKeyCache {
+interface CoreNonVehicleKeyCache {
   id?: string;
   value?: {
     [k: string]: any;
   };
 }
 
-interface NonVehicleNegotiation {
+interface CoreNonVehicleNegotiation {
   id: string;
   insuranceId: string;
   insuranceType: string;
@@ -31,7 +31,7 @@ interface NonVehicleNegotiation {
   status: 0 | 1;
 }
 
-interface NonVehicleQuotation {
+interface CoreNonVehicleQuotation {
   id: string;
   accountId: string;
   entranceId: string;
@@ -119,7 +119,7 @@ interface NonVehicleQuotation {
 /**
  * 用来展示的假的销售数据
  */
-interface NonVehicleSalesVolume {
+interface CoreNonVehicleSalesVolume {
   /**
    * 险种id
    */
@@ -130,7 +130,7 @@ interface NonVehicleSalesVolume {
   sales?: number;
 }
 
-interface NonVehicleTrace {
+interface CoreNonVehicleTrace {
   id?: string;
   records?: {
     name: string;

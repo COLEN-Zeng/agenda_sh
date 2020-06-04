@@ -1,6 +1,6 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service/fun自动生成,请勿手动修改
 
-interface NonVehicleClaimApplyRequest {
+interface CoreNonVehicleClaimApplyRequest {
   /**
    * 保单id
    */
@@ -13,9 +13,9 @@ interface NonVehicleClaimApplyRequest {
 /**
  * 理赔单id
  */
-type NonVehicleClaimApplyResponse = string;
+type CoreNonVehicleClaimApplyResponse = string;
 
-interface NonVehicleEndorsementApplyRequest {
+interface CoreNonVehicleEndorsementApplyRequest {
   /**
    * 保单id
    */
@@ -28,9 +28,9 @@ interface NonVehicleEndorsementApplyRequest {
 /**
  * uuid
  */
-type NonVehicleEndorsementApplyResponse = string;
+type CoreNonVehicleEndorsementApplyResponse = string;
 
-interface NonVehicleEndorsementFinalizeRequest {
+interface CoreNonVehicleEndorsementFinalizeRequest {
   /**
    * uuid
    */
@@ -40,9 +40,9 @@ interface NonVehicleEndorsementFinalizeRequest {
   };
 }
 
-type NonVehicleEndorsementFinalizeResponse = null;
+type CoreNonVehicleEndorsementFinalizeResponse = null;
 
-interface NonVehicleEndorsementInsureRequest {
+interface CoreNonVehicleEndorsementInsureRequest {
   /**
    * uuid
    */
@@ -52,26 +52,21 @@ interface NonVehicleEndorsementInsureRequest {
   };
 }
 
-type NonVehicleEndorsementInsureResponse = null;
+type CoreNonVehicleEndorsementInsureResponse = null;
 
-interface NonVehicleEndorsementPaidConfirmRequest {
+interface CoreNonVehicleEndorsementPaidConfirmRequest {
   /**
    * uuid
    */
   id: string;
-  /**
-   * 自有的支付单ID
-   */
-  paymentId: string;
-  /**
-   * 第三方支付ID
-   */
-  paymentNo: string;
+  data: {
+    [k: string]: any;
+  };
 }
 
-type NonVehicleEndorsementPaidConfirmResponse = null;
+type CoreNonVehicleEndorsementPaidConfirmResponse = null;
 
-interface NonVehicleEndorsementRefundConfirmRequest {
+interface CoreNonVehicleEndorsementRefundConfirmRequest {
   /**
    * uuid
    */
@@ -86,9 +81,9 @@ interface NonVehicleEndorsementRefundConfirmRequest {
   paymentNo: string;
 }
 
-type NonVehicleEndorsementRefundConfirmResponse = null;
+type CoreNonVehicleEndorsementRefundConfirmResponse = null;
 
-interface NonVehicleIntelligentUnderwriteCallbackRequest {
+interface CoreNonVehicleIntelligentUnderwriteCallbackRequest {
   /**
    * 险种id
    */
@@ -100,11 +95,47 @@ interface NonVehicleIntelligentUnderwriteCallbackRequest {
   };
 }
 
-interface NonVehicleIntelligentUnderwriteCallbackResponse {
+interface CoreNonVehicleIntelligentUnderwriteCallbackResponse {
   [k: string]: any;
 }
 
-interface NonVehicleIntelligentUnderwriteRedirectRequest {
+interface CoreNonVehicleIntelligentUnderwriteQuizAnswerRequest {
+  /**
+   * 报价单id
+   */
+  quotationId: string;
+  /**
+   * 报价方案id
+   */
+  quoteId: string;
+  data: {
+    [k: string]: any;
+  };
+}
+
+interface CoreNonVehicleIntelligentUnderwriteQuizAnswerResponse {
+  [k: string]: any;
+}
+
+interface CoreNonVehicleIntelligentUnderwriteQuizGetRequest {
+  /**
+   * 报价单id
+   */
+  quotationId: string;
+  /**
+   * 报价方案id
+   */
+  quoteId: string;
+  data?: {
+    [k: string]: any;
+  };
+}
+
+interface CoreNonVehicleIntelligentUnderwriteQuizGetResponse {
+  [k: string]: any;
+}
+
+interface CoreNonVehicleIntelligentUnderwriteRedirectRequest {
   /**
    * 入口id
    */
@@ -118,7 +149,7 @@ interface NonVehicleIntelligentUnderwriteRedirectRequest {
   };
 }
 
-interface NonVehicleIntelligentUnderwriteRedirectResponse {
+interface CoreNonVehicleIntelligentUnderwriteRedirectResponse {
   mode: 0 | 1 | 2;
   /**
    * 跳转内容
@@ -126,7 +157,7 @@ interface NonVehicleIntelligentUnderwriteRedirectResponse {
   data: string;
 }
 
-interface NonVehicleNegotiationApplyRequest {
+interface CoreNonVehicleNegotiationApplyRequest {
   /**
    * 报价单id
    */
@@ -143,9 +174,9 @@ interface NonVehicleNegotiationApplyRequest {
 /**
  * uuid
  */
-type NonVehicleNegotiationApplyResponse = string;
+type CoreNonVehicleNegotiationApplyResponse = string;
 
-interface NonVehicleNegotiationFinalizeRequest {
+interface CoreNonVehicleNegotiationFinalizeRequest {
   /**
    * uuid
    */
@@ -155,14 +186,14 @@ interface NonVehicleNegotiationFinalizeRequest {
   };
 }
 
-type NonVehicleNegotiationFinalizeResponse = null;
+type CoreNonVehicleNegotiationFinalizeResponse = null;
 
 /**
  * uuid
  */
-type NonVehicleNegotiationGetRequest = string;
+type CoreNonVehicleNegotiationGetRequest = string;
 
-interface NonVehicleNegotiationGetResponse {
+interface CoreNonVehicleNegotiationGetResponse {
   /**
    * uuid
    */
@@ -172,7 +203,7 @@ interface NonVehicleNegotiationGetResponse {
    */
   insuranceId: string;
   /**
-   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
    */
   insuranceType: string;
   /**
@@ -209,7 +240,7 @@ interface NonVehicleNegotiationGetResponse {
   status: 0 | 1;
 }
 
-interface NonVehicleNegotiationInfoSupplyRequest {
+interface CoreNonVehicleNegotiationInfoSupplyRequest {
   /**
    * uuid
    */
@@ -219,9 +250,9 @@ interface NonVehicleNegotiationInfoSupplyRequest {
   };
 }
 
-type NonVehicleNegotiationInfoSupplyResponse = null;
+type CoreNonVehicleNegotiationInfoSupplyResponse = null;
 
-interface NonVehicleNegotiationListRequest {
+interface CoreNonVehicleNegotiationListRequest {
   /**
    * 公司id
    */
@@ -241,6 +272,7 @@ interface NonVehicleNegotiationListRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -258,14 +290,16 @@ interface NonVehicleNegotiationListRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   insuranceType?: {
     /**
      * 0: 全匹配， 1:模糊匹配
@@ -306,7 +340,7 @@ interface NonVehicleNegotiationListRequest {
   [k: string]: any;
 }
 
-interface NonVehicleNegotiationListResponse {
+interface CoreNonVehicleNegotiationListResponse {
   data: {
     /**
      * uuid
@@ -317,7 +351,7 @@ interface NonVehicleNegotiationListResponse {
      */
     insuranceId: string;
     /**
-     * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+     * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
      */
     insuranceType: string;
     /**
@@ -356,7 +390,7 @@ interface NonVehicleNegotiationListResponse {
   totalCount: number;
 }
 
-interface NonVehiclePaymentSubmitRequest {
+interface CoreNonVehiclePaymentSubmitRequest {
   /**
    * 保单id
    */
@@ -366,7 +400,7 @@ interface NonVehiclePaymentSubmitRequest {
   };
 }
 
-interface NonVehiclePaymentSubmitResponse {
+interface CoreNonVehiclePaymentSubmitResponse {
   mode: 0 | 1 | 2;
   /**
    * 跳转内容
@@ -379,7 +413,7 @@ interface NonVehiclePaymentSubmitResponse {
   [k: string]: any;
 }
 
-interface NonVehiclePolicyCancelCallbackRequest {
+interface CoreNonVehiclePolicyCancelCallbackRequest {
   /**
    * 保单id
    */
@@ -390,14 +424,14 @@ interface NonVehiclePolicyCancelCallbackRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyCancelCallbackResponse =
+type CoreNonVehiclePolicyCancelCallbackResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyClaimCallbackRequest {
+interface CoreNonVehiclePolicyClaimCallbackRequest {
   /**
    * 保单id
    */
@@ -408,14 +442,14 @@ interface NonVehiclePolicyClaimCallbackRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyClaimCallbackResponse =
+type CoreNonVehiclePolicyClaimCallbackResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyElectronicCallbackRequest {
+interface CoreNonVehiclePolicyElectronicCallbackRequest {
   /**
    * 保单id
    */
@@ -426,14 +460,14 @@ interface NonVehiclePolicyElectronicCallbackRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyElectronicCallbackResponse =
+type CoreNonVehiclePolicyElectronicCallbackResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyInfoSupplyRequest {
+interface CoreNonVehiclePolicyInfoSupplyRequest {
   /**
    * 保单id
    */
@@ -443,9 +477,9 @@ interface NonVehiclePolicyInfoSupplyRequest {
   };
 }
 
-type NonVehiclePolicyInfoSupplyResponse = null;
+type CoreNonVehiclePolicyInfoSupplyResponse = null;
 
-interface NonVehiclePolicyInsureRequest {
+interface CoreNonVehiclePolicyInsureRequest {
   /**
    * 保单id
    */
@@ -456,14 +490,14 @@ interface NonVehiclePolicyInsureRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyInsureResponse =
+type CoreNonVehiclePolicyInsureResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyInsureCallbackRequest {
+interface CoreNonVehiclePolicyInsureCallbackRequest {
   /**
    * 入口id
    */
@@ -474,14 +508,14 @@ interface NonVehiclePolicyInsureCallbackRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyInsureCallbackResponse =
+type CoreNonVehiclePolicyInsureCallbackResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyPayRequest {
+interface CoreNonVehiclePolicyPayRequest {
   /**
    * 保单id
    */
@@ -491,9 +525,9 @@ interface NonVehiclePolicyPayRequest {
   };
 }
 
-type NonVehiclePolicyPayResponse = null;
+type CoreNonVehiclePolicyPayResponse = null;
 
-interface NonVehiclePolicyPayCallbackRequest {
+interface CoreNonVehiclePolicyPayCallbackRequest {
   /**
    * 入口id
    */
@@ -504,14 +538,14 @@ interface NonVehiclePolicyPayCallbackRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyPayCallbackResponse =
+type CoreNonVehiclePolicyPayCallbackResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyRenewRequest {
+interface CoreNonVehiclePolicyRenewRequest {
   /**
    * 保单id
    */
@@ -522,14 +556,32 @@ interface NonVehiclePolicyRenewRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyRenewResponse =
+type CoreNonVehiclePolicyRenewResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyRevisitCallbackRequest {
+interface CoreNonVehiclePolicyRenewalRequest {
+  /**
+   * 保单id
+   */
+  lastPolicyId?: string;
+  data?: {
+    [k: string]: any;
+  };
+  [k: string]: any;
+}
+
+type CoreNonVehiclePolicyRenewalResponse =
+  | null
+  | {
+      [k: string]: any;
+    }
+  | string;
+
+interface CoreNonVehiclePolicyRevisitCallbackRequest {
   /**
    * 保单id
    */
@@ -540,14 +592,14 @@ interface NonVehiclePolicyRevisitCallbackRequest {
   [k: string]: any;
 }
 
-type NonVehiclePolicyRevisitCallbackResponse =
+type CoreNonVehiclePolicyRevisitCallbackResponse =
   | null
   | {
       [k: string]: any;
     }
   | string;
 
-interface NonVehiclePolicyUnderwriteFinalizeRequest {
+interface CoreNonVehiclePolicyUnderwriteFinalizeRequest {
   /**
    * 保单id
    */
@@ -564,6 +616,25 @@ interface NonVehiclePolicyUnderwriteFinalizeRequest {
          */
         modifyReason?: string;
         specialAgreement?: string[];
+        offlinePayment: {
+          /**
+           * 户名
+           */
+          name: string;
+          /**
+           * 帐号
+           */
+          no: string;
+          /**
+           * 开户行
+           */
+          bank: string;
+          /**
+           * 备注
+           */
+          remark?: string;
+          [k: string]: any;
+        };
         [k: string]: any;
       }
     | {
@@ -581,9 +652,9 @@ interface NonVehiclePolicyUnderwriteFinalizeRequest {
       };
 }
 
-type NonVehiclePolicyUnderwriteFinalizeResponse = null;
+type CoreNonVehiclePolicyUnderwriteFinalizeResponse = null;
 
-interface NonVehiclePolicyUnderwriteInfoSupplyRequest {
+interface CoreNonVehiclePolicyUnderwriteInfoSupplyRequest {
   /**
    * 保单id
    */
@@ -593,9 +664,9 @@ interface NonVehiclePolicyUnderwriteInfoSupplyRequest {
   };
 }
 
-type NonVehiclePolicyUnderwriteInfoSupplyResponse = null;
+type CoreNonVehiclePolicyUnderwriteInfoSupplyResponse = null;
 
-interface NonVehiclePolicyWithdrawRequest {
+interface CoreNonVehiclePolicyWithdrawRequest {
   /**
    * 保单id
    */
@@ -605,9 +676,9 @@ interface NonVehiclePolicyWithdrawRequest {
   };
 }
 
-type NonVehiclePolicyWithdrawResponse = null;
+type CoreNonVehiclePolicyWithdrawResponse = null;
 
-type NonVehiclePremiumCalcRequest =
+type CoreNonVehiclePremiumCalcRequest =
   | {
       data: {
         [k: string]: any;
@@ -635,7 +706,7 @@ type NonVehiclePremiumCalcRequest =
       targetInsuranceIds: string[];
     };
 
-type NonVehiclePremiumCalcResponse = {
+type CoreNonVehiclePremiumCalcResponse = {
   /**
    * 报价方案id
    */
@@ -708,7 +779,7 @@ type NonVehiclePremiumCalcResponse = {
   [k: string]: any;
 }[];
 
-interface NonVehiclePromotionGetRequest {
+interface CoreNonVehiclePromotionGetRequest {
   /**
    * 入口id
    */
@@ -795,9 +866,9 @@ interface NonVehiclePromotionGetRequest {
   };
 }
 
-type NonVehiclePromotionGetResponse = number[];
+type CoreNonVehiclePromotionGetResponse = number[];
 
-interface NonVehicleProposalUnderwriteRequest {
+interface CoreNonVehicleProposalUnderwriteRequest {
   /**
    * 报价单id
    */
@@ -823,9 +894,9 @@ interface NonVehicleProposalUnderwriteRequest {
 /**
  * 保单id
  */
-type NonVehicleProposalUnderwriteResponse = string;
+type CoreNonVehicleProposalUnderwriteResponse = string;
 
-interface NonVehicleProviderMiddlewareHandleRequest {
+interface CoreNonVehicleProviderMiddlewareHandleRequest {
   providerName: string;
   middlewareName: string;
   query: {
@@ -838,7 +909,7 @@ interface NonVehicleProviderMiddlewareHandleRequest {
     | string;
 }
 
-interface NonVehicleProviderMiddlewareHandleResponse {
+interface CoreNonVehicleProviderMiddlewareHandleResponse {
   query: {
     [k: string]: any;
   };
@@ -849,7 +920,7 @@ interface NonVehicleProviderMiddlewareHandleResponse {
     | string;
 }
 
-type NonVehicleQuotationCreateRequest =
+type CoreNonVehicleQuotationCreateRequest =
   | {
       /**
        * 操作者账户id
@@ -900,17 +971,17 @@ type NonVehicleQuotationCreateRequest =
 /**
  * 报价单id
  */
-type NonVehicleQuotationCreateResponse = string;
+type CoreNonVehicleQuotationCreateResponse = string;
 
 /**
  * 报价单id
  */
-type NonVehicleQuotationGetRequest = string;
+type CoreNonVehicleQuotationGetRequest = string;
 
 /**
  * 报价任务数据
  */
-interface NonVehicleQuotationGetResponse {
+interface CoreNonVehicleQuotationGetResponse {
   /**
    * 报价单id
    */
@@ -1018,7 +1089,7 @@ interface NonVehicleQuotationGetResponse {
   [k: string]: any;
 }
 
-interface NonVehicleQuotationQuoteRequest {
+interface CoreNonVehicleQuotationQuoteRequest {
   /**
    * 报价单id
    */
@@ -1028,7 +1099,7 @@ interface NonVehicleQuotationQuoteRequest {
   };
 }
 
-type NonVehicleQuotationQuoteResponse =
+type CoreNonVehicleQuotationQuoteResponse =
   | null
   | {
       /**
@@ -1103,7 +1174,7 @@ type NonVehicleQuotationQuoteResponse =
       [k: string]: any;
     }[];
 
-interface NonVehicleReceiptSubmitRequest {
+interface CoreNonVehicleReceiptSubmitRequest {
   /**
    * 保单id
    */
@@ -1111,9 +1182,9 @@ interface NonVehicleReceiptSubmitRequest {
   images: string[];
 }
 
-type NonVehicleReceiptSubmitResponse = null;
+type CoreNonVehicleReceiptSubmitResponse = null;
 
-interface NonVehicleRevisitSubmitRequest {
+interface CoreNonVehicleRevisitSubmitRequest {
   /**
    * 保单id
    */
@@ -1123,9 +1194,9 @@ interface NonVehicleRevisitSubmitRequest {
   };
 }
 
-type NonVehicleRevisitSubmitResponse = null;
+type CoreNonVehicleRevisitSubmitResponse = null;
 
-interface NonVehicleSurrenderRequest {
+interface CoreNonVehicleSurrenderRequest {
   /**
    * 保单id
    */
@@ -1136,9 +1207,9 @@ interface NonVehicleSurrenderRequest {
   [k: string]: any;
 }
 
-type NonVehicleSurrenderResponse = null;
+type CoreNonVehicleSurrenderResponse = null;
 
-interface NonVehicleThirdPartyProductPageRedirectRequest {
+interface CoreNonVehicleThirdPartyProductPageRedirectRequest {
   /**
    * 入口id
    */
@@ -1160,7 +1231,7 @@ interface NonVehicleThirdPartyProductPageRedirectRequest {
   };
 }
 
-interface NonVehicleThirdPartyProductPageRedirectResponse {
+interface CoreNonVehicleThirdPartyProductPageRedirectResponse {
   mode: 0 | 1 | 2;
   /**
    * 跳转内容
@@ -1168,7 +1239,7 @@ interface NonVehicleThirdPartyProductPageRedirectResponse {
   data: string;
 }
 
-interface NonVehicleTraceAddRequest {
+interface CoreNonVehicleTraceAddRequest {
   id: string;
   /**
    * 名称
@@ -1185,14 +1256,14 @@ interface NonVehicleTraceAddRequest {
   coverOldRecordWithSameName?: boolean;
 }
 
-type NonVehicleTraceAddResponse = null;
+type CoreNonVehicleTraceAddResponse = null;
 
 /**
  * traceId
  */
-type NonVehicleTraceGetRequest = string;
+type CoreNonVehicleTraceGetRequest = string;
 
-interface NonVehicleTraceGetResponse {
+interface CoreNonVehicleTraceGetResponse {
   id: string;
   records: {
     /**
@@ -1210,7 +1281,7 @@ interface NonVehicleTraceGetResponse {
   }[];
 }
 
-interface NonVehicleWithholdingApplyRequest {
+interface CoreNonVehicleWithholdingApplyRequest {
   /**
    * 保单id
    */
@@ -1220,9 +1291,9 @@ interface NonVehicleWithholdingApplyRequest {
   };
 }
 
-type NonVehicleWithholdingApplyResponse = null;
+type CoreNonVehicleWithholdingApplyResponse = null;
 
-interface NonVehicleWithholdingSubmitRequest {
+interface CoreNonVehicleWithholdingSubmitRequest {
   /**
    * 保单id
    */
@@ -1232,5 +1303,5 @@ interface NonVehicleWithholdingSubmitRequest {
   };
 }
 
-type NonVehicleWithholdingSubmitResponse = null;
+type CoreNonVehicleWithholdingSubmitResponse = null;
 

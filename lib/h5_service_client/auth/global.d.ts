@@ -1,6 +1,6 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface AuthSessionDelRequest {
+interface H5AuthSessionDelRequest {
   /**
    * userId
    */
@@ -11,14 +11,14 @@ interface AuthSessionDelRequest {
   type: 0 | 1 | 2;
 }
 
-type AuthSessionDelResponse = null;
+type H5AuthSessionDelResponse = null;
 
 /**
  * sessionId
  */
-type AuthSessionGetRequest = string;
+type H5AuthSessionGetRequest = string;
 
-type AuthSessionGetResponse = null | {
+type H5AuthSessionGetResponse = null | {
   /**
    * sessionId
    */
@@ -35,14 +35,14 @@ type AuthSessionGetResponse = null | {
   userId: string;
   type: 1 | 2;
   /**
-   * 时间戳，精确到秒
+   * 时间戳，精确到秒,最大只能到9999-12-12 23:59:59
    */
   createdAt: number;
   lastLoginTime?: null | number;
   [k: string]: any;
 };
 
-interface AuthSessionSetRequest {
+interface H5AuthSessionSetRequest {
   /**
    * sessionId
    */
@@ -59,16 +59,16 @@ interface AuthSessionSetRequest {
   userId: string;
   type: 1 | 2;
   /**
-   * 时间戳，精确到秒
+   * 时间戳，精确到秒,最大只能到9999-12-12 23:59:59
    */
   createdAt: number;
   lastLoginTime?: null | number;
   [k: string]: any;
 }
 
-type AuthSessionSetResponse = null;
+type H5AuthSessionSetResponse = null;
 
-interface AuthTokenGenerateRequest {
+interface H5AuthTokenGenerateRequest {
   /**
    * 人员ID
    */
@@ -76,14 +76,14 @@ interface AuthTokenGenerateRequest {
   [k: string]: any;
 }
 
-interface AuthTokenGenerateResponse {
+interface H5AuthTokenGenerateResponse {
   /**
    * 可用token
    */
   token: string;
 }
 
-interface AuthTokenPermissionAddRequest {
+interface H5AuthTokenPermissionAddRequest {
   /**
    * 可用token
    */
@@ -91,14 +91,14 @@ interface AuthTokenPermissionAddRequest {
   [k: string]: any;
 }
 
-interface AuthTokenPermissionAddResponse {
+interface H5AuthTokenPermissionAddResponse {
   /**
    * 0-成功,1-过期
    */
   state: 0 | 1;
 }
 
-interface AuthTokenPermissionGetRequest {
+interface H5AuthTokenPermissionGetRequest {
   /**
    * 可用token
    */
@@ -106,7 +106,7 @@ interface AuthTokenPermissionGetRequest {
   [k: string]: any;
 }
 
-interface AuthTokenPermissionGetResponse {
+interface H5AuthTokenPermissionGetResponse {
   /**
    * 0-成功,1-过期
    */

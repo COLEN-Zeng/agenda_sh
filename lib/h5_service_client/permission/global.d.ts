@@ -1,6 +1,23 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface PermissionOrgRoleAddRequest {
+/**
+ * 机构ID
+ */
+type H5PermissionOrgDefaultPerAddRequest = string;
+
+type H5PermissionOrgDefaultPerAddResponse = null;
+
+interface H5PermissionOrgPermissionUpdateRequest {
+  /**
+   * userId
+   */
+  orgId: string;
+  permission: number[];
+}
+
+type H5PermissionOrgPermissionUpdateResponse = null;
+
+interface H5PermissionOrgRoleAddRequest {
   /**
    * 机构id
    */
@@ -16,39 +33,49 @@ interface PermissionOrgRoleAddRequest {
     description?: string;
     featurePermission: (
       | -1
-      | 0
       | 1
-      | 2
-      | 3
-      | 4
-      | 5
-      | 6
-      | 7
-      | 9
-      | 11
-      | 12
-      | 13
-      | 14
-      | 15
-      | 16
-      | 17
-      | 18
-      | 19
-      | 20
-      | 21)[];
+      | 101
+      | 100
+      | 0
+      | 200
+      | 201
+      | 300
+      | 301
+      | 302
+      | 303
+      | 304
+      | 400
+      | 401
+      | 402
+      | 500
+      | 501
+      | 502
+      | 503
+      | 600
+      | 601
+      | 602
+      | 603
+      | 700
+      | 800
+      | 900
+      | 1000
+      | 1100
+      | 1101
+      | 1102
+    )[];
     dataPermission: 0 | 1 | 2 | 3;
     [k: string]: any;
   };
 }
 
-interface PermissionOrgRoleAddResponse {
+interface H5PermissionOrgRoleAddResponse {
   /**
    * 操作结果，0-成功，1-已存在同名数据
    */
   state: 0 | 1;
 }
 
-interface PermissionOrgRoleDeleteRequest {
+interface H5PermissionOrgRoleDeleteRequest {
   /**
    * 机构id
    */
@@ -59,21 +86,21 @@ interface PermissionOrgRoleDeleteRequest {
   roleName: string;
 }
 
-interface PermissionOrgRoleDeleteResponse {
+interface H5PermissionOrgRoleDeleteResponse {
   /**
    * 操作结果，0-成功，1-有用户拥有此角色故无法删除，2-无此名称的角色
    */
   state: 0 | 1 | 2;
 }
 
-interface PermissionOrgRoleGetRequest {
+interface H5PermissionOrgRoleGetRequest {
   /**
    * 机构id
    */
   orgId: string;
 }
 
-type PermissionOrgRoleGetResponse = {
+type H5PermissionOrgRoleGetResponse = {
   /**
    * 角色名称
    */
@@ -82,7 +109,38 @@ type PermissionOrgRoleGetResponse = {
    * 角色描述信息
    */
   description: string;
-  featurePermission: (-1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 9 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21)[];
+  featurePermission: (
+    | -1
+    | 1
+    | 101
+    | 100
+    | 0
+    | 200
+    | 201
+    | 300
+    | 301
+    | 302
+    | 303
+    | 304
+    | 400
+    | 401
+    | 402
+    | 500
+    | 501
+    | 502
+    | 503
+    | 600
+    | 601
+    | 602
+    | 603
+    | 700
+    | 800
+    | 900
+    | 1000
+    | 1100
+    | 1101
+    | 1102
+  )[];
   dataPermission: 0 | 1 | 2 | 3;
   /**
    * 是否可更改
@@ -90,7 +148,7 @@ type PermissionOrgRoleGetResponse = {
   modifiable: boolean;
 }[];
 
-interface PermissionOrgRoleUpdateRequest {
+interface H5PermissionOrgRoleUpdateRequest {
   /**
    * 机构id
    */
@@ -106,39 +164,49 @@ interface PermissionOrgRoleUpdateRequest {
     description?: string;
     featurePermission: (
       | -1
-      | 0
       | 1
-      | 2
-      | 3
-      | 4
-      | 5
-      | 6
-      | 7
-      | 9
-      | 11
-      | 12
-      | 13
-      | 14
-      | 15
-      | 16
-      | 17
-      | 18
-      | 19
-      | 20
-      | 21)[];
+      | 101
+      | 100
+      | 0
+      | 200
+      | 201
+      | 300
+      | 301
+      | 302
+      | 303
+      | 304
+      | 400
+      | 401
+      | 402
+      | 500
+      | 501
+      | 502
+      | 503
+      | 600
+      | 601
+      | 602
+      | 603
+      | 700
+      | 800
+      | 900
+      | 1000
+      | 1100
+      | 1101
+      | 1102
+    )[];
     dataPermission: 0 | 1 | 2 | 3;
     [k: string]: any;
   };
 }
 
-interface PermissionOrgRoleUpdateResponse {
+interface H5PermissionOrgRoleUpdateResponse {
   /**
    * 操作结果，0-成功，2-未发现此名称的角色
    */
   state: 0 | 2;
 }
 
-interface PermissionPermissionGetRequest {
+interface H5PermissionPermissionGetRequest {
   /**
    * userId
    */
@@ -146,8 +214,39 @@ interface PermissionPermissionGetRequest {
   accountType: 1 | 2;
 }
 
-interface PermissionPermissionGetResponse {
-  featurePermission: (-1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 9 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21)[];
+interface H5PermissionPermissionGetResponse {
+  featurePermission: (
+    | -1
+    | 1
+    | 101
+    | 100
+    | 0
+    | 200
+    | 201
+    | 300
+    | 301
+    | 302
+    | 303
+    | 304
+    | 400
+    | 401
+    | 402
+    | 500
+    | 501
+    | 502
+    | 503
+    | 600
+    | 601
+    | 602
+    | 603
+    | 700
+    | 800
+    | 900
+    | 1000
+    | 1100
+    | 1101
+    | 1102
+  )[];
   dataPermission: 0 | 1 | 2 | 3;
   /**
    * 保险公司id
@@ -168,6 +267,7 @@ interface PermissionPermissionGetResponse {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -185,14 +285,20 @@ interface PermissionPermissionGetResponse {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
-    | "zhong_an";
+    | "zhong_an"
+    | "ping_an_an_hui"
+    | "zhong_lu"
+    | "zhong_guo_ren_shou"
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   [k: string]: any;
 }
 
-interface PermissionUserRoleAddRequest {
+interface H5PermissionUserRoleAddRequest {
   /**
    * 用户id
    */
@@ -221,6 +327,7 @@ interface PermissionUserRoleAddRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -238,14 +345,20 @@ interface PermissionUserRoleAddRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
-    | "zhong_an";
+    | "zhong_an"
+    | "ping_an_an_hui"
+    | "zhong_lu"
+    | "zhong_guo_ren_shou"
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   [k: string]: any;
 }
 
-interface PermissionUserRoleAddResponse {
+interface H5PermissionUserRoleAddResponse {
   /**
    * 操作结果，0-成功，1-已存在同名数据，2-机构中不包含此角色
    */
@@ -255,11 +368,11 @@ interface PermissionUserRoleAddResponse {
 /**
  * 人员ID
  */
-type PermissionUserRoleClearRequest = string;
+type H5PermissionUserRoleClearRequest = string;
 
-type PermissionUserRoleClearResponse = null;
+type H5PermissionUserRoleClearResponse = null;
 
-interface PermissionUserRoleDeleteRequest {
+interface H5PermissionUserRoleDeleteRequest {
   /**
    * 用户id
    */
@@ -270,23 +383,23 @@ interface PermissionUserRoleDeleteRequest {
   roleName: string;
 }
 
-interface PermissionUserRoleDeleteResponse {
+interface H5PermissionUserRoleDeleteResponse {
   /**
    * 操作结果，0-成功，2-未发现此名称的角色
    */
   state: 0 | 2;
 }
 
-interface PermissionUserRoleGetRequest {
+interface H5PermissionUserRoleGetRequest {
   /**
    * 用户id
    */
   userId: string;
 }
 
-type PermissionUserRoleGetResponse = string[];
+type H5PermissionUserRoleGetResponse = string[];
 
-interface PermissionUserRoleUpdateRequest {
+interface H5PermissionUserRoleUpdateRequest {
   /**
    * 用户id
    */
@@ -299,5 +412,5 @@ interface PermissionUserRoleUpdateRequest {
   [k: string]: any;
 }
 
-type PermissionUserRoleUpdateResponse = null;
+type H5PermissionUserRoleUpdateResponse = null;
 

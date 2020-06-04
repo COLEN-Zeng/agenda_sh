@@ -1,12 +1,12 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service_orm/fun自动生成,请勿手动修改
 
-interface AccountInfo {
+interface CoreAccountInfo {
   id: string;
   type: 1 | 2;
 }
 
-interface AccountJobRank {
+interface CoreAccountJobRank {
   id: string;
   jobRank: string;
   previous?: {
@@ -61,7 +61,7 @@ interface AccountJobRank {
   [k: string]: any;
 }
 
-interface AccountNext {
+interface CoreAccountNext {
   id: string;
   /**
    * 下一个下级的ID
@@ -69,7 +69,7 @@ interface AccountNext {
   val: string;
 }
 
-interface AccountPersonnelInfo {
+interface CoreAccountPersonnelInfo {
   /**
    * id
    */

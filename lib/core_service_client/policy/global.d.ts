@@ -1,6 +1,6 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service/fun自动生成,请勿手动修改
 
-type PolicyAddRequest =
+type CorePolicyAddRequest =
   | {
       /**
        * 单个保单号单
@@ -20,7 +20,7 @@ type PolicyAddRequest =
          */
         entranceId: string;
         /**
-         * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+         * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
          */
         insuranceType: string;
         /**
@@ -174,7 +174,11 @@ type PolicyAddRequest =
         /**
          * 操作者账户id
          */
-        accountId: string;
+        accountId?: string;
+        /**
+         * 操作者账户id
+         */
+        orgAccountId: string;
         /**
          * 保费
          */
@@ -494,7 +498,7 @@ type PolicyAddRequest =
          */
         entranceId: string;
         /**
-         * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+         * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
          */
         insuranceType: string;
         /**
@@ -648,7 +652,11 @@ type PolicyAddRequest =
         /**
          * 操作者账户id
          */
-        accountId: string;
+        accountId?: string;
+        /**
+         * 操作者账户id
+         */
+        orgAccountId: string;
         /**
          * 保费
          */
@@ -953,14 +961,14 @@ type PolicyAddRequest =
 /**
  * 保单id
  */
-type PolicyAddResponse = string;
+type CorePolicyAddResponse = string;
 
 /**
  * 理赔单id
  */
-type PolicyClaimGetRequest = string;
+type CorePolicyClaimGetRequest = string;
 
-type PolicyClaimGetResponse = {
+type CorePolicyClaimGetResponse = {
   /**
    * claimId
    */
@@ -1054,7 +1062,7 @@ type PolicyClaimGetResponse = {
   [k: string]: any;
 } | null;
 
-interface PolicyClaimListRequest {
+interface CorePolicyClaimListRequest {
   /**
    * 公司id
    */
@@ -1074,6 +1082,7 @@ interface PolicyClaimListRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -1091,14 +1100,16 @@ interface PolicyClaimListRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   /**
    * 险种id
    */
@@ -1119,7 +1130,7 @@ interface PolicyClaimListRequest {
   [k: string]: any;
 }
 
-interface PolicyClaimListResponse {
+interface CorePolicyClaimListResponse {
   data: {
     /**
      * claimId
@@ -1216,7 +1227,7 @@ interface PolicyClaimListResponse {
   totalCount: number;
 }
 
-interface PolicyClaimSetRequest {
+interface CorePolicyClaimSetRequest {
   /**
    * claimId
    */
@@ -1310,14 +1321,14 @@ interface PolicyClaimSetRequest {
   [k: string]: any;
 }
 
-type PolicyClaimSetResponse = null;
+type CorePolicyClaimSetResponse = null;
 
 /**
  * uuid
  */
-type PolicyEndorsementGetRequest = string;
+type CorePolicyEndorsementGetRequest = string;
 
-type PolicyEndorsementGetResponse = {
+type CorePolicyEndorsementGetResponse = {
   /**
    * uuid
    */
@@ -1328,7 +1339,7 @@ type PolicyEndorsementGetResponse = {
   entranceId: string;
   frontendProcessId?: string;
   /**
-   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
    */
   insuranceType: string;
   /**
@@ -1400,7 +1411,7 @@ type PolicyEndorsementGetResponse = {
   [k: string]: any;
 } | null;
 
-interface PolicyEndorsementListRequest {
+interface CorePolicyEndorsementListRequest {
   /**
    * 公司id
    */
@@ -1420,6 +1431,7 @@ interface PolicyEndorsementListRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -1437,14 +1449,16 @@ interface PolicyEndorsementListRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   insuranceType?: {
     /**
      * 0: 全匹配， 1:模糊匹配
@@ -1489,7 +1503,7 @@ interface PolicyEndorsementListRequest {
   [k: string]: any;
 }
 
-interface PolicyEndorsementListResponse {
+interface CorePolicyEndorsementListResponse {
   data: {
     /**
      * uuid
@@ -1501,7 +1515,7 @@ interface PolicyEndorsementListResponse {
     entranceId: string;
     frontendProcessId?: string;
     /**
-     * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+     * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
      */
     insuranceType: string;
     /**
@@ -1575,7 +1589,7 @@ interface PolicyEndorsementListResponse {
   totalCount: number;
 }
 
-interface PolicyEndorsementSetRequest {
+interface CorePolicyEndorsementSetRequest {
   /**
    * uuid
    */
@@ -1586,7 +1600,7 @@ interface PolicyEndorsementSetRequest {
   entranceId: string;
   frontendProcessId?: string;
   /**
-   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
    */
   insuranceType: string;
   /**
@@ -1658,17 +1672,17 @@ interface PolicyEndorsementSetRequest {
   [k: string]: any;
 }
 
-type PolicyEndorsementSetResponse = null;
+type CorePolicyEndorsementSetResponse = null;
 
 /**
  * 保单id
  */
-type PolicyGetRequest = string;
+type CorePolicyGetRequest = string;
 
 /**
  * 组合单的话，将吐回两个保单
  */
-type PolicyGetResponse = {
+type CorePolicyGetResponse = {
   /**
    * uuid
    */
@@ -1695,7 +1709,7 @@ type PolicyGetResponse = {
   entranceId?: string;
   frontendProcessId?: string;
   /**
-   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
    */
   insuranceType?: string;
   /**
@@ -1847,6 +1861,10 @@ type PolicyGetResponse = {
    * 操作者账户id
    */
   accountId?: string;
+  /**
+   * 操作者账户id
+   */
+  orgAccountId?: string;
   /**
    * 保费
    */
@@ -2389,12 +2407,24 @@ type PolicyGetResponse = {
        * 银行代码-保险公司
        */
       bankCode?: string;
+      /**
+       * 短信验证码,代扣必须
+       */
+      verifyCode?: string;
+      /**
+       * 续期缴费方式 目前只支持银行卡
+       */
+      payType?: 1;
+      /**
+       * 是否与支付银行卡一致
+       */
+      paymentSame?: 0 | 1;
     };
   };
   [k: string]: any;
 } | null;
 
-interface PolicyListRequest {
+interface CorePolicyListRequest {
   /**
    * 公司id
    */
@@ -2414,6 +2444,7 @@ interface PolicyListRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -2431,14 +2462,16 @@ interface PolicyListRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   insuranceType?: {
     /**
      * 0: 全匹配， 1:模糊匹配
@@ -2522,7 +2555,7 @@ interface PolicyListRequest {
   [k: string]: any;
 }
 
-interface PolicyListResponse {
+interface CorePolicyListResponse {
   data: {
     /**
      * uuid
@@ -2550,7 +2583,7 @@ interface PolicyListResponse {
     entranceId?: string;
     frontendProcessId?: string;
     /**
-     * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+     * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
      */
     insuranceType?: string;
     /**
@@ -2702,6 +2735,10 @@ interface PolicyListResponse {
      * 操作者账户id
      */
     accountId?: string;
+    /**
+     * 操作者账户id
+     */
+    orgAccountId?: string;
     /**
      * 保费
      */
@@ -3244,6 +3281,18 @@ interface PolicyListResponse {
          * 银行代码-保险公司
          */
         bankCode?: string;
+        /**
+         * 短信验证码,代扣必须
+         */
+        verifyCode?: string;
+        /**
+         * 续期缴费方式 目前只支持银行卡
+         */
+        payType?: 1;
+        /**
+         * 是否与支付银行卡一致
+         */
+        paymentSame?: 0 | 1;
       };
     };
     [k: string]: any;
@@ -3257,9 +3306,9 @@ interface PolicyListResponse {
 /**
  * 保单id
  */
-type PolicyReceiptGetRequest = string;
+type CorePolicyReceiptGetRequest = string;
 
-type PolicyReceiptGetResponse = {
+type CorePolicyReceiptGetResponse = {
   /**
    * 保单id
    */
@@ -3267,7 +3316,7 @@ type PolicyReceiptGetResponse = {
   images: string[];
 } | null;
 
-interface PolicyReceiptSetRequest {
+interface CorePolicyReceiptSetRequest {
   /**
    * 保单id
    */
@@ -3275,9 +3324,9 @@ interface PolicyReceiptSetRequest {
   images: string[];
 }
 
-type PolicyReceiptSetResponse = null;
+type CorePolicyReceiptSetResponse = null;
 
-interface PolicySetRequest {
+interface CorePolicySetRequest {
   /**
    * uuid
    */
@@ -3304,7 +3353,7 @@ interface PolicySetRequest {
   entranceId?: string;
   frontendProcessId?: string;
   /**
-   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
+   * {"Individual":{"Accident":{"PERSONAL":"100000","TRAVEL":"100001","TRAFFIC":"100002"},"Health":{"SERIOUS_ILLNESS":"101001","MEDICAL":"101002"},"Property":{"VEHICLE":"102000","FAMILY_PERSONAL":"102001"},"Life":{"TERM":"103000","WHOLE":"103001","LIVE":"103002","ENDOWMENT":"103003","PENSION":"103004","UNIVERSAL":"103005"},"Annuities":{"EDUCATION":"104000","PENSION":"104001"}},"Group":{"Accident":{"PERSONAL":"200000","CONSTRUCTION":"200001"},"Property":{"COMPANY":"201000"},"Liability":{"EMPLOYERS":"202000","PRODUCT":"202001"},"Engineering":{"CONSTRUCTION":"203000","INSTALL":"203001","TECHNOLOGY":"203002"},"Cargo":{"PARCEL_POST":"204000","AIR":"204001","OCEAN_VESSEL":"204002","INLAND":"204003"}}}
    */
   insuranceType?: string;
   /**
@@ -3456,6 +3505,10 @@ interface PolicySetRequest {
    * 操作者账户id
    */
   accountId?: string;
+  /**
+   * 操作者账户id
+   */
+  orgAccountId?: string;
   /**
    * 保费
    */
@@ -3998,10 +4051,22 @@ interface PolicySetRequest {
        * 银行代码-保险公司
        */
       bankCode?: string;
+      /**
+       * 短信验证码,代扣必须
+       */
+      verifyCode?: string;
+      /**
+       * 续期缴费方式 目前只支持银行卡
+       */
+      payType?: 1;
+      /**
+       * 是否与支付银行卡一致
+       */
+      paymentSame?: 0 | 1;
     };
   };
   [k: string]: any;
 }
 
-type PolicySetResponse = null;
+type CorePolicySetResponse = null;
 

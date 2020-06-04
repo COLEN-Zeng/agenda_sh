@@ -1,7 +1,7 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface AuthCustomerSession {
+interface H5AuthCustomerSession {
   /**
    * sessionId
    */
@@ -21,7 +21,7 @@ interface AuthCustomerSession {
   [k: string]: any;
 }
 
-interface AuthSession {
+interface H5AuthSession {
   /**
    * sessionId
    */
@@ -44,7 +44,7 @@ interface AuthSession {
   [k: string]: any;
 }
 
-interface AuthTokenPermission {
+interface H5AuthTokenPermission {
   /**
    * token
    */
@@ -60,7 +60,7 @@ interface AuthTokenPermission {
   [k: string]: any;
 }
 
-interface AuthUserIdSessionId {
+interface H5AuthUserIdSessionId {
   id: string;
   sessionId: string;
   /**
@@ -69,7 +69,7 @@ interface AuthUserIdSessionId {
   createdAt: number;
 }
 
-interface AuthWechatAccessToken {
+interface H5AuthWechatAccessToken {
   /**
    * 微信openid
    */

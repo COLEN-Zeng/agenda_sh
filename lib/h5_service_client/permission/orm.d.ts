@@ -1,7 +1,15 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface PermissionOrgRole {
+interface H5PermissionOrgPermission {
+  /**
+   * userId
+   */
+  id: string;
+  featurePermission: number[];
+}
+
+interface H5PermissionOrgRole {
   /**
    * 组织id
    */
@@ -17,32 +25,42 @@ interface PermissionOrgRole {
     description?: string;
     featurePermission: (
       | -1
-      | 0
       | 1
-      | 2
-      | 3
-      | 4
-      | 5
-      | 6
-      | 7
-      | 9
-      | 11
-      | 12
-      | 13
-      | 14
-      | 15
-      | 16
-      | 17
-      | 18
-      | 19
-      | 20
-      | 21)[];
+      | 101
+      | 100
+      | 0
+      | 200
+      | 201
+      | 300
+      | 301
+      | 302
+      | 303
+      | 304
+      | 400
+      | 401
+      | 402
+      | 500
+      | 501
+      | 502
+      | 503
+      | 600
+      | 601
+      | 602
+      | 603
+      | 700
+      | 800
+      | 900
+      | 1000
+      | 1100
+      | 1101
+      | 1102
+    )[];
     dataPermission: 0 | 1 | 2 | 3;
     [k: string]: any;
   }[];
 }
 
-interface PermissionPersonnelRole {
+interface H5PermissionPersonnelRole {
   /**
    * userId
    */

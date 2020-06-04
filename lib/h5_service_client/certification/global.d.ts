@@ -1,6 +1,6 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface CertificationApplicationFinalizeRequest {
+interface H5CertificationApplicationFinalizeRequest {
   /**
    * 审核认证申请id
    */
@@ -14,9 +14,9 @@ interface CertificationApplicationFinalizeRequest {
    */
   licenseNumber?: string;
   /**
-   * {"OUTSIDE_AGENT":0,"INSIDE_AGENT":1}
+   * {"OUTSIDE_AGENT":0,"INSIDE_AGENT":1,"REAL_NAME":2}
    */
-  agentType?: 0 | 1;
+  agentType?: 0 | 1 | 2;
   /**
    * 审核不通过原因
    */
@@ -39,9 +39,9 @@ interface CertificationApplicationFinalizeRequest {
   [k: string]: any;
 }
 
-type CertificationApplicationFinalizeResponse = null;
+type H5CertificationApplicationFinalizeResponse = null;
 
-interface CertificationApplicationListRequest {
+interface H5CertificationApplicationListRequest {
   /**
    * 机构的accountId或userId
    */
@@ -49,11 +49,11 @@ interface CertificationApplicationListRequest {
   status?: 0 | 1 | 2 | 3;
   submittedAt?: {
     /**
-     * 时间戳，精确到秒
+     * 时间戳，精确到秒,最大只能到9999-12-12 23:59:59
      */
     from: number;
     /**
-     * 时间戳，精确到秒
+     * 时间戳，精确到秒,最大只能到9999-12-12 23:59:59
      */
     to: number;
   };
@@ -63,7 +63,7 @@ interface CertificationApplicationListRequest {
   [k: string]: any;
 }
 
-type CertificationApplicationListResponse = {
+type H5CertificationApplicationListResponse = {
   /**
    * 用户id
    */
@@ -72,7 +72,10 @@ type CertificationApplicationListResponse = {
    * 手机号
    */
   mobile?: string;
-  type?: 0 | 1;
+  /**
+   * 申请时的代理人身份：{"OUTSIDE_AGENT":0,"INSIDE_AGENT":1,"REAL_NAME":2}
+   */
+  agentType?: 0 | 1 | 2;
   /**
    * 姓名
    */
@@ -136,9 +139,9 @@ type CertificationApplicationListResponse = {
   };
   status: 0 | 1 | 2 | 3;
   /**
-   * 是否为从业人员
+   * 认证类型: 非从业人员, 从业人员, 实名认证
    */
-  isInsuranceEmployee: boolean;
+  certifyType?: 0 | 1 | 2;
   /**
    * 学历
    */
@@ -169,14 +172,10 @@ type CertificationApplicationListResponse = {
    * 审核不通过原因
    */
   failedReason?: string;
-  /**
-   * 性别
-   */
-  gender?: number;
   [k: string]: any;
 }[];
 
-interface CertificationApplyRequest {
+interface H5CertificationApplyRequest {
   /**
    * uuid
    */
@@ -189,11 +188,40 @@ interface CertificationApplyRequest {
     /**
      * 证件类型
      */
-    idType?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22;
+    idType:
+      | 0
+      | 1
+      | 2
+      | 3
+      | 4
+      | 5
+      | 6
+      | 7
+      | 8
+      | 9
+      | 10
+      | 11
+      | 12
+      | 13
+      | 14
+      | 15
+      | 16
+      | 17
+      | 18
+      | 19
+      | 20
+      | 21
+      | 22
+      | 23
+      | 24;
     /**
      * 证件号码
      */
     idNumber: string;
+    /**
+     * 申请时的代理人身份：{"OUTSIDE_AGENT":0,"INSIDE_AGENT":1,"REAL_NAME":2}
+     */
+    agentType?: 0 | 1 | 2;
     /**
      * 手机号码
      */
@@ -256,21 +284,20 @@ interface CertificationApplyRequest {
      */
     education?: "本科" | "大专" | "高中及同等学历" | "初中及同等学历" | "硕士" | "博士" | "初中以下学历";
     /**
-     * 保险从业人员资格认证
+     * 认证类型: 非从业人员, 从业人员, 实名认证
      */
-    isInsuranceEmployee: boolean;
+    certifyType: 0 | 1 | 2;
     /**
      * 意向机构ID
      */
     heartOrg?: string;
-    [k: string]: any;
   };
   [k: string]: any;
 }
 
-type CertificationApplyResponse = null;
+type H5CertificationApplyResponse = null;
 
-interface CertificationElectronicContractUpdateRequest {
+interface H5CertificationElectronicContractUpdateRequest {
   /**
    * 人员ID
    */
@@ -294,7 +321,7 @@ interface CertificationElectronicContractUpdateRequest {
   /**
    * 通信地址
    */
-  address: string;
+  address?: string;
   /**
    * 工号
    */
@@ -302,17 +329,40 @@ interface CertificationElectronicContractUpdateRequest {
   [k: string]: any;
 }
 
-type CertificationElectronicContractUpdateResponse = null;
+type H5CertificationElectronicContractUpdateResponse = null;
 
-interface CertificationIdIsDuplicateCheckRequest {
+interface H5CertificationIdIsDuplicateCheckRequest {
   /**
    * 身份证号码
    */
   idNumber: string;
-  /**
-   * 证件类型
-   */
-  idType?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22;
+  idType?: (
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 17
+    | 18
+    | 19
+    | 20
+    | 21
+    | 22
+    | 23
+    | 24
+  )[];
   /**
    * 期望结果，若不符合期望结果则报错
    */
@@ -327,9 +377,9 @@ interface CertificationIdIsDuplicateCheckRequest {
 /**
  * 重复则返回true
  */
-type CertificationIdIsDuplicateCheckResponse = boolean;
+type H5CertificationIdIsDuplicateCheckResponse = boolean;
 
-interface CertificationRealNameAuthenticateCallbackRequest {
+interface H5CertificationRealNameAuthenticateCallbackRequest {
   /**
    * 法大大用户唯一标示
    */
@@ -348,9 +398,9 @@ interface CertificationRealNameAuthenticateCallbackRequest {
   verifiedSerialNo: string;
 }
 
-type CertificationRealNameAuthenticateCallbackResponse = null;
+type H5CertificationRealNameAuthenticateCallbackResponse = null;
 
-interface CertificationRealNameAuthenticateRequest {
+interface H5CertificationRealNameAuthenticateRequest {
   /**
    * 用户id
    */
@@ -361,7 +411,7 @@ interface CertificationRealNameAuthenticateRequest {
   returnUrl: string;
 }
 
-type CertificationRealNameAuthenticateResponse =
+type H5CertificationRealNameAuthenticateResponse =
   | {
       needAuthenticate: true;
       /**

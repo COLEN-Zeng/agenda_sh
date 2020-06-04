@@ -1,7 +1,7 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service_orm/fun自动生成,请勿手动修改
 
-interface PaymentInfo {
+interface CorePaymentInfo {
   /**
    * paymentId
    */
@@ -37,7 +37,7 @@ interface PaymentInfo {
   opsType: number;
 }
 
-interface PaymentWithholding {
+interface CorePaymentWithholding {
   /**
    * policyId
    */

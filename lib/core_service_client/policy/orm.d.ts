@@ -1,7 +1,7 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service_orm/fun自动生成,请勿手动修改
 
-interface PolicyClaim {
+interface CorePolicyClaim {
   /**
    * claimId
    */
@@ -64,7 +64,7 @@ interface PolicyClaim {
   [k: string]: any;
 }
 
-interface PolicyEndorsement {
+interface CorePolicyEndorsement {
   id: string;
   /**
    * 入口id
@@ -119,7 +119,7 @@ interface PolicyEndorsement {
   [k: string]: any;
 }
 
-interface PolicyInfo {
+interface CorePolicyInfo {
   id?: string;
   /**
    * 0:单个保单号单(simple), 2:组合单(combination)
@@ -277,6 +277,10 @@ interface PolicyInfo {
   refundId?: string;
   accountId?: string;
   /**
+   * 所属机构id
+   */
+  orgAccountId?: string;
+  /**
    * 保费
    */
   premium?: number;
@@ -342,58 +346,63 @@ interface PolicyInfo {
     [k: string]: any;
   };
   quotePlan?: {
-    id: string;
-    insuranceId: string;
+    id?: string;
+    insuranceId?: string;
     /**
      * 公司id
      */
-    companyId: string;
-    status: number;
-    plan: {
+    companyId?: string;
+    status?: number;
+    plan?: {
       [k: string]: any;
     };
     /**
      * 总保费
      */
-    premium: number;
+    premium?: number;
     /**
      * 保险公司给机构的佣金比例
      */
-    commissionRate: number;
+    commissionRate?: number;
     /**
      * 报价详情，可存储报价结果相关东西
      */
-    quoteDetail: {
+    quoteDetail?: {
       [k: string]: any;
     };
     /**
      * 生效时间
      */
-    effectedAt: number;
+    effectedAt?: number;
     /**
      * 失效时间
      */
-    expiredAt: number;
+    expiredAt?: number;
     /**
      * 修改时间
      */
-    modifiedAt: number;
+    modifiedAt?: number;
     /**
      * 保障期限
      */
-    period: number;
+    period?: number;
     /**
      * 保障期限单位
      */
-    periodUnit: string;
+    periodUnit?: string;
     /**
      * 缴费期限
      */
-    payPeriod: number;
+    payPeriod?: number;
     /**
      * 缴费期限单位
      */
-    payPeriodUnit: string;
+    payPeriodUnit?: string;
+    /**
+     * 首期保费
+     */
+    firstPremium?: number;
+    [k: string]: any;
   };
   delivery?: {
     /**
@@ -471,7 +480,7 @@ interface PolicyInfo {
       [k: string]: any;
     }[];
     /**
-     * 额外信息
+     * 自动续保支付信息
      */
     payment?: {
       /**
@@ -504,7 +513,7 @@ interface PolicyInfo {
   [k: string]: any;
 }
 
-interface PolicyReceipt {
+interface CorePolicyReceipt {
   /**
    * policyId
    */

@@ -1,7 +1,7 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface GuestArticleArticleExponent {
+interface H5GuestArticleArticleExponent {
   /**
    * id
    */
@@ -37,7 +37,7 @@ interface GuestArticleArticleExponent {
   [k: string]: any;
 }
 
-interface GuestArticleInfo {
+interface H5GuestArticleInfo {
   /**
    * id
    */
@@ -127,7 +127,7 @@ interface GuestArticleInfo {
   [k: string]: any;
 }
 
-interface GuestArticlePush {
+interface H5GuestArticlePush {
   /**
    * id
    */
@@ -219,7 +219,7 @@ interface GuestArticlePush {
   [k: string]: any;
 }
 
-interface GuestArticleArticleReadingRecord {
+interface H5GuestArticleArticleReadingRecord {
   /**
    * 文章id, articleId
    */
@@ -241,7 +241,7 @@ interface GuestArticleArticleReadingRecord {
   [k: string]: any;
 }
 
-interface GuestArticleUserLibrary {
+interface H5GuestArticleUserLibrary {
   /**
    * 用户id
    */

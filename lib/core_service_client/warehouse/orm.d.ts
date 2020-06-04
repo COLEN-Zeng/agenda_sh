@@ -1,7 +1,7 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service_orm/fun自动生成,请勿手动修改
 
-interface WarehouseEntrance {
+interface CoreWarehouseEntrance {
   id?: string;
   mode?: string;
   /**
@@ -18,7 +18,7 @@ interface WarehouseEntrance {
   [k: string]: any;
 }
 
-interface WarehouseInsuranceBackend {
+interface CoreWarehouseInsuranceBackend {
   /**
    * uuid,无其他作用
    */
@@ -75,7 +75,7 @@ interface WarehouseInsuranceBackend {
   frontendProcessId?: string;
 }
 
-interface WarehouseInsuranceFrontend {
+interface CoreWarehouseInsuranceFrontend {
   /**
    * 险种id
    */
@@ -377,7 +377,7 @@ interface WarehouseInsuranceFrontend {
   };
 }
 
-interface WarehousePromotionRateTemplate {
+interface CoreWarehousePromotionRateTemplate {
   id?: string;
   /**
    * accountId

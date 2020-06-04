@@ -1,7 +1,7 @@
 // 本文件为ORM数据结构定义
-// 本文件由toolchain/code_generator/service_orm/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface CertificationApplication {
+interface H5CertificationApplication {
   /**
    * 用户id
    */
@@ -10,7 +10,10 @@ interface CertificationApplication {
    * 手机号
    */
   mobile?: string;
-  type?: 0 | 1;
+  /**
+   * 代理人身份
+   */
+  agentType?: 0 | 1 | 2;
   /**
    * 姓名
    */
@@ -22,7 +25,32 @@ interface CertificationApplication {
   /**
    * 证件类型
    */
-  idType?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22;
+  idType?:
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 17
+    | 18
+    | 19
+    | 20
+    | 21
+    | 22
+    | 23
+    | 24;
   /**
    * 身份证号码
    */
@@ -81,7 +109,11 @@ interface CertificationApplication {
    */
   education?: "本科" | "大专" | "高中及同等学历" | "初中及同等学历" | "硕士" | "博士" | "初中以下学历";
   status?: 0 | 1 | 2 | 3;
-  isInsuranceEmployee: boolean;
+  isInsuranceEmployee?: boolean;
+  /**
+   * 认证类型: 非从业人员, 从业人员, 实名认证
+   */
+  certifyType?: 0 | 1 | 2;
   /**
    * 提交申请时间戳
    */
@@ -111,7 +143,7 @@ interface CertificationApplication {
   [k: string]: any;
 }
 
-interface CertificationInfo {
+interface H5CertificationInfo {
   /**
    * 用户id
    */
@@ -119,7 +151,7 @@ interface CertificationInfo {
   /**
    * 代理人身份
    */
-  agentType: 0 | 1;
+  agentType: 0 | 1 | 2;
   /**
    * 姓名
    */
@@ -143,7 +175,7 @@ interface CertificationInfo {
   [k: string]: any;
 }
 
-interface CertificationRealNameAuthentication {
+interface H5CertificationRealNameAuthentication {
   /**
    * 用户id
    */

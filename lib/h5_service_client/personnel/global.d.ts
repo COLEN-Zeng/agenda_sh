@@ -1,6 +1,6 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
-interface PersonnelCommissionPromotionRateChangeRequest {
+interface H5PersonnelCommissionPromotionRateChangeRequest {
   /**
    * 人员ID
    */
@@ -15,9 +15,9 @@ interface PersonnelCommissionPromotionRateChangeRequest {
   rate: number;
 }
 
-type PersonnelCommissionPromotionRateChangeResponse = null;
+type H5PersonnelCommissionPromotionRateChangeResponse = null;
 
-interface PersonnelCustomerVisitRecordAddRequest {
+interface H5PersonnelCustomerVisitRecordAddRequest {
   /**
    * 用户id
    */
@@ -70,23 +70,23 @@ interface PersonnelCustomerVisitRecordAddRequest {
   [k: string]: any;
 }
 
-type PersonnelCustomerVisitRecordAddResponse = null;
+type H5PersonnelCustomerVisitRecordAddResponse = null;
 
-type PersonnelDailyWechatMsgSendRequest = string[];
+type H5PersonnelDailyWechatMsgSendRequest = string[];
 
-type PersonnelDailyWechatMsgSendResponse = null;
+type H5PersonnelDailyWechatMsgSendResponse = null;
 
 /**
  * 人员ID
  */
-type PersonnelEmployeeIdGenRequest = string;
+type H5PersonnelEmployeeIdGenRequest = string;
 
 /**
  * 工号
  */
-type PersonnelEmployeeIdGenResponse = string;
+type H5PersonnelEmployeeIdGenResponse = string;
 
-interface PersonnelIncomeRecordAddRequest {
+interface H5PersonnelIncomeRecordAddRequest {
   policy: {
     /**
      * uuid
@@ -816,6 +816,14 @@ interface PersonnelIncomeRecordAddRequest {
          * 短信验证码,代扣必须
          */
         verifyCode?: string;
+        /**
+         * 续期缴费方式 目前只支持银行卡
+         */
+        payType?: 1;
+        /**
+         * 是否与支付银行卡一致
+         */
+        paymentSame?: 0 | 1;
       };
     };
     [k: string]: any;
@@ -830,9 +838,9 @@ interface PersonnelIncomeRecordAddRequest {
   orgPromotionMoney: number[];
 }
 
-type PersonnelIncomeRecordAddResponse = null;
+type H5PersonnelIncomeRecordAddResponse = null;
 
-interface PersonnelIncomeRecordChangeRequest {
+interface H5PersonnelIncomeRecordChangeRequest {
   /**
    * 收入ID
    */
@@ -880,9 +888,9 @@ interface PersonnelIncomeRecordChangeRequest {
   [k: string]: any;
 }
 
-type PersonnelIncomeRecordChangeResponse = null;
+type H5PersonnelIncomeRecordChangeResponse = null;
 
-interface PersonnelIncomeRecordFindRequest {
+interface H5PersonnelIncomeRecordFindRequest {
   /**
    * 保单id
    */
@@ -960,7 +968,7 @@ interface PersonnelIncomeRecordFindRequest {
   [k: string]: any;
 }
 
-interface PersonnelIncomeRecordFindResponse {
+interface H5PersonnelIncomeRecordFindResponse {
   data?: {
     /**
      * 收入ID
@@ -1012,7 +1020,7 @@ interface PersonnelIncomeRecordFindResponse {
   [k: string]: any;
 }
 
-interface PersonnelIncomeRecordQueryRequest {
+interface H5PersonnelIncomeRecordQueryRequest {
   id: string;
   /**
    * {"USER_ID":1,"SPECIFIC_ID":3,"USER_ID_AND_SHOW_FROZEN":4,"USER_ID_AND_NOT_SHOW_SURRENDER":5}
@@ -1021,7 +1029,7 @@ interface PersonnelIncomeRecordQueryRequest {
   [k: string]: any;
 }
 
-type PersonnelIncomeRecordQueryResponse = {
+type H5PersonnelIncomeRecordQueryResponse = {
   /**
    * 收入ID
    */
@@ -1069,14 +1077,14 @@ type PersonnelIncomeRecordQueryResponse = {
   [k: string]: any;
 }[];
 
-interface PersonnelInfoGetByAccountIdRequest {
+interface H5PersonnelInfoGetByAccountIdRequest {
   /**
    * 用户id
    */
   coreAccountId: string;
 }
 
-type PersonnelInfoGetByAccountIdResponse = null | {
+type H5PersonnelInfoGetByAccountIdResponse = null | {
   /**
    * 人员ID
    */
@@ -1217,7 +1225,7 @@ type PersonnelInfoGetByAccountIdResponse = null | {
   [k: string]: any;
 };
 
-interface PersonnelOrgPersonnelInfoGetRequest {
+interface H5PersonnelOrgPersonnelInfoGetRequest {
   superiorOrgCoreAccountId?: string;
   /**
    * 人员ID
@@ -1260,7 +1268,7 @@ interface PersonnelOrgPersonnelInfoGetRequest {
   [k: string]: any;
 }
 
-interface PersonnelOrgPersonnelInfoGetResponse {
+interface H5PersonnelOrgPersonnelInfoGetResponse {
   data?: {
     /**
      * 人员ID
@@ -1405,7 +1413,7 @@ interface PersonnelOrgPersonnelInfoGetResponse {
   [k: string]: any;
 }
 
-interface PersonnelPlatformMsgPushRequest {
+interface H5PersonnelPlatformMsgPushRequest {
   /**
    * 人员ID
    */
@@ -1427,7 +1435,8 @@ interface PersonnelPlatformMsgPushRequest {
     | "JOB_REMINDER"
     | "QUOTATION_QUOTE"
     | "NEGOTIATION_APPLY"
-    | "FINANCE_DEAL";
+    | "FINANCE_DEAL"
+    | "PROPOSAL_REJECT";
   /**
    * 不做任何限制
    */
@@ -1444,9 +1453,9 @@ interface PersonnelPlatformMsgPushRequest {
 /**
  * 推送成功, 则返回 true, 推送失败(例如没有存openId), 则返回 false
  */
-type PersonnelPlatformMsgPushResponse = boolean;
+type H5PersonnelPlatformMsgPushResponse = boolean;
 
-interface PersonnelPromotionGetRequest {
+interface H5PersonnelPromotionGetRequest {
   /**
    * 人员ID
    */
@@ -1529,9 +1538,9 @@ interface PersonnelPromotionGetRequest {
   };
 }
 
-type PersonnelPromotionGetResponse = number[];
+type H5PersonnelPromotionGetResponse = number[];
 
-interface PersonnelShareAddRequest {
+interface H5PersonnelShareAddRequest {
   /**
    * 用户id
    */
@@ -1579,18 +1588,328 @@ interface PersonnelShareAddRequest {
 /**
  * shareId
  */
-type PersonnelShareAddResponse = string;
+type H5PersonnelShareAddResponse = string;
 
 /**
  * 操作者账户id
  */
-type PersonnelShopConfigGetRequest = string;
+type H5PersonnelShopConfigGetRequest = string;
 
-interface PersonnelShopConfigGetResponse {
-  [k: string]: any;
+interface H5PersonnelShopConfigGetResponse {
+  id: string;
+  title: string;
+  isDefault?: boolean;
+  navigation: {
+    name: string;
+    link: string;
+    isDefault: boolean;
+    iconSrc: {
+      clicked: string;
+      notClick: string;
+    };
+    tempIcon?: string;
+  }[];
+  shareConfig: {
+    desc: string;
+    image: string;
+    title: string;
+  };
+  pageModules: (
+    | {
+        type: "banner";
+        data: {
+          imgUrl: string;
+          directUrl?: string;
+          insuranceName?: string;
+          frontendProcessId?: string;
+        }[];
+      }
+    | {
+        type: "personalCard";
+        data: {
+          isShowPersonalCard: boolean;
+        };
+      }
+    | {
+        type: "tool";
+        data: {
+          iconImg: string;
+          id?: string;
+          link: string;
+          name: string;
+          [k: string]: any;
+        }[];
+      }
+    | {
+        type: "productList";
+        data: {
+          /**
+           * 是否显示分类
+           */
+          isClassify: boolean;
+          tab:
+            | {
+                selected?: boolean;
+                name: string;
+                list: {
+                  /**
+                   * 移动端配置
+                   */
+                  mobile?: {
+                    /**
+                     * 入口id
+                     */
+                    id?: string;
+                    /**
+                     * 险种名
+                     */
+                    name?: string;
+                    /**
+                     * 产品图
+                     */
+                    imageUrl?: string;
+                    /**
+                     * 按钮文字
+                     */
+                    buttonText?: string;
+                    /**
+                     * 产品描述
+                     */
+                    description?: string[];
+                    /**
+                     * 自定义推广费栏内容
+                     */
+                    customPromotion?: string;
+                    /**
+                     * 跳转链接
+                     */
+                    linkUrl?: string;
+                    poster?: {
+                      /**
+                       * 海报id,由后端生成的32位uuid
+                       */
+                      id?: string;
+                      /**
+                       * 海报标题,同入口标题
+                       */
+                      name?: string;
+                      urlList?: string[];
+                      [k: string]: any;
+                    };
+                    frontendProcessId?: string;
+                    /**
+                     * 自定义险种才有
+                     */
+                    insuranceType?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    productRecommendedImageUrl?: string;
+                    /**
+                     * 自定义险种才有，单位元
+                     */
+                    price?: number;
+                    /**
+                     * 自定义险种才有
+                     */
+                    shortCompanyName?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    companyId?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    people?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    promotion?: number;
+                    /**
+                     * 人群
+                     */
+                    group?: string[];
+                    /**
+                     * 产品特色
+                     */
+                    characteristic?: string[];
+                  };
+                  /**
+                   * 核心配置
+                   */
+                  core?: {
+                    /**
+                     * 产品入口id,未保存时为空
+                     */
+                    id?: string;
+                    mode?: string;
+                    /**
+                     * 选择所有可用的险种竞价,仅团险入口有此字段
+                     */
+                    selectAll?: boolean;
+                    /**
+                     * 如果是单产品则有此字段
+                     */
+                    insuranceId?: string;
+                    /**
+                     * 如果是多产品则有此字段
+                     */
+                    insuranceIds?: string[];
+                    [k: string]: any;
+                  };
+                  /**
+                   * 该产品是否已停售
+                   */
+                  insuranceReject?: boolean;
+                  /**
+                   * 该产品是否已下架
+                   */
+                  insuranceOffShelf?: boolean;
+                  /**
+                   * 用于产品列表排序
+                   */
+                  createAt?: number;
+                  /**
+                   * 用于产品列表排序
+                   */
+                  modifiedAt?: number;
+                  [k: string]: any;
+                }[];
+                [k: string]: any;
+              }[]
+            | {
+                name: string;
+                list: {
+                  /**
+                   * 移动端配置
+                   */
+                  mobile?: {
+                    /**
+                     * 入口id
+                     */
+                    id?: string;
+                    /**
+                     * 险种名
+                     */
+                    name?: string;
+                    /**
+                     * 产品图
+                     */
+                    imageUrl?: string;
+                    /**
+                     * 按钮文字
+                     */
+                    buttonText?: string;
+                    /**
+                     * 产品描述
+                     */
+                    description?: string[];
+                    /**
+                     * 自定义推广费栏内容
+                     */
+                    customPromotion?: string;
+                    /**
+                     * 跳转链接
+                     */
+                    linkUrl?: string;
+                    poster?: {
+                      /**
+                       * 海报id,由后端生成的32位uuid
+                       */
+                      id?: string;
+                      /**
+                       * 海报标题,同入口标题
+                       */
+                      name?: string;
+                      urlList?: string[];
+                      [k: string]: any;
+                    };
+                    frontendProcessId?: string;
+                    /**
+                     * 自定义险种才有
+                     */
+                    insuranceType?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    productRecommendedImageUrl?: string;
+                    /**
+                     * 自定义险种才有，单位元
+                     */
+                    price?: number;
+                    /**
+                     * 自定义险种才有
+                     */
+                    shortCompanyName?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    companyId?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    people?: string[];
+                    /**
+                     * 自定义险种才有
+                     */
+                    promotion?: number;
+                    /**
+                     * 人群
+                     */
+                    group?: string[];
+                    /**
+                     * 产品特色
+                     */
+                    characteristic?: string[];
+                  };
+                  /**
+                   * 核心配置
+                   */
+                  core?: {
+                    /**
+                     * 产品入口id,未保存时为空
+                     */
+                    id?: string;
+                    mode?: string;
+                    /**
+                     * 选择所有可用的险种竞价,仅团险入口有此字段
+                     */
+                    selectAll?: boolean;
+                    /**
+                     * 如果是单产品则有此字段
+                     */
+                    insuranceId?: string;
+                    /**
+                     * 如果是多产品则有此字段
+                     */
+                    insuranceIds?: string[];
+                    [k: string]: any;
+                  };
+                  /**
+                   * 该产品是否已停售
+                   */
+                  insuranceReject?: boolean;
+                  /**
+                   * 该产品是否已下架
+                   */
+                  insuranceOffShelf?: boolean;
+                  /**
+                   * 用于产品列表排序
+                   */
+                  createAt?: number;
+                  /**
+                   * 用于产品列表排序
+                   */
+                  modifiedAt?: number;
+                  [k: string]: any;
+                }[];
+              };
+        };
+      }
+  )[];
 }
 
-interface PersonnelStatisticGetRequest {
+interface H5PersonnelStatisticGetRequest {
   /**
    * userId
    */
@@ -1599,7 +1918,7 @@ interface PersonnelStatisticGetRequest {
   coreAccountId: string;
 }
 
-interface PersonnelStatisticGetResponse {
+interface H5PersonnelStatisticGetResponse {
   /**
    * 直属成员人数
    */
@@ -1670,9 +1989,6 @@ interface PersonnelStatisticGetResponse {
    * 成员信息列表
    */
   memberList?: {
-    /**
-     * 推荐人个人信息
-     */
     info: {
       /**
        * 人员ID
@@ -1847,7 +2163,7 @@ interface PersonnelStatisticGetResponse {
   }[];
 }
 
-interface PersonnelStatisticNewMemberIncreaseRequest {
+interface H5PersonnelStatisticNewMemberIncreaseRequest {
   /**
    * userId
    */
@@ -1858,9 +2174,9 @@ interface PersonnelStatisticNewMemberIncreaseRequest {
   newMemberId: string;
 }
 
-type PersonnelStatisticNewMemberIncreaseResponse = null;
+type H5PersonnelStatisticNewMemberIncreaseResponse = null;
 
-interface PersonnelSubGetRequest {
+interface H5PersonnelSubGetRequest {
   id: string;
   /**
    * 1-userId, 2-coreAccountId
@@ -1869,7 +2185,7 @@ interface PersonnelSubGetRequest {
   [k: string]: any;
 }
 
-type PersonnelSubGetResponse = {
+type H5PersonnelSubGetResponse = {
   /**
    * 人员ID
    */
@@ -2010,7 +2326,7 @@ type PersonnelSubGetResponse = {
   [k: string]: any;
 }[];
 
-interface PersonnelWechatGetRequest {
+interface H5PersonnelWechatGetRequest {
   id: string;
   /**
    * {"PERSONNEL_ID":1,"OPEN_ID":2,"UNION_ID":3}
@@ -2019,7 +2335,7 @@ interface PersonnelWechatGetRequest {
   [k: string]: any;
 }
 
-type PersonnelWechatGetResponse = null | {
+type H5PersonnelWechatGetResponse = null | {
   /**
    * 人员ID
    */
@@ -2035,7 +2351,7 @@ type PersonnelWechatGetResponse = null | {
   [k: string]: any;
 };
 
-interface PersonnelWechatSetRequest {
+interface H5PersonnelWechatSetRequest {
   /**
    * 人员ID
    */
@@ -2051,16 +2367,16 @@ interface PersonnelWechatSetRequest {
   [k: string]: any;
 }
 
-type PersonnelWechatSetResponse = null;
+type H5PersonnelWechatSetResponse = null;
 
 /**
  * 人员ID
  */
-type PersonnelWechatUserInfoPullRequest = string;
+type H5PersonnelWechatUserInfoPullRequest = string;
 
-type PersonnelWechatUserInfoPullResponse = null;
+type H5PersonnelWechatUserInfoPullResponse = null;
 
-interface PersonnelWithdrawalRecordAddRequest {
+interface H5PersonnelWithdrawalRecordAddRequest {
   /**
    * 提现记录ID
    */
@@ -2095,9 +2411,9 @@ interface PersonnelWithdrawalRecordAddRequest {
   [k: string]: any;
 }
 
-type PersonnelWithdrawalRecordAddResponse = null;
+type H5PersonnelWithdrawalRecordAddResponse = null;
 
-interface PersonnelWithdrawalRecordChangeRequest {
+interface H5PersonnelWithdrawalRecordChangeRequest {
   /**
    * 人员ID
    */
@@ -2109,14 +2425,14 @@ interface PersonnelWithdrawalRecordChangeRequest {
   [k: string]: any;
 }
 
-type PersonnelWithdrawalRecordChangeResponse = null;
+type H5PersonnelWithdrawalRecordChangeResponse = null;
 
 /**
  * 人员ID
  */
-type PersonnelWithdrawalRecordCurrentGetRequest = string;
+type H5PersonnelWithdrawalRecordCurrentGetRequest = string;
 
-interface PersonnelWithdrawalRecordCurrentGetResponse {
+interface H5PersonnelWithdrawalRecordCurrentGetResponse {
   /**
    * 提现记录ID
    */
@@ -2127,7 +2443,7 @@ interface PersonnelWithdrawalRecordCurrentGetResponse {
   commission?: string;
 }
 
-interface PersonnelWithdrawalRecordFindRequest {
+interface H5PersonnelWithdrawalRecordFindRequest {
   id: string;
   /**
    * {"USER_ID":1}
@@ -2136,7 +2452,7 @@ interface PersonnelWithdrawalRecordFindRequest {
   [k: string]: any;
 }
 
-type PersonnelWithdrawalRecordFindResponse = {
+type H5PersonnelWithdrawalRecordFindResponse = {
   /**
    * 提现记录ID
    */

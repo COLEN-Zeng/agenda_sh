@@ -1,6 +1,6 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service/fun自动生成,请勿手动修改
 
-interface AccountCreateRequest {
+interface CoreAccountCreateRequest {
   /**
    * 上级ID
    */
@@ -11,7 +11,7 @@ interface AccountCreateRequest {
   type: 1 | 2;
 }
 
-interface AccountCreateResponse {
+interface CoreAccountCreateResponse {
   /**
    * {"SUCCESS":0,"REACH_LIMIT":1,"NO_SUCH_SUPERIOR":2}
    */

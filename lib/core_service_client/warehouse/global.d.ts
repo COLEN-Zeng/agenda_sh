@@ -1,15 +1,15 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service/fun自动生成,请勿手动修改
 
-type WarehouseCacheClearRequest = null;
+type CoreWarehouseCacheClearRequest = null;
 
-type WarehouseCacheClearResponse = null;
+type CoreWarehouseCacheClearResponse = null;
 
 /**
  * 操作者账户id
  */
-type WarehouseCustomEntranceListRequest = string;
+type CoreWarehouseCustomEntranceListRequest = string;
 
-type WarehouseCustomEntranceListResponse = {
+type CoreWarehouseCustomEntranceListResponse = {
   id?: string;
   mode?: string;
   /**
@@ -26,7 +26,7 @@ type WarehouseCustomEntranceListResponse = {
   [k: string]: any;
 }[];
 
-interface WarehouseCustomInsuranceAddRequest {
+interface CoreWarehouseCustomInsuranceAddRequest {
   /**
    * 操作者账户id
    */
@@ -51,6 +51,7 @@ interface WarehouseCustomInsuranceAddRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -68,14 +69,16 @@ interface WarehouseCustomInsuranceAddRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   saleType: 0 | 1 | 2;
   frontendProcessId: string;
   intro: {
@@ -100,9 +103,9 @@ interface WarehouseCustomInsuranceAddRequest {
 /**
  * uuid
  */
-type WarehouseCustomInsuranceAddResponse = string;
+type CoreWarehouseCustomInsuranceAddResponse = string;
 
-interface WarehouseCustomInsuranceUpdateRequest {
+interface CoreWarehouseCustomInsuranceUpdateRequest {
   /**
    * 预约类险种ID
    */
@@ -127,6 +130,7 @@ interface WarehouseCustomInsuranceUpdateRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -144,26 +148,28 @@ interface WarehouseCustomInsuranceUpdateRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   saleType?: 0 | 1 | 2;
   [k: string]: any;
 }
 
-type WarehouseCustomInsuranceUpdateResponse = null;
+type CoreWarehouseCustomInsuranceUpdateResponse = null;
 
 /**
  * 入口id
  */
-type WarehouseEntranceGetRequest = string;
+type CoreWarehouseEntranceGetRequest = string;
 
-interface WarehouseEntranceGetResponse {
+interface CoreWarehouseEntranceGetResponse {
   id?: string;
   mode?: string;
   /**
@@ -183,11 +189,11 @@ interface WarehouseEntranceGetResponse {
 /**
  * 入口id
  */
-type WarehouseEntranceHasRequest = string;
+type CoreWarehouseEntranceHasRequest = string;
 
-type WarehouseEntranceHasResponse = boolean;
+type CoreWarehouseEntranceHasResponse = boolean;
 
-interface WarehouseInsuranceBackendGetRequest {
+interface CoreWarehouseInsuranceBackendGetRequest {
   /**
    * 操作者账户id
    */
@@ -198,7 +204,7 @@ interface WarehouseInsuranceBackendGetRequest {
   insuranceId: string;
 }
 
-interface WarehouseInsuranceBackendGetResponse {
+interface CoreWarehouseInsuranceBackendGetResponse {
   /**
    * 险种id
    */
@@ -226,6 +232,7 @@ interface WarehouseInsuranceBackendGetResponse {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -243,14 +250,16 @@ interface WarehouseInsuranceBackendGetResponse {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   saleType: 0 | 1 | 2;
   state: 0 | 1 | 2 | 3;
   orgSaleBlackList: string[];
@@ -297,7 +306,7 @@ interface WarehouseInsuranceBackendGetResponse {
   [k: string]: any;
 }
 
-interface WarehouseInsuranceBackendListRequest {
+interface CoreWarehouseInsuranceBackendListRequest {
   /**
    * 空字符能够拿到系统里所有的险种
    */
@@ -336,6 +345,7 @@ interface WarehouseInsuranceBackendListRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -353,14 +363,16 @@ interface WarehouseInsuranceBackendListRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   /**
    * 默认为false
    */
@@ -369,10 +381,14 @@ interface WarehouseInsuranceBackendListRequest {
    * 是否支持计划书
    */
   supportInsurancePlan?: boolean;
+  /**
+   * 支持产品工厂
+   */
+  useProductTemplate?: boolean;
   [k: string]: any;
 }
 
-interface WarehouseInsuranceBackendListResponse {
+interface CoreWarehouseInsuranceBackendListResponse {
   data: {
     /**
      * 险种id
@@ -401,6 +417,7 @@ interface WarehouseInsuranceBackendListResponse {
       | "fu_de"
       | "ya_tai"
       | "ren_bao_property"
+      | "ping_an_property"
       | "hua_gui"
       | "dong_hai"
       | "xin_mei"
@@ -418,14 +435,16 @@ interface WarehouseInsuranceBackendListResponse {
       | "lu_jia_zui_guo_tai"
       | "rui_tai_ren_shou"
       | "bai_nian_ren_shou"
-      | "guo_shou_ren_shou"
       | "tai_kang_yang_lao"
       | "hai_bao_ren_shou"
       | "zhong_an"
       | "ping_an_an_hui"
       | "zhong_lu"
       | "zhong_guo_ren_shou"
-      | "an_sheng";
+      | "an_sheng"
+      | "cic_property"
+      | "zhong_yi_ren_shou"
+      | "an_da";
     saleType: 0 | 1 | 2;
     state: 0 | 1 | 2 | 3;
     orgSaleBlackList: string[];
@@ -477,7 +496,7 @@ interface WarehouseInsuranceBackendListResponse {
   totalCount: number;
 }
 
-interface WarehouseInsuranceBackendUpdateRequest {
+interface CoreWarehouseInsuranceBackendUpdateRequest {
   /**
    * 操作者账户id
    */
@@ -500,9 +519,9 @@ interface WarehouseInsuranceBackendUpdateRequest {
   hidden?: boolean;
 }
 
-type WarehouseInsuranceBackendUpdateResponse = null;
+type CoreWarehouseInsuranceBackendUpdateResponse = null;
 
-interface WarehouseInsuranceFrontendGetRequest {
+interface CoreWarehouseInsuranceFrontendGetRequest {
   /**
    * 险种id
    */
@@ -518,7 +537,7 @@ interface WarehouseInsuranceFrontendGetRequest {
   [k: string]: any;
 }
 
-interface WarehouseInsuranceFrontendGetResponse {
+interface CoreWarehouseInsuranceFrontendGetResponse {
   /**
    * 险种id
    */
@@ -903,7 +922,7 @@ interface WarehouseInsuranceFrontendGetResponse {
   };
 }
 
-interface WarehouseInsuranceFrontendUpdateRequest {
+interface CoreWarehouseInsuranceFrontendUpdateRequest {
   /**
    * 险种id
    */
@@ -1189,9 +1208,9 @@ interface WarehouseInsuranceFrontendUpdateRequest {
   };
 }
 
-type WarehouseInsuranceFrontendUpdateResponse = null;
+type CoreWarehouseInsuranceFrontendUpdateResponse = null;
 
-interface WarehouseInsuranceDefaultBackendGetRequest {
+interface CoreWarehouseInsuranceDefaultBackendGetRequest {
   /**
    * 操作者账户id
    */
@@ -1202,7 +1221,7 @@ interface WarehouseInsuranceDefaultBackendGetRequest {
   insuranceId: string;
 }
 
-interface WarehouseInsuranceDefaultBackendGetResponse {
+interface CoreWarehouseInsuranceDefaultBackendGetResponse {
   orgSaleBlackList: string[];
   applicantIdentitySaleBlackList: (0 | 1 | 2 | 3)[];
   shareToInsureBlackList: (0 | 1 | 2 | 3)[];
@@ -1211,13 +1230,13 @@ interface WarehouseInsuranceDefaultBackendGetResponse {
 /**
  * 操作者账户id
  */
-type WarehouseInsuranceMapBackendGetRequest = string;
+type CoreWarehouseInsuranceMapBackendGetRequest = string;
 
-interface WarehouseInsuranceMapBackendGetResponse {
+interface CoreWarehouseInsuranceMapBackendGetResponse {
   [k: string]: any;
 }
 
-type WarehousePromotionRateEffectTemplateGetRequest = {
+type CoreWarehousePromotionRateEffectTemplateGetRequest = {
   /**
    * 操作者账户id
    */
@@ -1232,11 +1251,11 @@ type WarehousePromotionRateEffectTemplateGetRequest = {
   targetAccountJobRank?: string;
 }[];
 
-interface WarehousePromotionRateEffectTemplateGetResponse {
+interface CoreWarehousePromotionRateEffectTemplateGetResponse {
   [k: string]: any;
 }
 
-interface WarehousePromotionRateGetRequest {
+interface CoreWarehousePromotionRateGetRequest {
   /**
    * 操作者账户id
    */
@@ -1255,7 +1274,7 @@ interface WarehousePromotionRateGetRequest {
   targetAccountJobRank?: string;
 }
 
-interface WarehousePromotionRateGetResponse {
+interface CoreWarehousePromotionRateGetResponse {
   insuranceCompanyToOrg: number;
   orgToAgent:
     | {
@@ -1266,7 +1285,7 @@ interface WarehousePromotionRateGetResponse {
       };
 }
 
-interface WarehousePromotionRateTemplateCreateRequest {
+interface CoreWarehousePromotionRateTemplateCreateRequest {
   /**
    * 操作者账户id
    */
@@ -1280,9 +1299,9 @@ interface WarehousePromotionRateTemplateCreateRequest {
 /**
  * 模板id
  */
-type WarehousePromotionRateTemplateCreateResponse = string;
+type CoreWarehousePromotionRateTemplateCreateResponse = string;
 
-interface WarehousePromotionRateTemplateDeleteRequest {
+interface CoreWarehousePromotionRateTemplateDeleteRequest {
   /**
    * 操作者账户id
    */
@@ -1293,9 +1312,9 @@ interface WarehousePromotionRateTemplateDeleteRequest {
   templateId: string;
 }
 
-type WarehousePromotionRateTemplateDeleteResponse = null;
+type CoreWarehousePromotionRateTemplateDeleteResponse = null;
 
-interface WarehousePromotionRateTemplateGetRequest {
+interface CoreWarehousePromotionRateTemplateGetRequest {
   /**
    * 操作者账户id
    */
@@ -1325,6 +1344,7 @@ interface WarehousePromotionRateTemplateGetRequest {
     | "fu_de"
     | "ya_tai"
     | "ren_bao_property"
+    | "ping_an_property"
     | "hua_gui"
     | "dong_hai"
     | "xin_mei"
@@ -1342,14 +1362,16 @@ interface WarehousePromotionRateTemplateGetRequest {
     | "lu_jia_zui_guo_tai"
     | "rui_tai_ren_shou"
     | "bai_nian_ren_shou"
-    | "guo_shou_ren_shou"
     | "tai_kang_yang_lao"
     | "hai_bao_ren_shou"
     | "zhong_an"
     | "ping_an_an_hui"
     | "zhong_lu"
     | "zhong_guo_ren_shou"
-    | "an_sheng";
+    | "an_sheng"
+    | "cic_property"
+    | "zhong_yi_ren_shou"
+    | "an_da";
   insuranceName?: string;
   insuranceIds?: string[];
   /**
@@ -1377,7 +1399,7 @@ interface WarehousePromotionRateTemplateGetRequest {
   [k: string]: any;
 }
 
-type WarehousePromotionRateTemplateGetResponse = {
+type CoreWarehousePromotionRateTemplateGetResponse = {
   list: {
     id: string;
     /**
@@ -1435,6 +1457,7 @@ type WarehousePromotionRateTemplateGetResponse = {
      * 是否为豁免项，对应管理后台邀请奖励显示时，period+1
      */
     isHuoMian: boolean;
+    frontendProcessId: string;
   }[];
   /**
    * 页码
@@ -1447,7 +1470,7 @@ type WarehousePromotionRateTemplateGetResponse = {
   [k: string]: any;
 };
 
-interface WarehousePromotionRateTemplateInsuranceAddRequest {
+interface CoreWarehousePromotionRateTemplateInsuranceAddRequest {
   /**
    * uuid
    */
@@ -1459,9 +1482,9 @@ interface WarehousePromotionRateTemplateInsuranceAddRequest {
   insuranceIds: string[];
 }
 
-type WarehousePromotionRateTemplateInsuranceAddResponse = null;
+type CoreWarehousePromotionRateTemplateInsuranceAddResponse = null;
 
-interface WarehousePromotionRateTemplateInsuranceDeleteRequest {
+interface CoreWarehousePromotionRateTemplateInsuranceDeleteRequest {
   /**
    * uuid
    */
@@ -1476,9 +1499,9 @@ interface WarehousePromotionRateTemplateInsuranceDeleteRequest {
   insuranceId: string;
 }
 
-type WarehousePromotionRateTemplateInsuranceDeleteResponse = null;
+type CoreWarehousePromotionRateTemplateInsuranceDeleteResponse = null;
 
-interface WarehousePromotionRateTemplateListRequest {
+interface CoreWarehousePromotionRateTemplateListRequest {
   /**
    * 操作者账户id
    */
@@ -1517,7 +1540,7 @@ interface WarehousePromotionRateTemplateListRequest {
   [k: string]: any;
 }
 
-type WarehousePromotionRateTemplateListResponse =
+type CoreWarehousePromotionRateTemplateListResponse =
   | {
       list: {
         /**
@@ -1564,7 +1587,7 @@ type WarehousePromotionRateTemplateListResponse =
       jobRankUse: string[];
     }[];
 
-interface WarehousePromotionRateTemplateResetRequest {
+interface CoreWarehousePromotionRateTemplateResetRequest {
   /**
    * 操作者账户id
    */
@@ -1579,9 +1602,9 @@ interface WarehousePromotionRateTemplateResetRequest {
   targetAccountId: string;
 }
 
-type WarehousePromotionRateTemplateResetResponse = null;
+type CoreWarehousePromotionRateTemplateResetResponse = null;
 
-type WarehousePromotionRateTemplateUpdateRequest =
+type CoreWarehousePromotionRateTemplateUpdateRequest =
   | {
       /**
        * 模板id
@@ -1625,9 +1648,9 @@ type WarehousePromotionRateTemplateUpdateRequest =
       name: string;
     };
 
-type WarehousePromotionRateTemplateUpdateResponse = null;
+type CoreWarehousePromotionRateTemplateUpdateResponse = null;
 
-type WarehousePromotionRateTemplateUseRequest =
+type CoreWarehousePromotionRateTemplateUseRequest =
   | {
       /**
        * 操作者账户id
@@ -1674,5 +1697,5 @@ type WarehousePromotionRateTemplateUseRequest =
       }[];
     };
 
-type WarehousePromotionRateTemplateUseResponse = null;
+type CoreWarehousePromotionRateTemplateUseResponse = null;
 

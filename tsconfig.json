@@ -10,16 +10,14 @@
     },
     "include": [
         "./src/**/*",
-        // ".vscode/type_hinting/**/*.ts",
+        "./lib/**/*.ts",
     ],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
-        ".vscode/type_hinting/**/*",
     ],
-    "typeRoots": [ /* 要包含的类型声明文件路径列表*/
-        "./src/**/*",
-        // ".vscode/type_hinting/**/*",
-        "./node_modules/@types"
-    ]
+    // "typeRoots": [ /* 要包含的类型声明文件路径列表*/
+    //     "./src/**/*",
+    //     "./node_modules/@types"
+    // ]
 }

@@ -1,9 +1,9 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/service/fun自动生成,请勿手动修改
 
 /**
  * policyId, fee, shipmentType, method, opsType 是必须要有其余参数则根据 method 来决定是否要求
  */
-interface PaymentInfoCreateRequest {
+interface CorePaymentInfoCreateRequest {
   /**
    * 保单id
    */
@@ -31,7 +31,7 @@ interface PaymentInfoCreateRequest {
   [k: string]: any;
 }
 
-type PaymentInfoCreateResponse =
+type CorePaymentInfoCreateResponse =
   | null
   | {
       /**
@@ -67,7 +67,7 @@ type PaymentInfoCreateResponse =
     }
   | string;
 
-interface PaymentInfoGetByPolicyIdRequest {
+interface CorePaymentInfoGetByPolicyIdRequest {
   /**
    * 保单id
    */
@@ -79,7 +79,7 @@ interface PaymentInfoGetByPolicyIdRequest {
   [k: string]: any;
 }
 
-type PaymentInfoGetByPolicyIdResponse = {
+type CorePaymentInfoGetByPolicyIdResponse = {
   /**
    * 支付单ID
    */
@@ -121,9 +121,9 @@ type PaymentInfoGetByPolicyIdResponse = {
 /**
  * 自有的支付单ID
  */
-type PaymentInfoGetRequest = string;
+type CorePaymentInfoGetRequest = string;
 
-interface PaymentInfoGetResponse {
+interface CorePaymentInfoGetResponse {
   /**
    * 支付单ID
    */
@@ -162,7 +162,7 @@ interface PaymentInfoGetResponse {
   createdAt: number;
 }
 
-interface PaymentInfoStateChangeRequest {
+interface CorePaymentInfoStateChangeRequest {
   /**
    * 自有的支付单ID
    */
@@ -179,9 +179,9 @@ interface PaymentInfoStateChangeRequest {
   [k: string]: any;
 }
 
-type PaymentInfoStateChangeResponse = null;
+type CorePaymentInfoStateChangeResponse = null;
 
-interface PaymentPaymentCallbackRequest {
+interface CorePaymentPaymentCallbackRequest {
   /**
    * 自有的支付单ID
    */
@@ -197,14 +197,14 @@ interface PaymentPaymentCallbackRequest {
   [k: string]: any;
 }
 
-type PaymentPaymentCallbackResponse = null;
+type CorePaymentPaymentCallbackResponse = null;
 
 /**
  * 保单id
  */
-type PaymentWithholdingInfoGetRequest = string;
+type CorePaymentWithholdingInfoGetRequest = string;
 
-type PaymentWithholdingInfoGetResponse = null | {
+type CorePaymentWithholdingInfoGetResponse = null | {
   /**
    * 保单id
    */
@@ -242,7 +242,7 @@ type PaymentWithholdingInfoGetResponse = null | {
   [k: string]: any;
 };
 
-interface PaymentWithholdingInfoSetRequest {
+interface CorePaymentWithholdingInfoSetRequest {
   /**
    * 保单id
    */
@@ -480,9 +480,9 @@ interface PaymentWithholdingInfoSetRequest {
   [k: string]: any;
 }
 
-type PaymentWithholdingInfoSetResponse = null;
+type CorePaymentWithholdingInfoSetResponse = null;
 
-interface PaymentWithholdingSubmitRequest {
+interface CorePaymentWithholdingSubmitRequest {
   /**
    * 保单id
    */
@@ -492,5 +492,5 @@ interface PaymentWithholdingSubmitRequest {
   };
 }
 
-type PaymentWithholdingSubmitResponse = null;
+type CorePaymentWithholdingSubmitResponse = null;
 

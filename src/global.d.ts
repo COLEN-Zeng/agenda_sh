@@ -1,7 +1,5 @@
 declare const PROJECT_ROOT: string;
 declare const ENV: 'dev' | 'prod';
-// import * as _Common from './common';
-// declare const Common: any;
 declare const Service: any;
 declare const Config: any;
 declare const NotificationCenter: any;
@@ -31,5 +29,3 @@ declare module '@qtk/orm-framework' {
 }
 declare const ORM;
 declare const Action;
-// declare const H5;
-declare const Core;

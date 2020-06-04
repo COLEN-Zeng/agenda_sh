@@ -1,11 +1,11 @@
-// 本文件由toolchain/code_generator/service/build自动生成,请勿手动修改
+// 本文件由toolchain/code_generator/h5_service_client/build自动生成,请勿手动修改
 
 /**
  * 原文链接
  */
-type GuestArticleInfoDuplicateRequest = string;
+type H5GuestArticleInfoDuplicateRequest = string;
 
-type GuestArticleInfoDuplicateResponse = null | {
+type H5GuestArticleInfoDuplicateResponse = null | {
   /**
    * id
    */
@@ -102,9 +102,9 @@ type GuestArticleInfoDuplicateResponse = null | {
 /**
  * 文章id
  */
-type GuestArticleInfoGetRequest = string;
+type H5GuestArticleInfoGetRequest = string;
 
-interface GuestArticleInfoGetResponse {
+interface H5GuestArticleInfoGetResponse {
   /**
    * id
    */
@@ -198,7 +198,7 @@ interface GuestArticleInfoGetResponse {
   [k: string]: any;
 }
 
-interface GuestArticleInfoListRequest {
+interface H5GuestArticleInfoListRequest {
   /**
    * 标题
    */
@@ -241,7 +241,7 @@ interface GuestArticleInfoListRequest {
   [k: string]: any;
 }
 
-interface GuestArticleInfoListResponse {
+interface H5GuestArticleInfoListResponse {
   data?: {
     /**
      * id
@@ -339,16 +339,16 @@ interface GuestArticleInfoListResponse {
   [k: string]: any;
 }
 
-interface GuestArticleInfoSetRequest {
+interface H5GuestArticleInfoSetRequest {
   [k: string]: any;
 }
 
 /**
  * 文章id
  */
-type GuestArticleInfoSetResponse = string;
+type H5GuestArticleInfoSetResponse = string;
 
-interface GuestArticleInfoUploadRequest {
+interface H5GuestArticleInfoUploadRequest {
   /**
    * id
    */
@@ -368,16 +368,16 @@ interface GuestArticleInfoUploadRequest {
   [k: string]: any;
 }
 
-type GuestArticleInfoUploadResponse = null;
+type H5GuestArticleInfoUploadResponse = null;
 
 /**
  * 文章id
  */
-type GuestArticleReadingVolumeAddRequest = string;
+type H5GuestArticleReadingVolumeAddRequest = string;
 
-type GuestArticleReadingVolumeAddResponse = null;
+type H5GuestArticleReadingVolumeAddResponse = null;
 
-interface GuestArticleUserLibraryGetRequest {
+interface H5GuestArticleUserLibraryGetRequest {
   /**
    * 人员ID
    */
@@ -389,7 +389,7 @@ interface GuestArticleUserLibraryGetRequest {
   [k: string]: any;
 }
 
-type GuestArticleUserLibraryGetResponse = null | {
+type H5GuestArticleUserLibraryGetResponse = null | {
   /**
    * 用户id
    */
@@ -415,7 +415,7 @@ type GuestArticleUserLibraryGetResponse = null | {
   [k: string]: any;
 };
 
-interface GuestArticleUserLibraryListRequest {
+interface H5GuestArticleUserLibraryListRequest {
   /**
    * 人员ID
    */
@@ -441,7 +441,7 @@ interface GuestArticleUserLibraryListRequest {
   [k: string]: any;
 }
 
-interface GuestArticleUserLibraryListResponse {
+interface H5GuestArticleUserLibraryListResponse {
   data: {
     /**
      * id
@@ -544,7 +544,7 @@ interface GuestArticleUserLibraryListResponse {
   };
 }
 
-interface GuestArticleUserLibrarySetRequest {
+interface H5GuestArticleUserLibrarySetRequest {
   /**
    * 人员ID
    */
@@ -568,5 +568,5 @@ interface GuestArticleUserLibrarySetRequest {
   [k: string]: any;
 }
 
-type GuestArticleUserLibrarySetResponse = null;
+type H5GuestArticleUserLibrarySetResponse = null;
 
