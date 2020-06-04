@@ -3,7 +3,7 @@
 PROJECT_ROOT=$(cd "$(dirname "$0")/.." && pwd)
 source "${PROJECT_ROOT}/toolchain/lib/beautified_out.sh"
 
-LOG_DIR="${PROJECT_ROOT}/logs"
+LOG_DIR="${PROJECT_ROOT}/dist/logs"
 cd "${LOG_DIR}" || exit
 
 parm="-l"

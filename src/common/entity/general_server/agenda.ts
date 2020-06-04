@@ -85,7 +85,7 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
     }
 
     initLogger(logDirName: string = this._serverName): void {
-        const logRoot = path.join(PROJECT_ROOT, 'logs');
+        const logRoot = path.join(PROJECT_ROOT, '..', 'logs');// 项目根目录
         Log4js.configure({
             appenders: {
                 runtime: {

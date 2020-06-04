@@ -4,35 +4,35 @@ import * as router from './router';
 import * as every from './every';
 import Common = require('./common');
 
-const ENV = 'dev';
-const REGISTER_HOST = '0.0.0.0';
-const REGISTER_PORT = 3471;
-const CONFIG_HOST = '0.0.0.0';
-const CONFIG_PORT = 3472;
+// const ENV = 'dev';
+// const REGISTER_HOST = '0.0.0.0';
+// const REGISTER_PORT = 3471;
+// const CONFIG_HOST = '0.0.0.0';
+// const CONFIG_PORT = 3472;
 
-const SERVICE_HOST = 'project-agenda';
+// const SERVICE_HOST = 'project-agenda';
 
-const AGENDA_WEB_PORT = 3473;
+// const AGENDA_WEB_PORT = 3473;
 
-let SERVICE_START_PORT = 3474;
+// let SERVICE_START_PORT = 3474;
 
-const H5_REGISTER_HOST = 'project-h5';
-const H5_REGISTER_PORT = 2731;
-const CORE_REGISTER_HOST = 'project-core';
-const CORE_REGISTER_PORT = 2371;
+// const H5_REGISTER_HOST = 'project-h5';
+// const H5_REGISTER_PORT = 2731;
+// const CORE_REGISTER_HOST = 'project-core';
+// const CORE_REGISTER_PORT = 2371;
 
-const WECHAT_HOST = '10.10.5.30';
-const WECHAT_PORT = 8003;
+// const WECHAT_HOST = '10.10.5.30';
+// const WECHAT_PORT = 8003;
 
-const RABBITMQ_HOST = 'rabbit-mq-master';
-const RABBITMQ_PORT = 5672;
-const RABBITMQ_LOGIN = 'admin';
-const RABBITMQ_PASSWORD = 'admin';
+// const RABBITMQ_HOST = 'rabbit-mq-master';
+// const RABBITMQ_PORT = 5672;
+// const RABBITMQ_LOGIN = 'admin';
+// const RABBITMQ_PASSWORD = 'admin';
 
-const MONGODB_HOST = 'mongo-master';
-const MONGODB_PORT = 27017;
-const MONGODB_USER = 'admin';
-const MONGODB_PASSWORD = 'admin';
+// const MONGODB_HOST = 'mongo-master';
+// const MONGODB_PORT = 27017;
+// const MONGODB_USER = 'admin';
+// const MONGODB_PASSWORD = 'admin';
 
 // const serviceName = 'agenda_web',
 //     mongodbHost = MONGODB_HOST, mongodbPort = MONGODB_PORT,
