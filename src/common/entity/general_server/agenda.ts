@@ -43,8 +43,8 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
             .then(() => this.info('agenda start'))
             .catch((err: string) => { throw new Error(err); });
 
-        router && router(this);
-        every && await every(this);
+        router && router(this) && this.info('router')
+        every && await every(this) && this.info('every')
 
         this._server.listen(this._serverPort, this._serverHost);
         this._server.use('', AgendaSh(this.Agenda, { title: os.hostname + '-' + process.pid }));
@@ -70,14 +70,12 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
     }
 
     // 定时任务
-    async every(
-        interval: string, names: string, data: object, options: { timezone: string }
-    ): Promise<void> {
-        Logger.debug(`init every: ${names} interval: ${interval}`);
-
-        options.timezone = 'Asia/Shanghai';// 设置时区
-        await this.Agenda.every(interval, names, data, options);
-    }
+    every: (interval: string, names: string, data: object, options?: { timezone?: string }) => Promise<void> =
+        async function (interval, names, data, options = {}) {
+            Logger.debug(`init every: ${names} interval: ${interval}`);
+            options.timezone = 'Asia/Shanghai';// 设置时区
+            await this.Agenda.every(interval, names, data, options);
+        }
 
     // 立刻执行
     now(names: string | string[]): void {
@@ -90,7 +88,7 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
             appenders: {
                 runtime: {
                     type: 'dateFile',
-                    filename: `${logRoot}/${logDirName}/runtime/`,
+                    filename: `${logRoot}/${logDirName}/runtime`,
                     pattern: "yyyy-MM-dd.log",
                     alwaysIncludePattern: true
                 },
@@ -99,10 +97,8 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
                     layout: {
                         type: 'pattern',
                         pattern: '[%d] %m'
-
-
                     },
-                    filename: `${logRoot}/${logDirName}/action/`,
+                    filename: `${logRoot}/${logDirName}/action`,
                     pattern: "yyyy-MM-dd.log",
                     alwaysIncludePattern: true
                 }
@@ -114,7 +110,6 @@ export class GeneralAgendaServer extends AbstractGeneralServer {
         });
 
         const logger = Log4js.getLogger('default');
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const L = require('nirvana-logger')(logDirName);
         global.Logger = {
             error: err => logger.error(err.stack || err),
