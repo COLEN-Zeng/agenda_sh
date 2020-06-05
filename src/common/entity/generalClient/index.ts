@@ -1,4 +1,5 @@
-import * as moment from 'moment';
+// import * as moment from 'moment';
+import moment = require('moment');
 const RegistrySubscriber = require('@qtk/registry-service').Client.Subscriber;
 import {
     BusinessError as TcpBusinessError,

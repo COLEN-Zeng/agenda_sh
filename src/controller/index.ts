@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as os from 'os';
-import * as moment from 'moment';
 import * as path from 'path';
+import moment = require('moment');
+// import * as moment from 'moment';
 
 export async function deletePicture({ job, request }) {
     Logger.debug(JSON.stringify(request));
