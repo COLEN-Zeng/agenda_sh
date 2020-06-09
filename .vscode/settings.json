@@ -1,0 +1,7 @@
+{
+    "conventionalCommits.scopes": [
+        "核心",
+        "业务",
+        "测试"
+    ]
+}

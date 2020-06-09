@@ -59,22 +59,22 @@ Promise.resolve()
     ))
     .then(() => server.initOuter('h5', ['personnel',], h5RegHost, h5RegPort))
     .then(() => server.initInside(['silver-ins-core', 'silver-ins-common']))
-    // .then(async () => {
-    //     await server.initNotificationCenter({
-    //         connParams: {
-    //             host: mqHost,
-    //             port: mqPort,
-    //             login: mqLogin,
-    //             password: mqPassword
-    //         },
-    //         serviceName,
-    //         onError: (error) => Logger.error(error),
-    //         onClose: (message) => Logger.error(message),
-    //         ...ENV !== 'prod' && ENV !== 'gamma'
-    //             ? { scope: `silver_ins_${os.hostname()}` }
-    //             : {}
-    //     });
-    // })
+    .then(async () => {
+        await server.initNotificationCenter({
+            connParams: {
+                host: mqHost,
+                port: mqPort,
+                login: mqLogin,
+                password: mqPassword
+            },
+            serviceName,
+            onError: (error) => Logger.error(error),
+            onClose: (message) => Logger.error(message),
+            ...ENV !== 'prod' && ENV !== 'gamma'
+                ? { scope: `silver_ins_${os.hostname()}` }
+                : {}
+        });
+    })
     .then(() => server.start(router, every))
     .catch(error => {
         Logger.error(error);
