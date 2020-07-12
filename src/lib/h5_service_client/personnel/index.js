@@ -1,5 +1,5 @@
 
-// 本文件由toolchain/code_generator/h5_service_client/build脚本自动生成
+// 本文件由toolchain/code_generator/service/build脚本自动生成
 
 module.exports = (client) => ({
     client,
@@ -8,6 +8,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 更新人员的佣金比例
+    *
+    * 接口会去校验当前险种ID是否存在，不存在则报错
     * @param {H5PersonnelCommissionPromotionRateChangeRequest} request
     * @returns {Promise<H5PersonnelCommissionPromotionRateChangeResponse>}
     */
@@ -16,6 +19,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 入库客户来访数据
     * @param {H5PersonnelCustomerVisitRecordAddRequest} request
     * @returns {Promise<H5PersonnelCustomerVisitRecordAddResponse>}
     */
@@ -24,6 +29,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 执行每日微信消息推送任务
     * @param {H5PersonnelDailyWechatMsgSendRequest} request
     * @returns {Promise<H5PersonnelDailyWechatMsgSendResponse>}
     */
@@ -32,6 +38,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 生成工号
     * @param {H5PersonnelEmployeeIdGenRequest} request
     * @returns {Promise<H5PersonnelEmployeeIdGenResponse>}
     */
@@ -40,6 +47,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 保单承保增加收入
+    *
+    * 预约类险种不通过订阅器自动添加收入记录（订阅器会去核心查询推广费，目前预约类险种不支持从核心查推广费）
     * @param {H5PersonnelIncomeRecordAddRequest} request
     * @returns {Promise<H5PersonnelIncomeRecordAddResponse>}
     */
@@ -48,6 +58,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 更新收入记录
     * @param {H5PersonnelIncomeRecordChangeRequest} request
     * @returns {Promise<H5PersonnelIncomeRecordChangeResponse>}
     */
@@ -56,6 +67,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 查询收入记录
     * @param {H5PersonnelIncomeRecordFindRequest} request
     * @returns {Promise<H5PersonnelIncomeRecordFindResponse>}
     */
@@ -64,6 +76,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 查询收入记录
     * @param {H5PersonnelIncomeRecordQueryRequest} request
     * @returns {Promise<H5PersonnelIncomeRecordQueryResponse>}
     */
@@ -80,6 +93,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取机构下的代理人信息
+    *
+    * 获取该机构下的, 所有子机构的直属成员
     * @param {H5PersonnelOrgPersonnelInfoGetRequest} request
     * @returns {Promise<H5PersonnelOrgPersonnelInfoGetResponse>}
     */
@@ -96,6 +112,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取人员的佣金
     * @param {H5PersonnelPromotionGetRequest} request
     * @returns {Promise<H5PersonnelPromotionGetResponse>}
     */
@@ -104,6 +121,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 入库用户分享数据
     * @param {H5PersonnelShareAddRequest} request
     * @returns {Promise<H5PersonnelShareAddResponse>}
     */
@@ -112,6 +131,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 获取个人商城配置
     * @param {H5PersonnelShopConfigGetRequest} request
     * @returns {Promise<H5PersonnelShopConfigGetResponse>}
     */
@@ -120,6 +141,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 统计-获取
     * @param {H5PersonnelStatisticGetRequest} request
     * @returns {Promise<H5PersonnelStatisticGetResponse>}
     */
@@ -128,6 +151,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 统计-原子操作-新增直属成员
     * @param {H5PersonnelStatisticNewMemberIncreaseRequest} request
     * @returns {Promise<H5PersonnelStatisticNewMemberIncreaseResponse>}
     */
@@ -136,6 +161,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取人员直属下级列表
+    *
+    * 根据 mode 来判断 id 是 userId 还是 coreAccountId
     * @param {H5PersonnelSubGetRequest} request
     * @returns {Promise<H5PersonnelSubGetResponse>}
     */
@@ -144,6 +172,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取微信信息
     * @param {H5PersonnelWechatGetRequest} request
     * @returns {Promise<H5PersonnelWechatGetResponse>}
     */
@@ -152,6 +181,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 设置微信信息
+    *
+    * 虽然 openId 和 unionId 都是可选，但至少传一个
     * @param {H5PersonnelWechatSetRequest} request
     * @returns {Promise<H5PersonnelWechatSetResponse>}
     */
@@ -160,6 +192,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 拉取微信用户头像昵称信息
+    *
+    * 如果用户信息里没有头像昵称则用微信用户信息替代
     * @param {H5PersonnelWechatUserInfoPullRequest} request
     * @returns {Promise<H5PersonnelWechatUserInfoPullResponse>}
     */
@@ -168,6 +203,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 添加(更新)提现记录
+    *
+    * null
     * @param {H5PersonnelWithdrawalRecordAddRequest} request
     * @returns {Promise<H5PersonnelWithdrawalRecordAddResponse>}
     */
@@ -176,6 +214,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 处理提现记录
+    *
+    * null
     * @param {H5PersonnelWithdrawalRecordChangeRequest} request
     * @returns {Promise<H5PersonnelWithdrawalRecordChangeResponse>}
     */
@@ -184,6 +225,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取当前的提现记录
+    *
+    * null
     * @param {H5PersonnelWithdrawalRecordCurrentGetRequest} request
     * @returns {Promise<H5PersonnelWithdrawalRecordCurrentGetResponse>}
     */
@@ -192,6 +236,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取所有记录
     * @param {H5PersonnelWithdrawalRecordFindRequest} request
     * @returns {Promise<H5PersonnelWithdrawalRecordFindResponse>}
     */

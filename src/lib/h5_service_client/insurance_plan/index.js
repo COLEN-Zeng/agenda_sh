@@ -1,5 +1,5 @@
 
-// 本文件由toolchain/code_generator/h5_service_client/build脚本自动生成
+// 本文件由toolchain/code_generator/service/build脚本自动生成
 
 module.exports = (client) => ({
     client,
@@ -8,6 +8,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 删除计划书信息
     * @param {H5InsurancePlanInfoDelRequest} request
     * @returns {Promise<H5InsurancePlanInfoDelResponse>}
     */
@@ -16,6 +17,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取计划书信息
     * @param {H5InsurancePlanInfoGetRequest} request
     * @returns {Promise<H5InsurancePlanInfoGetResponse>}
     */
@@ -24,6 +26,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取计划书列表
     * @param {H5InsurancePlanInfoListRequest} request
     * @returns {Promise<H5InsurancePlanInfoListResponse>}
     */
@@ -32,6 +35,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 编辑计划书
     * @param {H5InsurancePlanInfoSetRequest} request
     * @returns {Promise<H5InsurancePlanInfoSetResponse>}
     */
@@ -40,6 +44,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 添加访问量
     * @param {H5InsurancePlanReadingVolumeAddRequest} request
     * @returns {Promise<H5InsurancePlanReadingVolumeAddResponse>}
     */

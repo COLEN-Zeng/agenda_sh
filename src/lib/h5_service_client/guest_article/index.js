@@ -1,5 +1,5 @@
 
-// 本文件由toolchain/code_generator/h5_service_client/build脚本自动生成
+// 本文件由toolchain/code_generator/service/build脚本自动生成
 
 module.exports = (client) => ({
     client,
@@ -8,6 +8,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 根据链接来判断文章是否已存在
+    *
+    * 若存在, 则返回文章, 否则返回 null
     * @param {H5GuestArticleInfoDuplicateRequest} request
     * @returns {Promise<H5GuestArticleInfoDuplicateResponse>}
     */
@@ -16,6 +19,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取文章信息
     * @param {H5GuestArticleInfoGetRequest} request
     * @returns {Promise<H5GuestArticleInfoGetResponse>}
     */
@@ -24,6 +28,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取文章列表
     * @param {H5GuestArticleInfoListRequest} request
     * @returns {Promise<H5GuestArticleInfoListResponse>}
     */
@@ -32,6 +37,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 添加文章
     * @param {H5GuestArticleInfoSetRequest} request
     * @returns {Promise<H5GuestArticleInfoSetResponse>}
     */
@@ -40,6 +46,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 上传文章
     * @param {H5GuestArticleInfoUploadRequest} request
     * @returns {Promise<H5GuestArticleInfoUploadResponse>}
     */
@@ -48,6 +55,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 添加文章阅读量
     * @param {H5GuestArticleReadingVolumeAddRequest} request
     * @returns {Promise<H5GuestArticleReadingVolumeAddResponse>}
     */
@@ -64,6 +72,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 我的文库
     * @param {H5GuestArticleUserLibraryListRequest} request
     * @returns {Promise<H5GuestArticleUserLibraryListResponse>}
     */
@@ -72,6 +81,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 添加文章关联
+    *
+    * 可通过用户id和文章id
     * @param {H5GuestArticleUserLibrarySetRequest} request
     * @returns {Promise<H5GuestArticleUserLibrarySetResponse>}
     */

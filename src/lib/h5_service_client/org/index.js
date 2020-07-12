@@ -1,5 +1,5 @@
 
-// 本文件由toolchain/code_generator/h5_service_client/build脚本自动生成
+// 本文件由toolchain/code_generator/service/build脚本自动生成
 
 module.exports = (client) => ({
     client,
@@ -8,6 +8,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 创建预约信息
     * @param {H5OrgAppointmentCreateRequest} request
     * @returns {Promise<H5OrgAppointmentCreateResponse>}
     */
@@ -16,6 +17,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取预约信息
     * @param {H5OrgAppointmentGetRequest} request
     * @returns {Promise<H5OrgAppointmentGetResponse>}
     */
@@ -24,6 +26,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取该机构的所有预约信息
     * @param {H5OrgAppointmentListRequest} request
     * @returns {Promise<H5OrgAppointmentListResponse>}
     */
@@ -32,6 +35,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 更新预约信息
     * @param {H5OrgAppointmentUpdateRequest} request
     * @returns {Promise<H5OrgAppointmentUpdateResponse>}
     */
@@ -40,6 +44,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 初始化机构配置
     * @param {H5OrgConfigInitFromSuperiorOrgRequest} request
     * @returns {Promise<H5OrgConfigInitFromSuperiorOrgResponse>}
     */
@@ -48,6 +53,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取该机构的产品入口
     * @param {H5OrgEntranceListRequest} request
     * @returns {Promise<H5OrgEntranceListResponse>}
     */
@@ -56,6 +62,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取最终的前端配置
+    *
+    * 部分字段会自动继承上级配置
     * @param {H5OrgFinalMobileFrontendConfigGetRequest} request
     * @returns {Promise<H5OrgFinalMobileFrontendConfigGetResponse>}
     */
@@ -64,6 +73,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取原始的前端配置
+    *
+    * 字段全部为数据库里字段，此接口一般只有管理后台获取原始配置会用到，一般调用final_mobile_frontend_config.get
     * @param {H5OrgRawMobileFrontendConfigGetRequest} request
     * @returns {Promise<H5OrgRawMobileFrontendConfigGetResponse>}
     */
@@ -72,6 +84,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 设置原始的前端配置
     * @param {H5OrgRawMobileFrontendConfigSetRequest} request
     * @returns {Promise<H5OrgRawMobileFrontendConfigSetResponse>}
     */
@@ -80,6 +93,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取机构信息
+    *
+    * 根据 mode 来判断获取哪些子机构注意：如果获取所有子机构，该接口返回的依旧是一维数组，需要由调用者自行排序
     * @param {H5OrgSubGetRequest} request
     * @returns {Promise<H5OrgSubGetResponse>}
     */
@@ -88,6 +104,9 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取机构的微信配置
+    *
+    * 如果该机构没有配置微信,则向它的上级机构找,都找不到则返回默认配置
     * @param {H5OrgWechatConfigGetRequest} request
     * @returns {Promise<H5OrgWechatConfigGetResponse>}
     */

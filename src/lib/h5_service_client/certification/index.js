@@ -1,5 +1,5 @@
 
-// 本文件由toolchain/code_generator/h5_service_client/build脚本自动生成
+// 本文件由toolchain/code_generator/service/build脚本自动生成
 
 module.exports = (client) => ({
     client,
@@ -8,6 +8,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 审核认证是否通过
     * @param {H5CertificationApplicationFinalizeRequest} request
     * @returns {Promise<H5CertificationApplicationFinalizeResponse>}
     */
@@ -16,6 +18,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 获取申请认证用户审核列表
     * @param {H5CertificationApplicationListRequest} request
     * @returns {Promise<H5CertificationApplicationListResponse>}
     */
@@ -24,6 +28,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 资质认证申请
     * @param {H5CertificationApplyRequest} request
     * @returns {Promise<H5CertificationApplyResponse>}
     */
@@ -32,6 +38,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 更新资质认证合同
     * @param {H5CertificationElectronicContractUpdateRequest} request
     * @returns {Promise<H5CertificationElectronicContractUpdateResponse>}
     */
@@ -40,6 +48,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 检查身份证是否重复
     * @param {H5CertificationIdIsDuplicateCheckRequest} request
     * @returns {Promise<H5CertificationIdIsDuplicateCheckResponse>}
     */
@@ -48,6 +58,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 法大大实名认证结果通知
     * @param {H5CertificationRealNameAuthenticateCallbackRequest} request
     * @returns {Promise<H5CertificationRealNameAuthenticateCallbackResponse>}
     */
@@ -56,6 +68,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 法大大－进行实名认证
     * @param {H5CertificationRealNameAuthenticateRequest} request
     * @returns {Promise<H5CertificationRealNameAuthenticateResponse>}
     */

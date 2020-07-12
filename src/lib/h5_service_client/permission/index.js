@@ -1,5 +1,5 @@
 
-// 本文件由toolchain/code_generator/h5_service_client/build脚本自动生成
+// 本文件由toolchain/code_generator/service/build脚本自动生成
 
 module.exports = (client) => ({
     client,
@@ -8,6 +8,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 为新建机构添加默认权限
     * @param {H5PermissionOrgDefaultPerAddRequest} request
     * @returns {Promise<H5PermissionOrgDefaultPerAddResponse>}
     */
@@ -16,6 +17,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 更新机构的权限
     * @param {H5PermissionOrgPermissionUpdateRequest} request
     * @returns {Promise<H5PermissionOrgPermissionUpdateResponse>}
     */
@@ -24,6 +27,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为机构添加角色
     * @param {H5PermissionOrgRoleAddRequest} request
     * @returns {Promise<H5PermissionOrgRoleAddResponse>}
     */
@@ -32,6 +37,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为机构删除角色
     * @param {H5PermissionOrgRoleDeleteRequest} request
     * @returns {Promise<H5PermissionOrgRoleDeleteResponse>}
     */
@@ -48,6 +55,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为机构更新角色
     * @param {H5PermissionOrgRoleUpdateRequest} request
     * @returns {Promise<H5PermissionOrgRoleUpdateResponse>}
     */
@@ -56,6 +65,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 获取某用户的所有权限
     * @param {H5PermissionPermissionGetRequest} request
     * @returns {Promise<H5PermissionPermissionGetResponse>}
     */
@@ -64,6 +75,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为一个用户添加角色
     * @param {H5PermissionUserRoleAddRequest} request
     * @returns {Promise<H5PermissionUserRoleAddResponse>}
     */
@@ -72,6 +85,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 删除用户所有角色
     * @param {H5PermissionUserRoleClearRequest} request
     * @returns {Promise<H5PermissionUserRoleClearResponse>}
     */
@@ -80,6 +94,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为一个用户删除角色
     * @param {H5PermissionUserRoleDeleteRequest} request
     * @returns {Promise<H5PermissionUserRoleDeleteResponse>}
     */
@@ -88,6 +104,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 获取用户的所有角色名称
     * @param {H5PermissionUserRoleGetRequest} request
     * @returns {Promise<H5PermissionUserRoleGetResponse>}
     */
@@ -96,6 +114,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为一个用户添加角色
     * @param {H5PermissionUserRoleUpdateRequest} request
     * @returns {Promise<H5PermissionUserRoleUpdateResponse>}
     */

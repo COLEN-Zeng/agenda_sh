@@ -1,5 +1,5 @@
 
-// 本文件由toolchain/code_generator/h5_service_client/build脚本自动生成
+// 本文件由toolchain/code_generator/service/build脚本自动生成
 
 module.exports = (client) => ({
     client,
@@ -8,6 +8,8 @@ module.exports = (client) => ({
     },
 
     /**
+    * 删除 session 信息
+
     * @param {H5AuthSessionDelRequest} request
     * @returns {Promise<H5AuthSessionDelResponse>}
     */
@@ -16,6 +18,8 @@ module.exports = (client) => ({
     },
 
     /**
+    * 获取 session 信息
+
     * @param {H5AuthSessionGetRequest} request
     * @returns {Promise<H5AuthSessionGetResponse>}
     */
@@ -24,6 +28,7 @@ module.exports = (client) => ({
     },
 
     /**
+    * 创建 session
     * @param {H5AuthSessionSetRequest} request
     * @returns {Promise<H5AuthSessionSetResponse>}
     */
@@ -32,6 +37,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为系统用户生成一个临时的针对特定资源的访问权限
     * @param {H5AuthTokenGenerateRequest} request
     * @returns {Promise<H5AuthTokenGenerateResponse>}
     */
@@ -40,6 +47,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 为临时访问添加权限
     * @param {H5AuthTokenPermissionAddRequest} request
     * @returns {Promise<H5AuthTokenPermissionAddResponse>}
     */
@@ -48,6 +57,8 @@ module.exports = (client) => ({
     },
 
     /**
+    *
+    * 验证token和 clientId的对应关系（若数据库中对用 token无 clientId则直接添加）并返回所能查看的数据 id
     * @param {H5AuthTokenPermissionGetRequest} request
     * @returns {Promise<H5AuthTokenPermissionGetResponse>}
     */
